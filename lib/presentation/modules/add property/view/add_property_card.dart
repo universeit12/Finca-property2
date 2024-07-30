@@ -8,7 +8,7 @@ class AddPropertyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){},
+      onTap: () {},
       child: Container(
           margin: const EdgeInsets.only(
             left: 20.0,

@@ -1,16 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:universe_it_project/widgets/custom_text.dart';
 import '../../../../utils/app_string.dart';
 import '../../../../widgets/custom_searchBar.dart';
 
 class HeaderView extends StatelessWidget {
-  const HeaderView({super.key});
+  final onpressed;
+  const HeaderView({super.key, this.onpressed});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 15.0, right: 15.0, bottom: 25.0),
+      padding: const EdgeInsets.only(
+          left: 10.0, right: 15.0, bottom: 25.0, top: 10.0),
       width: double.infinity,
       decoration: const BoxDecoration(
           color: Colors.teal,
@@ -21,15 +22,16 @@ class HeaderView extends StatelessWidget {
           Row(
             children: [
               IconButton(
-                  onPressed: () {},
+                  onPressed: onpressed,
                   icon: const Icon(
                     Icons.menu,
                     color: Colors.white,
-                    size: 35.0,
+                    size: 30.0,
                   )),
-              const Text(
-                AppString.name,
-                style: TextStyle(color: Colors.white, fontSize: 22.0),
+              const CustomText(
+                text: AppString.name,
+                fontsize: 19.0,
+                color: Colors.white,
               ),
               const Spacer(),
               Container(
