@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:universe_it_project/widgets/custom_card.dart';
 
 import '../../../../widgets/custom_text.dart';
 
@@ -11,21 +12,8 @@ class FavouriteCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
     return InkWell(
-      onTap: () {},
-      child: Container(
-          margin: const EdgeInsets.only(
-            left: 20.0,
-            right: 20.0,
-            top: 20.0,
-          ),
-          padding: const EdgeInsets.only(left: 15.0, bottom: 20.0, top: 15.0),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5.0),
-              color: Colors.white,
-              boxShadow: const [
-                BoxShadow(
-                    color: Colors.black12, spreadRadius: 1.0, blurRadius: 8.0)
-              ]),
+        onTap: () {},
+        child: CustomCard(
           child: Column(
             children: [
               const Padding(
@@ -119,7 +107,7 @@ class FavouriteCard extends StatelessWidget {
                 ),
               )
             ],
-          )),
-    );
+          ),
+        ));
   }
 }
