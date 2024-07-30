@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:universe_it_project/utils/app_string.dart';
-import 'package:universe_it_project/widgets/custom_drawer.dart';
-
+import 'package:universe_it_project/widgets/custom_searchBar.dart';
 
 class Home extends StatelessWidget {
   Home({super.key});
@@ -10,40 +9,37 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldkey,
-      body: CustomScrollView(
-        slivers: [
-          const SliverAppBar(
-            expandedHeight: 200.0,
-            floating: true,
-            pinned: true,
-            backgroundColor: Colors.teal,
-            title: Text(AppString.name),
-            flexibleSpace: FlexibleSpaceBar(
-              collapseMode: CollapseMode.parallax,
-              title: TextField(
-                decoration: InputDecoration(
-                  hintText: 'এখানে লেখুন',
-                  contentPadding: EdgeInsets.symmetric(
-                      horizontal: 10.0), // প্যাডিং কাস্টমাইজ করুন
-                ),
+        body: Column(
+      children: [
+        Container(
+          height: 250,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+              color: Colors.teal,
+              borderRadius:
+                  BorderRadius.only(bottomLeft: Radius.circular(30.0))),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.menu,
+                        color: Colors.white,
+                        size: 35.0,
+                      )),
+                  const Text(
+                    AppString.name,
+                    style: TextStyle(color: Colors.white, fontSize: 22.0),
+                  )
+                ],
               ),
-            ),
+              CustomSearchBar()
+            ],
           ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return ListTile(
-                  leading: const Icon(Icons.star),
-                  title: Text('Item #$index'),
-                );
-              },
-              childCount: 50,
-            ),
-          ),
-        ],
-      ),
-      drawer: const CustomDrawer(),
-    );
+        )
+      ],
+    ));
   }
 }
