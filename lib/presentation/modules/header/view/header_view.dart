@@ -34,26 +34,13 @@ class HeaderView extends StatelessWidget {
                 color: Colors.white,
               ),
               const Spacer(),
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25.0, vertical: 5.0),
-                decoration: BoxDecoration(
-                    color: Colors.white70,
-                    borderRadius: BorderRadius.circular(10.0)),
-                child: const Text(
-                  "Sell",
-                  style: TextStyle(
-                      color: Colors.teal,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0),
-                ),
-              ),
             ],
           ),
           const SizedBox(
             height: 10.0,
           ),
-          const CustomSearchBar()
+          const CustomSearchBar(),
+
         ],
       ),
     );

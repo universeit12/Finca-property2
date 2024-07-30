@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:universe_it_project/presentation/modules/add%20property/view/add_property_card.dart';
+import 'package:universe_it_project/presentation/modules/favourite/view/favourite_card.dart';
 import 'package:universe_it_project/presentation/modules/header/view/header_view.dart';
 import 'package:universe_it_project/widgets/custom_drawer.dart';
 
@@ -29,7 +30,6 @@ class Home extends StatelessWidget {
                 )),
 
             //body section all property is here....
-
             Expanded(
               child: Container(
                   width: double.infinity,
@@ -43,6 +43,7 @@ class Home extends StatelessWidget {
                     child: Column(
                       children: [
                         AddPropertyCard(),
+                        FavouriteCard(),
                       ],
                     ),
                   )),
@@ -50,7 +51,7 @@ class Home extends StatelessWidget {
           ],
         ),
       ),
-      drawer: CustomDrawer(),
+      drawer: const CustomDrawer(),
     );
   }
 }
