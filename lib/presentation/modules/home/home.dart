@@ -1,27 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:universe_it_project/utils/app_string.dart';
 import 'package:universe_it_project/widgets/custom_drawer.dart';
 
+
 class Home extends StatelessWidget {
-  const Home({super.key});
+  Home({super.key});
+  final GlobalKey<ScaffoldState> scaffoldkey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldkey,
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
+          const SliverAppBar(
             expandedHeight: 200.0,
-            floating: false,
+            floating: true,
             pinned: true,
+            backgroundColor: Colors.teal,
+            title: Text(AppString.name),
             flexibleSpace: FlexibleSpaceBar(
-              title: Text('SliverAppBar Example'),
+              collapseMode: CollapseMode.parallax,
+              title: TextField(
+                decoration: InputDecoration(
+                  hintText: 'এখানে লেখুন',
+                  contentPadding: EdgeInsets.symmetric(
+                      horizontal: 10.0), // প্যাডিং কাস্টমাইজ করুন
+                ),
+              ),
             ),
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
                 return ListTile(
-                  leading: Icon(Icons.star),
+                  leading: const Icon(Icons.star),
                   title: Text('Item #$index'),
                 );
               },
@@ -30,7 +43,7 @@ class Home extends StatelessWidget {
           ),
         ],
       ),
-      drawer: CustomDrawer(),
+      drawer: const CustomDrawer(),
     );
   }
 }

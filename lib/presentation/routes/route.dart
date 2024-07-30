@@ -1,5 +1,3 @@
-
-
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 import '../modules/home/home.dart';
@@ -17,6 +15,6 @@ List<GetPage> getPages = [
   ),
   GetPage(
     name: home,
-    page: () => const Home(),
+    page: () => Home(),
   ),
 ];
