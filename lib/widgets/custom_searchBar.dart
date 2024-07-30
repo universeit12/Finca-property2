@@ -6,7 +6,7 @@ class CustomSearchBar extends StatelessWidget {
     this.ontap,
   });
 
-  final ontap;
+  final VoidCallback? ontap;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -15,7 +15,6 @@ class CustomSearchBar extends StatelessWidget {
         child: Container(
           clipBehavior: Clip.antiAlias,
           height: 50.0,
-          margin: const EdgeInsets.symmetric(horizontal: 15),
           padding: const EdgeInsets.only(right: 20.0, left: 20.0),
           decoration: BoxDecoration(
               color: Colors.white,

@@ -1,45 +1,38 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:universe_it_project/presentation/modules/header/view/header_view.dart';
 import 'package:universe_it_project/utils/app_string.dart';
 import 'package:universe_it_project/widgets/custom_searchBar.dart';
 
 class Home extends StatelessWidget {
   Home({super.key});
-  final GlobalKey<ScaffoldState> scaffoldkey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      children: [
-        Container(
-          height: 250,
-          width: double.infinity,
-          decoration: const BoxDecoration(
-              color: Colors.teal,
-              borderRadius:
-                  BorderRadius.only(bottomLeft: Radius.circular(30.0))),
+        backgroundColor: Colors.teal,
+        body: SafeArea(
           child: Column(
             children: [
-              Row(
-                children: [
-                  IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.menu,
+              Container(color: Colors.white, child: const HeaderView()),
+              Expanded(
+                child: Container(
+                    width: double.infinity,
+                    decoration: const BoxDecoration(
                         color: Colors.white,
-                        size: 35.0,
-                      )),
-                  const Text(
-                    AppString.name,
-                    style: TextStyle(color: Colors.white, fontSize: 22.0),
-                  )
-                ],
+                        borderRadius:
+                            BorderRadius.only(topRight: Radius.circular(40.0))),
+                    child: const Column(
+                      children: [
+
+
+
+                      ],
+                    )),
               ),
-              CustomSearchBar()
             ],
           ),
-        )
-      ],
-    ));
+        ));
   }
 }
