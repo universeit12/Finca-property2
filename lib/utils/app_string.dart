@@ -1,7 +1,7 @@
 class AppString {
   ///main app string
-  static const String name = "Abinash Foundation";
-  ///Splash Screen string
-///
+  static const String name = "Universe it institute";
+
+
 
 }
