@@ -1,18 +1,22 @@
-import 'package:get/get.dart';
-import 'package:universe_it_project/pages/home.dart';
-import 'package:universe_it_project/pages/splash.dart';
+
+
+import 'package:get/get_navigation/src/routes/get_route.dart';
+
+import '../modules/home/home.dart';
+import '../modules/splash/splash.dart';
+import '../modules/splash/splash_bindings.dart';
 
 const String splash = '/splash-screen';
-const String unknown = '/not-found';
 const String home = '/home-page';
 
 List<GetPage> getPages = [
   GetPage(
     name: splash,
-    page: () => Splash(),
+    page: () => const Splash(),
+    binding: SplashBinding(),
   ),
   GetPage(
     name: home,
-    page: () => Home(),
+    page: () => const Home(),
   ),
 ];

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:universe_it_project/pages/splash.dart';
 import 'package:universe_it_project/presentation/routes/route.dart';
 
 void main() {
@@ -17,7 +16,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: splash,
       getPages: getPages,
-      home: const Splash(),
     );
   }
 }
