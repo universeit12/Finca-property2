@@ -12,11 +12,7 @@ class SignupScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 10,
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.arrow_back_sharp)),
+
         title: const Text("SIGN IN"),
         titleSpacing: 0.0,
       ),

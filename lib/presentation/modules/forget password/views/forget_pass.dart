@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
@@ -14,12 +12,6 @@ class ForgetPass extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 10,
-        leading: IconButton(
-            onPressed: () {
-              //Navigator.pop(context);
-              Get.toNamed('/signup_screen');
-            },
-            icon: const Icon(Icons.arrow_back_sharp)),
         title: const Text("PASSWORD RECOVERY"),
         titleSpacing: 0.0,
       ),

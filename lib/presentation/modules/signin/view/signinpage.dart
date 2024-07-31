@@ -1,6 +1,6 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:universe_it_project/utils/app_string.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
@@ -51,9 +51,10 @@ class Signinpage extends StatelessWidget {
                   hintext: "Password",
                 ),
                 const SizedBox(height: 20.0),
-                const Align(
+                 Align(
                   alignment: Alignment.centerRight,
                   child: InkWell(
+                    onTap: ()=>Get.toNamed('/foreget_screen'),
                     child: CustomText(
                       text: "Forget Password",
                       color: Colors.teal,
@@ -76,7 +77,7 @@ class Signinpage extends StatelessWidget {
                   background: Colors.blue,
                 ),
                 const SizedBox(height: 30.0),
-                const Row(
+                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CustomText(
@@ -84,11 +85,14 @@ class Signinpage extends StatelessWidget {
                       color: Colors.teal,
                       fontsize: 18.0,
                     ),
-                    CustomText(
-                      text: "Sign Up",
-                      color: Colors.teal,
-                      fontsize: 19.0,
-                      fontweight: FontWeight.bold,
+                    InkWell(
+                      onTap: ()=>Get.toNamed('/signup_screen'),
+                      child: CustomText(
+                        text: "Sign Up",
+                        color: Colors.teal,
+                        fontsize: 19.0,
+                        fontweight: FontWeight.bold,
+                      ),
                     ),
                   ],
                 )

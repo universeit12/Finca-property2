@@ -30,7 +30,9 @@ class CustomDrawer extends StatelessWidget {
                   height: 15.0,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed('/signin_screen');
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColor.baseColor,
                     shape: RoundedRectangleBorder(

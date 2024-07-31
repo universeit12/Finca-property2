@@ -8,8 +8,8 @@ import '../modules/home/home.dart';
 import '../modules/splash/splash.dart';
 import '../modules/splash/splash_bindings.dart';
 
-const String splash = '/splash-screen';
-const String home = '/home-screen';
+const String splash = '/splash_screen';
+const String home = '/home_screen';
 const String signin = '/signin_screen';
 const String signup = '/signup_screen';
 const String forgetpass = '/foreget_screen';

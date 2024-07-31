@@ -7,9 +7,6 @@ class Splash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 4), () {
-      Get.toNamed('/home');
-    });
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.teal.shade900,
