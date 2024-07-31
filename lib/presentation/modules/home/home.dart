@@ -1,8 +1,5 @@
-import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:universe_it_project/presentation/modules/add%20property/view/add_property_card.dart';
 import 'package:universe_it_project/presentation/modules/blogs/views/card_view.dart';
 import 'package:universe_it_project/presentation/modules/favourite/view/favourite_card.dart';

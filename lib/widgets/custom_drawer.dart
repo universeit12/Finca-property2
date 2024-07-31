@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:universe_it_project/utils/app_color.dart';
 import 'package:universe_it_project/utils/app_string.dart';
 import 'package:universe_it_project/utils/nav_item.dart';
@@ -36,14 +37,12 @@ class CustomDrawer extends StatelessWidget {
                       borderRadius: BorderRadius.circular(4.0),
                     ),
                   ),
-
                   child: const Text(
                     "Sign In/Sign Up",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-                SizedBox(height: 20.0),
-
+                const SizedBox(height: 20.0),
                 for (int i = 0; i < navIcons.length; i++)
                   CustomDrawerTile(
                       text: navTitles[i],

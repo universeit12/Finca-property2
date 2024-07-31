@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:universe_it_project/widgets/custom_button.dart';
 
 import '../../../../widgets/custom_text.dart';
 
@@ -46,24 +47,7 @@ class AddPropertyCard extends StatelessWidget {
               const SizedBox(
                 height: 15.0,
               ),
-              Container(
-                width: double.infinity,
-                alignment: Alignment.center,
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-                decoration: BoxDecoration(
-                    color: Colors.teal,
-                    borderRadius: BorderRadius.circular(12.0),
-                    border: Border.all(width: 0.5)),
-                child: const Text(
-                  "Add Property",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
-                ),
-              )
+              CustomButton(text: "Add Property",)
             ],
           )),
     );
