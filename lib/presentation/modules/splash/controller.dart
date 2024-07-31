@@ -6,7 +6,7 @@ class SplashController extends GetxController {
   void onInit() {
     super.onInit();
     Timer(const Duration(seconds: 3), () {
-      Get.offNamed('/signup_screen'); // Navigate to HomeScreen after 3 seconds
+      Get.offNamed('/foreget_screen'); // Navigate to HomeScreen after 3 seconds
     });
   }
 }
