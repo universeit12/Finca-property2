@@ -34,13 +34,18 @@ class HeaderView extends StatelessWidget {
                 color: Colors.white,
               ),
               const Spacer(),
+              IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.more_vert,
+                    color: Colors.white,
+                  ))
             ],
           ),
           const SizedBox(
             height: 10.0,
           ),
           const CustomSearchBar(),
-
         ],
       ),
     );

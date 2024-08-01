@@ -1,17 +1,18 @@
-import 'package:another_carousel_pro/another_carousel_pro.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
+
 import 'package:universe_it_project/widgets/custom_card.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
 
-class CardView extends StatelessWidget {
-  const CardView({super.key});
 
+class ReviewCard extends StatelessWidget {
+   const ReviewCard({super.key});
   @override
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
     return InkWell(
-        onTap: () {},
+        onTap: () {
+        },
         child: CustomCard(
             width: double.infinity,
             padding:
@@ -25,7 +26,7 @@ class CardView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CustomText(
-                        text: "Blogs",
+                        text: "Review",
                       ),
                       CustomText(
                         text: "See all..",
@@ -54,7 +55,8 @@ class CardView extends StatelessWidget {
                                   fit: BoxFit.cover)),
                           child: Container(
                             color: Colors.black26,
-                            padding: const EdgeInsets.only(left: 5.0, bottom: 5.0),
+                            padding:
+                                const EdgeInsets.only(left: 5.0, bottom: 5.0),
                             child: const Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               crossAxisAlignment: CrossAxisAlignment.start,

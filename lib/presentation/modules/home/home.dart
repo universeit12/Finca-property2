@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:universe_it_project/presentation/modules/add%20property/view/add_property_card.dart';
 import 'package:universe_it_project/presentation/modules/blogs/views/blog_card.dart';
+import 'package:universe_it_project/presentation/modules/client%20review/views/review_card.dart';
 import 'package:universe_it_project/presentation/modules/favourite/view/favourite_card.dart';
 import 'package:universe_it_project/presentation/modules/header/view/header_view.dart';
+import 'package:universe_it_project/presentation/modules/populer%20citys/views/populer_city.dart';
 import 'package:universe_it_project/widgets/custom_drawer.dart';
 
 class Home extends StatelessWidget {
@@ -27,27 +29,29 @@ class Home extends StatelessWidget {
                 )),
 
             //body section all property is here....
-           Expanded(
-             child: SingleChildScrollView(
-               child: Container(
-                   width: double.infinity,
-                   decoration: const BoxDecoration(
-                     color: Colors.white,
-                     borderRadius:
-                     BorderRadius.only(topRight: Radius.circular(40.0)),
-                   ),
-                   child: const Padding(
-                     padding: EdgeInsets.symmetric(vertical: 20),
-                     child: Column(
-                       children: [
-                         AddPropertyCard(),
-                         FavouriteCard(),
-                         CardView(),
-                       ],
-                     ),
-                   )),
-             ),
-           )
+            Expanded(
+              child: SingleChildScrollView(
+                child: Container(
+                    width: double.infinity,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius:
+                          BorderRadius.only(topRight: Radius.circular(40.0)),
+                    ),
+                    child:  const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 20),
+                      child: Column(
+                        children: [
+                          AddPropertyCard(),
+                          FavouriteCard(),
+                          CardView(),
+                          PopulerCity(),
+
+                        ],
+                      ),
+                    )),
+              ),
+            )
           ],
         ),
       ),

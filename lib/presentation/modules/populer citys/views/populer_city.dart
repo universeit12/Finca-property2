@@ -1,11 +1,9 @@
-import 'package:another_carousel_pro/another_carousel_pro.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:universe_it_project/widgets/custom_card.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
 
-class CardView extends StatelessWidget {
-  const CardView({super.key});
+class PopulerCity extends StatelessWidget {
+  const PopulerCity({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +13,7 @@ class CardView extends StatelessWidget {
         child: CustomCard(
             width: double.infinity,
             padding:
-                const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+            const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -25,12 +23,9 @@ class CardView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CustomText(
-                        text: "Blogs",
+                        text: "Populer City",
                       ),
-                      CustomText(
-                        text: "See all..",
-                        color: Colors.teal,
-                      ),
+
                     ],
                   ),
                 ),
@@ -43,8 +38,8 @@ class CardView extends StatelessWidget {
                     children: [
                       for (int i = 0; i < 10; i++)
                         Container(
-                          height: 130.0,
-                          width: 220,
+                          height: 180.0,
+                          width: 130,
                           margin: const EdgeInsets.only(right: 10),
                           clipBehavior: Clip.antiAlias,
                           decoration: BoxDecoration(
@@ -61,7 +56,7 @@ class CardView extends StatelessWidget {
                               children: [
                                 CustomText(
                                   text:
-                                      "Tips for Selling Your Home Quickly and Efficiently",
+                                  "Dhaka",
                                   maxline: 2,
                                   color: Colors.white,
                                   fontsize: 14.0,

@@ -45,13 +45,24 @@ class CustomDrawer extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20.0),
-                for (int i = 0; i < navIcons.length; i++)
-                  CustomDrawerTile(
-                      text: navTitles[i],
-                      icon: navIcons[i],
-                      onTap: () {
-                        Navigator.pop(context);
-                      })
+                ListTile(
+                  title: const Text(
+                    "Home",
+                    style: TextStyle(color: Colors.teal),
+                  ),
+                  leading: const Icon(Icons.home_outlined, color: Colors.teal),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                for (int i = 0; i < navItem.length; i++)
+                  ListTile(
+                    title: Text(navItem[i]["title"]),
+                    leading: Icon(navItem[i]["icon"]),
+                    onTap: () {
+                      Get.to(navItem[i]["screen"]);
+                    },
+                  )
               ],
             ),
           ),
@@ -60,3 +71,12 @@ class CustomDrawer extends StatelessWidget {
     );
   }
 }
+/*
+    CustomDrawerTile(
+                      text: navItem[i]["title"],
+                      icon: navItem[i]["icon"],
+                      onTap: () {
+                        Get.to(() => navItem[i]['screen']);
+                      })
+*
+* */
