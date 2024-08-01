@@ -38,6 +38,7 @@ dependencies:
   get:
   animated_text_kit: ^4.2.2
   intl_phone_number_input: ^0.7.4
+  another_carousel_pro: ^1.0.2
 
 dev_dependencies:
   flutter_test:

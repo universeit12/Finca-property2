@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:universe_it_project/widgets/custom_card.dart';
 
 import '../../../../widgets/custom_text.dart';
@@ -58,9 +56,9 @@ class FavouriteCard extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(8.0),
                                   image: const DecorationImage(
                                       image: AssetImage(
-                                        "assets/images/gallary.png",
+                                        "assets/images/flat.jpg",
                                       ),
-                                      fit: BoxFit.contain)),
+                                      fit: BoxFit.cover)),
                             ),
                             const SizedBox(
                               height: 10.0,
