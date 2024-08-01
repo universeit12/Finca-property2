@@ -26,7 +26,7 @@ List<GetPage> getPages = [
   ),
   GetPage(
     name: signin,
-    page: () => const Signinpage(),
+    page: () =>  Signinpage(),
   ),
   GetPage(
     name: signup,

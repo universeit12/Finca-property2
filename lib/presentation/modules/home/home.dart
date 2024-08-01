@@ -38,7 +38,7 @@ class Home extends StatelessWidget {
                       borderRadius:
                           BorderRadius.only(topRight: Radius.circular(40.0)),
                     ),
-                    child:  const Padding(
+                    child: const Padding(
                       padding: EdgeInsets.symmetric(vertical: 20),
                       child: Column(
                         children: [
@@ -46,7 +46,6 @@ class Home extends StatelessWidget {
                           FavouriteCard(),
                           CardView(),
                           PopulerCity(),
-
                         ],
                       ),
                     )),

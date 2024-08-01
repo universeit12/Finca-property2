@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
 import 'package:universe_it_project/widgets/custom_textfield.dart';
 
 class ForgetPass extends StatelessWidget {
-  const ForgetPass({super.key});
+   ForgetPass({super.key});
+  final TextEditingController emailcontroller = TextEditingController();
+  final emailformkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,7 @@ class ForgetPass extends StatelessWidget {
         title: const Text("PASSWORD RECOVERY"),
         titleSpacing: 0.0,
       ),
-      body: const Padding(
+      body:  Padding(
         padding: EdgeInsets.symmetric(),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
@@ -31,12 +34,34 @@ class ForgetPass extends StatelessWidget {
               ),
               SizedBox(height: 20.0),
               CustomTextfield(
-                hintext: "email",
-                suffixicon: Icon(Icons.email_outlined),
+                hintText: "email",
+                suffixIcon: Icon(Icons.email_outlined),
+                formKey: emailformkey,
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter an email address';
+                  }
+                  final emailRegExp = RegExp(r'^[^@]+@[^@]+\.[^@]+$');
+                  if (!emailRegExp.hasMatch(value)) {
+                    return 'Please enter a valid email address';
+                  }
+                  return null;
+                },
               ),
               Spacer(),
               CustomButton(
                 text: "CREATE ACCOUNT",
+                ontap: () {
+                  if (
+                      emailcontroller.text.isNotEmpty ||
+                      emailformkey.currentState!.validate()) {
+                    Fluttertoast.showToast(
+                      msg: "Send a Code",
+                    );
+                    emailcontroller.clear();
+
+                  }
+                },
               )
             ],
           ),
