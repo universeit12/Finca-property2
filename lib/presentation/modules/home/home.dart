@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:universe_it_project/presentation/modules/add%20property/view/add_property_card.dart';
+import 'package:universe_it_project/presentation/modules/all%20property/view/all_property_homePage_card.dart';
 import 'package:universe_it_project/presentation/modules/blogs/views/blog_card.dart';
 import 'package:universe_it_project/presentation/modules/client%20review/views/review_card.dart';
 import 'package:universe_it_project/presentation/modules/favourite/view/favourite_card.dart';
@@ -43,6 +44,7 @@ class Home extends StatelessWidget {
                       child: Column(
                         children: [
                           AddPropertyCard(),
+                          AllPropertyHomepageCard(),
                           FavouriteCard(),
                           BlogCard(),
                           PopulerCity(),

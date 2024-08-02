@@ -42,21 +42,29 @@ class AddDetailsScreen extends StatelessWidget {
                       )
                     ],
                   ),
-                  const SizedBox(height: 15.0,),
+                  const SizedBox(
+                    height: 15.0,
+                  ),
                   const CustomTextfield(
                     hintText: "Your Name",
                     suffixIcon: Icon(Icons.person_outline_rounded),
                   ),
-                  const SizedBox(height: 20.0,),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
                   const CustomTextfield(
                     hintText: "Phone Number",
                     suffixIcon: Icon(Icons.phone),
                   ),
-                  const SizedBox(height: 20.0,),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
                   const CustomTextfield(
                     hintText: "Your Email",
                   ),
-                  const SizedBox(height: 20.0,),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
                   Obx(
                     () => CustomTextfield(
                       hintText: "Property Type",
@@ -89,7 +97,9 @@ class AddDetailsScreen extends StatelessWidget {
                       },
                     ),
                   ),
-                  const SizedBox(height:25.0,),
+                  const SizedBox(
+                    height: 25.0,
+                  ),
                   const Row(
                     children: [
                       Icon(Icons.person_3_rounded),
@@ -98,7 +108,6 @@ class AddDetailsScreen extends StatelessWidget {
                       )
                     ],
                   ),
-
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -116,17 +125,17 @@ class AddDetailsScreen extends StatelessWidget {
                               ],
                             )),
                         Obx(() => Row(
-                          children: [
-                            Radio(
-                              value: 'Manager',
-                              groupValue: controller.selectedValue.value,
-                              onChanged: (value) {
-                                controller.selectedValue.value = value!;
-                              },
-                            ),
-                            const Text("Manager"),
-                          ],
-                        )),
+                              children: [
+                                Radio(
+                                  value: 'Manager',
+                                  groupValue: controller.selectedValue.value,
+                                  onChanged: (value) {
+                                    controller.selectedValue.value = value!;
+                                  },
+                                ),
+                                const Text("Manager"),
+                              ],
+                            )),
                         Obx(() => Row(
                               children: [
                                 Radio(
@@ -139,11 +148,12 @@ class AddDetailsScreen extends StatelessWidget {
                                 const Text("Representative"),
                               ],
                             )),
-
                       ],
                     ),
                   ),
-                  const SizedBox(height: 15.0,),
+                  const SizedBox(
+                    height: 15.0,
+                  ),
                   const Row(
                     children: [
                       Icon(Icons.production_quantity_limits),
@@ -152,21 +162,23 @@ class AddDetailsScreen extends StatelessWidget {
                       )
                     ],
                   ),
-                  const SizedBox(height: 10.0,),
-
+                  const SizedBox(
+                    height: 10.0,
+                  ),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 8.0),
                       decoration: BoxDecoration(
-                        color: Colors.teal.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(4.0)
-                      ),
+                          color: Colors.teal.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(4.0)),
                       child: const Text("Only for Sell"),
                     ),
                   ),
-                  const SizedBox(height: 15.0,),
-
+                  const SizedBox(
+                    height: 15.0,
+                  ),
                   const Row(
                     children: [
                       Icon(Icons.add_home_work),
@@ -175,7 +187,9 @@ class AddDetailsScreen extends StatelessWidget {
                       )
                     ],
                   ),
-                  const SizedBox(height: 15.0,),
+                  const SizedBox(
+                    height: 15.0,
+                  ),
                   const Row(
                     children: [
                       Icon(Icons.location_on_outlined),
@@ -184,15 +198,13 @@ class AddDetailsScreen extends StatelessWidget {
                       )
                     ],
                   ),
-
                   const SizedBox(height: 20),
-
                   CustomButton(
                     text: "Add Property",
-                    ontap: (){
+                    ontap: () {
                       Fluttertoast.showToast(
                           msg:
-                          'Selected value: ${controller.selectedValue.value}');
+                              'Selected value: ${controller.selectedValue.value}');
                     },
                   )
                 ],

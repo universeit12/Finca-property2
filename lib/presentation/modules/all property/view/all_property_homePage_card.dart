@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:universe_it_project/presentation/modules/favourite/view/faviorite_screen.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:universe_it_project/presentation/modules/all%20property/view/all_property_screen.dart';
 import 'package:universe_it_project/widgets/custom_card.dart';
-import 'package:universe_it_project/widgets/home_property_card.dart';
 
 import '../../../../widgets/custom_text.dart';
+import '../../../../widgets/home_property_card.dart';
 
-class FavouriteCard extends StatelessWidget {
-  const FavouriteCard({super.key});
+class AllPropertyHomepageCard extends StatelessWidget {
+  const AllPropertyHomepageCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +19,16 @@ class FavouriteCard extends StatelessWidget {
           child: Column(
             children: [
                Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 7.0),
+                padding: EdgeInsets.symmetric(horizontal: 7.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const CustomText(
-                      text: "Favourite",
+                      text: "All Property",
                     ),
                     InkWell(
                       onTap: (){
-                        Get.to(FavioriteScreen());
+                        Get.to(const AllPropertyScreen());
                       },
                       child: const CustomText(
                         text: "See all..",
@@ -44,17 +45,17 @@ class FavouriteCard extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    for (int i = 0; i < 4; i++)
+                    for (int i = 0; i < 10; i++)
                       const HomePropertyCard(
-                        icon: Icons.favorite,
+                        text: "Aftabnagar, Block-F, Sector-2, roa4, H-31",
                       ),
                     Padding(
                       padding: const EdgeInsets.only(right: 15.0),
                       child: CircleAvatar(
-                          backgroundColor: Colors.teal.withOpacity(0.4),
+                        backgroundColor: Colors.teal.withOpacity(0.4),
                           child: IconButton(
                               onPressed: () {
-                                Get.to(FavioriteScreen());
+                                Get.to(AllPropertyScreen());
                               },
                               icon: const Icon(Icons.arrow_forward_outlined))),
                     )

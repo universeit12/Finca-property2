@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:universe_it_project/presentation/modules/search/view/search_page.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
 import '../../../../utils/app_string.dart';
 import '../../../../widgets/custom_searchBar.dart';
@@ -45,7 +47,11 @@ class HeaderView extends StatelessWidget {
           const SizedBox(
             height: 10.0,
           ),
-          const CustomSearchBar(),
+            CustomSearchBar(
+             ontap: (){
+               Get.to(()=>SearchScreen());
+             },
+           ),
         ],
       ),
     );
