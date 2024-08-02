@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, this.text, this.background, this.ontap});
+  const CustomButton(
+      {super.key, this.text, this.background, this.ontap, this.fontcolor});
   final String? text;
   final background;
   final ontap;
+  final fontcolor;
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +23,8 @@ class CustomButton extends StatelessWidget {
             border: Border.all(width: 0.5)),
         child: Text(
           text!,
-          style: const TextStyle(
-              color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color:fontcolor?? Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
         ),
       ),
     );
