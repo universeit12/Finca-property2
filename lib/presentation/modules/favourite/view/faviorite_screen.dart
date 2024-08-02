@@ -18,7 +18,93 @@ class FavioriteScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("FavioriteScreen"),
       ),
-
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const AllPropertySlider(),
+            const SizedBox(
+              height: 15.0,
+            ),
+            for (int i = 0; i < propertyUtils.length; i++)
+              InkWell(
+                onTap: () {
+                  Get.to(const AllPropertyDetails());
+                },
+                child: Container(
+                  height: 120,
+                  clipBehavior: Clip.antiAlias,
+                  margin:
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  decoration: BoxDecoration(
+                      color: AppColor.white_1,
+                      borderRadius: BorderRadius.circular(8),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.black12,
+                            spreadRadius: 1.0,
+                            blurRadius: 8.0)
+                      ]),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Image.asset(
+                        propertyUtils[i]["img"],
+                        width: w / 3.5,
+                        fit: BoxFit.cover,
+                        height: 120,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              CustomText(
+                                text: propertyUtils[i]["city"],
+                                fontsize: 16.0,
+                                color: Colors.teal,
+                                maxline: 2,
+                              ),
+                              CustomText(
+                                text: propertyUtils[i]["features"],
+                                fontsize: 12.0,
+                                color: Colors.black54,
+                                maxline: 2,
+                              ),
+                              CustomText(
+                                text: propertyUtils[i]["price"],
+                                fontsize: 15.0,
+                                color: Colors.red,
+                                maxline: 2,
+                              ),
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.location_on,
+                                    color: Colors.black54,
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Text(
+                                    propertyUtils[i]["location"],
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                        color: Colors.black54, fontSize: 15),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ),
     );
   }
 }
