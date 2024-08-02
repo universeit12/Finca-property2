@@ -45,7 +45,7 @@ class AllPropertyHomepageCard extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    for (int i = 0; i < 10; i++)
+                    for (int i = 0; i < 2; i++)
                       const HomePropertyCard(
                         text: "Aftabnagar, Block-F, Sector-2, roa4, H-31",
                       ),
@@ -55,7 +55,7 @@ class AllPropertyHomepageCard extends StatelessWidget {
                         backgroundColor: Colors.teal.withOpacity(0.4),
                           child: IconButton(
                               onPressed: () {
-                                Get.to(AllPropertyScreen());
+                                Get.to(const AllPropertyScreen());
                               },
                               icon: const Icon(Icons.arrow_forward_outlined))),
                     )
