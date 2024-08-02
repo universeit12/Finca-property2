@@ -16,7 +16,7 @@ class FavioriteScreen extends StatelessWidget {
     final w = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text("FavioriteScreen"),
+        title: const Text("Faviorite Property"),
       ),
       body: SingleChildScrollView(
         child: Column(
