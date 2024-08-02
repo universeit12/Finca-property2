@@ -10,6 +10,8 @@ class CustomTextfield extends StatelessWidget {
     this.suffixIcon,
     this.formKey,
     this.validation,
+    this.readonly,
+    this.ontap,
   });
 
   final ValueChanged<String>? onChanged;
@@ -19,16 +21,20 @@ class CustomTextfield extends StatelessWidget {
   final Widget? suffixIcon;
   final GlobalKey<FormState>? formKey;
   final String? Function(String?)? validation;
+  final readonly;
+  final ontap;
 
   @override
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
       child: TextFormField(
+        onTap: ontap,
         validator: validation,
         onChanged: onChanged,
         obscureText: obscureText ?? false,
         controller: controller,
+        readOnly: readonly ?? false,
         maxLines: 1,
         decoration: InputDecoration(
           hintText: hintText ?? "Email",

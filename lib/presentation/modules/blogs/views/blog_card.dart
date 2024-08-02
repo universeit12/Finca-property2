@@ -1,11 +1,15 @@
 import 'package:another_carousel_pro/another_carousel_pro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:universe_it_project/presentation/modules/blogs/views/blog_item.dart';
+import 'package:universe_it_project/utils/blogUtils.dart';
 import 'package:universe_it_project/widgets/custom_card.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
 
-class CardView extends StatelessWidget {
-  const CardView({super.key});
+class BlogCard extends StatelessWidget {
+  const BlogCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +23,22 @@ class CardView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 7.0),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 7.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomText(
+                      const CustomText(
                         text: "Blogs",
                       ),
-                      CustomText(
-                        text: "See all..",
-                        color: Colors.teal,
+                      InkWell(
+                        onTap: () {
+                          Get.to(() => const BlogItem());
+                        },
+                        child: const CustomText(
+                          text: "See all..",
+                          color: Colors.teal,
+                        ),
                       ),
                     ],
                   ),
@@ -41,7 +50,7 @@ class CardView extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      for (int i = 0; i < 10; i++)
+                      for (int i = 0; i < blogUtils.length; i++)
                         Container(
                           height: 130.0,
                           width: 220,
@@ -49,32 +58,32 @@ class CardView extends StatelessWidget {
                           clipBehavior: Clip.antiAlias,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(6.0),
-                              image: const DecorationImage(
-                                  image: AssetImage("assets/images/flat.jpg"),
+                              image: DecorationImage(
+                                  image: AssetImage(blogUtils[i]["img"]),
                                   fit: BoxFit.cover)),
                           child: Container(
                             color: Colors.black26,
-                            padding: const EdgeInsets.only(left: 5.0, bottom: 5.0),
-                            child: const Column(
+                            padding:
+                                const EdgeInsets.only(left: 5.0, bottom: 5.0),
+                            child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 CustomText(
-                                  text:
-                                      "Tips for Selling Your Home Quickly and Efficiently",
+                                  text: blogUtils[i]["title"],
                                   maxline: 2,
                                   color: Colors.white,
                                   fontsize: 14.0,
                                 ),
                                 CustomText(
-                                  text: "May 16, 2024",
+                                  text: blogUtils[i]["time"],
                                   color: Colors.white,
                                   fontsize: 12.0,
                                 )
                               ],
                             ),
                           ),
-                        ),
+                        )
                     ],
                   ),
                 )

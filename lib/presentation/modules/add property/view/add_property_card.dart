@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
 
 import '../../../../widgets/custom_text.dart';
@@ -47,7 +48,12 @@ class AddPropertyCard extends StatelessWidget {
               const SizedBox(
                 height: 15.0,
               ),
-              CustomButton(text: "Add Property",)
+              CustomButton(
+                text: "Add Property",
+                ontap: () {
+                  Get.toNamed('/add_property');
+                },
+              )
             ],
           )),
     );

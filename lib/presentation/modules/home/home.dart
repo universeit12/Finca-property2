@@ -44,8 +44,9 @@ class Home extends StatelessWidget {
                         children: [
                           AddPropertyCard(),
                           FavouriteCard(),
-                          CardView(),
+                          BlogCard(),
                           PopulerCity(),
+                          ReviewCard(),
                         ],
                       ),
                     )),
