@@ -26,7 +26,7 @@ class ResultsPage extends StatelessWidget {
           final property = filteredProperties[index];
           return InkWell(
             onTap: (){
-              Get.to(()=>AllPropertyDetails());
+              Get.to(()=>const AllPropertyDetails());
             },
             child: Container(
               height: 120,
@@ -96,13 +96,3 @@ class ResultsPage extends StatelessWidget {
     );
   }
 }
-/*
- ListTile(
-            title: Text(property.title),
-            subtitle: Text(property.rent),
-            leading: Image.asset(property.image),
-            onTap: () {
-              // Handle item tap
-            },
-          );
-* */

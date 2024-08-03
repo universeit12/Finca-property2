@@ -56,7 +56,7 @@ class SearchPage extends StatelessWidget {
                   title: const Text('Select Location'),
                   trailing: locationController.selectedLocation.value.isNotEmpty
                       ? Text(locationController.selectedLocation.value)
-                      : const Text("Dhaka"),
+                      : const Text("....."),
                   onTap: () async {
                     final result = await Get.to(() => LocationSelectionPage());
                     if (result != null) {

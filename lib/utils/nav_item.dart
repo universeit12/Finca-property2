@@ -5,6 +5,8 @@ import 'package:universe_it_project/presentation/modules/blogs/views/blog_item.d
 import 'package:universe_it_project/presentation/modules/favourite/view/faviorite_screen.dart';
 import 'package:universe_it_project/presentation/modules/settings/views/thame_page.dart';
 
+import '../presentation/modules/about_us/views/about_screen.dart';
+
 final List<Map<String, dynamic>> navItem = [
   {
     'icon': Icons.add_home_outlined,
@@ -14,7 +16,7 @@ final List<Map<String, dynamic>> navItem = [
   {
     'icon': Icons.add_home_work_outlined,
     'title': 'Add Property',
-    'screen': const AddPropertyCard()
+    'screen':  AddDetailsScreen()
   },
   {
     'icon': Icons.favorite_border,
@@ -25,7 +27,7 @@ final List<Map<String, dynamic>> navItem = [
   {
     'icon': Icons.person_outline_rounded,
     'title': 'Contact Us',
-    'screen': ThemePage()
+    'screen': AboutScreen()
   },
   {'icon': Icons.message, 'title': 'About Us', 'screen': ThemePage()},
   {'icon': Icons.settings, 'title': 'Settings', 'screen': ThemePage()},
