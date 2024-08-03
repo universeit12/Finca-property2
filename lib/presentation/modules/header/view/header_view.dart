@@ -43,7 +43,7 @@ class HeaderView extends StatelessWidget {
           ),
           CustomSearchBar(
             ontap: () {
-              Get.to(() => SearchScreen());
+              Get.to(() => SearchPage());
             },
           ),
         ],
