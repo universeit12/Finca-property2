@@ -8,7 +8,7 @@ class LocationSelectionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final LocationController locationController = Get.find<LocationController>();
     final TextEditingController controller = TextEditingController();
-    List<String> allLocations = ['Location1', 'Location2', 'Location3'];
+    List<String> allLocations = ['Dhaka', 'Dinajpur', 'Thakurgaon'];
     RxList<String> filteredLocations = allLocations.obs;
 
     void filterLocations(String query) {
