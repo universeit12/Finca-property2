@@ -1,34 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class VideoDetailScreen extends StatelessWidget {
-  final VideoPlayerController videoPlayerController;
+class VideoReviewPage extends StatelessWidget {
+  final String videoId;
+  final String reviewText;
 
-  VideoDetailScreen({required this.videoPlayerController});
+  const VideoReviewPage(
+      {super.key, required this.videoId, required this.reviewText});
 
   @override
   Widget build(BuildContext context) {
+    final YoutubePlayerController controller = YoutubePlayerController(
+      initialVideoId: videoId,
+      flags: const YoutubePlayerFlags(
+        autoPlay: true,
+        mute: false,
+      ),
+    );
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("Video Player"),
+        title: const Text('Video and Review'),
       ),
-      body: Center(
-        child: AspectRatio(
-          aspectRatio: videoPlayerController.value.aspectRatio,
-          child: VideoPlayer(videoPlayerController),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          videoPlayerController.value.isPlaying
-              ? videoPlayerController.pause()
-              : videoPlayerController.play();
-        },
-        child: Icon(
-          videoPlayerController.value.isPlaying
-              ? Icons.pause
-              : Icons.play_arrow,
-        ),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 300, // Adjust the height as needed
+            child: YoutubePlayer(
+              controller: controller,
+              showVideoProgressIndicator: true,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              reviewText,
+              style: const TextStyle(fontSize: 18),
+            ),
+          ),
+        ],
       ),
     );
   }

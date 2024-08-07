@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({super.key, this.child, this.width, this.padding});
+  const CustomCard({super.key, this.child, this.width, this.padding, this.height});
   final child;
   final width;
+  final height;
   final padding;
 
   @override
   Widget build(BuildContext context) {
     return Container(
     width: width,
+      height: height,
       margin:const EdgeInsets.only(
         left: 20.0,
         right: 20.0,
