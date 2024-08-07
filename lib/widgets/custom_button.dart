@@ -19,12 +19,12 @@ class CustomButton extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
         decoration: BoxDecoration(
             color: background ?? Colors.teal,
-            borderRadius: BorderRadius.circular(12.0),
+            borderRadius: BorderRadius.circular(8.0),
             border: Border.all(width: 0.5)),
         child: Text(
           text!,
           style: TextStyle(
-              color:fontcolor?? Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+              color:fontcolor?? Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
         ),
       ),
     );

@@ -22,13 +22,14 @@ class BlogItem extends StatelessWidget {
         children: [
           for (int i = 0; i < blogUtils.length; i++)
             InkWell(
-              onTap:(){
+              onTap: () {
                 Get.to(BlogsDetails(data: blogUtils[i]));
               },
               child: Container(
                 height: 100,
                 clipBehavior: Clip.antiAlias,
-                margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 decoration: BoxDecoration(
                     color: AppColor.white_1,
                     borderRadius: BorderRadius.circular(4),
@@ -65,7 +66,6 @@ class BlogItem extends StatelessWidget {
                               color: Colors.black54,
                               maxline: 2,
                             ),
-
                           ],
                         ),
                       ),

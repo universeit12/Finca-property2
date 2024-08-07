@@ -2,9 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:universe_it_project/utils/app_color.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AllPropertyDetails extends StatelessWidget {
   const AllPropertyDetails({super.key});
+  Future<void> _launchDialer(String phoneNumber) async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    if (await canLaunchUrl(launchUri)) {
+      await launchUrl(launchUri);
+    } else {
+      throw 'Could not launch $launchUri';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,20 +104,22 @@ class AllPropertyDetails extends StatelessWidget {
                 color: Colors.black12,
               ),
               const SizedBox(height: 15.0),
-              const Row(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                    child: CustomButton(
-                      text: "Get Phone Num",
-                      background: Colors.white70,
-                      fontcolor: Colors.black,
-                    ),
-                  ),
-                  Expanded(
+                  Flexible(
                     child: CustomButton(
                       text: "Call Owner",
+                      ontap: () async {
+                        _launchDialer('01763551316');
+                      },
                     ),
                   ),
+                  Icon(
+                    Icons.favorite_border,
+                    size: 40.0,
+                    color: Colors.teal,
+                  )
                 ],
               ),
               const SizedBox(height: 15.0),

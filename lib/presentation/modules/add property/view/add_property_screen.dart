@@ -14,13 +14,9 @@ class AddPropertyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Add Property"),
-        backgroundColor: AppColor.baseColor,
-        titleSpacing: 0,
-      ),
       body: PageView(
         controller: _pageController,
+        physics: const NeverScrollableScrollPhysics(),
         children: [
           _buildPage1(),
           _buildPage2(),
@@ -36,6 +32,15 @@ class AddPropertyScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Row(
+              children: [
+               IconButton(onPressed: (){
+                 Get.back();
+               }, icon: const Icon(Icons.arrow_back_ios)),
+                const CustomText(text: "Add Property",)
+              ],
+            ),
+            const Divider(),
             //property for-->
             const CustomTextIcon(
               text: "Property for",
@@ -259,6 +264,14 @@ class AddPropertyScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            IconButton(
+                onPressed: () {
+                  _pageController.previousPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut);
+                },
+                icon: const Icon(Icons.arrow_back_ios)),
+
             const CustomText(
               text: "Property additional information",
             ),

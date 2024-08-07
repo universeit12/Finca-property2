@@ -18,7 +18,7 @@ class AllPropertyHomepageCard extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 7.0),
+                padding: const EdgeInsets.symmetric(horizontal: 7.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
