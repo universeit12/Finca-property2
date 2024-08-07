@@ -10,6 +10,7 @@ import 'package:universe_it_project/presentation/modules/settings/views/thame_pa
 
 import '../presentation/modules/about_us/views/about_screen.dart';
 import '../presentation/modules/all property/view/all_property_details.dart';
+import '../presentation/modules/contact/views/contact_screen.dart';
 
 final List<Map<String, dynamic>> navItem = [
   {
@@ -33,6 +34,10 @@ final List<Map<String, dynamic>> navItem = [
     'title': 'Privacy',
     'screen': const PrivacyScreen()
   },
-  {'icon': Icons.message, 'title': 'Contact Us', 'screen': ThemePage()},
+  {
+    'icon': Icons.message,
+    'title': 'Contact Us',
+    'screen': const ContactScreen()
+  },
   {'icon': Icons.settings, 'title': 'Settings', 'screen': ThemePage()},
 ];
