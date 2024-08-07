@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:universe_it_project/utils/app_color.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
 import '../controller/custom_text_icon.dart';
 import '../controller/radioController.dart';
+import '../controller/textfield_custom.dart';
 
 class AddPropertyScreen extends StatelessWidget {
   AddPropertyScreen({super.key});
@@ -34,217 +34,127 @@ class AddPropertyScreen extends StatelessWidget {
           children: [
             Row(
               children: [
-               IconButton(onPressed: (){
-                 Get.back();
-               }, icon: const Icon(Icons.arrow_back_ios)),
-                const CustomText(text: "Add Property",)
+                IconButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: const Icon(Icons.arrow_back_ios)),
+                const CustomText(
+                  text: "Add Property",
+                )
               ],
             ),
             const Divider(),
-            //property for-->
-            const CustomTextIcon(
-              text: "Property for",
-            ),
-            const SizedBox(
-              height: 5.0,
-            ),
+            const CustomTextIcon(text: "Property for"),
+            const SizedBox(height: 5.0),
             const Row(
               children: [
-                Icon(
-                  Icons.radio_button_on,
-                  color: Colors.blueAccent,
-                ),
-                CustomText(
-                  text: "  Sell",
-                ),
+                Icon(Icons.radio_button_on, color: Colors.blueAccent),
+                CustomText(text: "  Sell"),
               ],
             ),
-            //Property type
-            const CustomTextIcon(
-              text: "Property type",
-            ),
+            const CustomTextIcon(text: "Property type"),
             Obx(() {
-              return TextField(
+              return ReusableTextField(
+                hintText: 'Tap to select',
+                controller: TextEditingController(text: controller.selectedValue.value),
                 readOnly: true,
-                decoration: const InputDecoration(
-                  hintText: 'Tap to select',
-                  border: OutlineInputBorder(),
-                  suffixIcon: Icon(Icons.arrow_drop_down),
-                ),
-                onTap: () {},
-                controller:
-                    TextEditingController(text: controller.selectedValue.value),
+                suffixIcon: const Icon(Icons.arrow_drop_down),
               );
             }),
-            //Address
-            const CustomTextIcon(
-              text: "Address",
-            ),
+            const CustomTextIcon(text: "Address"),
             Obx(() {
-              return TextField(
+              return ReusableTextField(
+                hintText: 'Type Address',
+                controller: TextEditingController(text: controller.selectedValue.value),
                 maxLines: 2,
-                decoration: const InputDecoration(
-                  hintText: 'Type Address',
-                  border: OutlineInputBorder(),
-                ),
-                onTap: () {},
-                controller:
-                    TextEditingController(text: controller.selectedValue.value),
               );
             }),
-            //Property name
-            const CustomTextIcon(
-              text: "Enter Property name",
-            ),
+            const CustomTextIcon(text: "Enter Property name"),
             Obx(() {
-              return TextField(
+              return ReusableTextField(
+                hintText: 'Enter Property name',
+                controller: TextEditingController(text: controller.selectedValue.value),
                 maxLines: 2,
-                decoration: const InputDecoration(
-                  hintText: 'Enter Property name',
-                  border: OutlineInputBorder(),
-                ),
-                onTap: () {},
-                controller:
-                    TextEditingController(text: controller.selectedValue.value),
               );
             }),
-            //Constructions status
-            const CustomTextIcon(
-              text: "Construction Status",
-            ),
+            const CustomTextIcon(text: "Construction Status"),
             Obx(() {
-              return TextField(
-                decoration: const InputDecoration(
-                  hintText: 'Ready',
-                  border: OutlineInputBorder(),
-                  suffixIcon: Icon(Icons.arrow_drop_down),
-                ),
-                onTap: () {},
-                controller:
-                    TextEditingController(text: controller.selectedValue.value),
+              return ReusableTextField(
+                hintText: 'Ready',
+                readOnly: true,
+                controller: TextEditingController(text: controller.selectedValue.value),
+                suffixIcon: const Icon(Icons.arrow_drop_down),
               );
             }),
-            const SizedBox(
-              height: 10,
-            ),
-
-            const CustomText(
-              text: "Properties Size & Pricing",
-            ),
-
-            //'Property size in sft
-            const CustomTextIcon(
-              text: "Property size in sif",
-            ),
+            const SizedBox(height: 10),
+            const CustomText(text: "Properties Size & Pricing"),
+            const CustomTextIcon(text: "Property size in sft"),
             Obx(() {
-              return TextField(
-                decoration: const InputDecoration(
-                  hintText: 'Enter Property sft',
-                  border: OutlineInputBorder(),
-                ),
-                onTap: () {},
-                controller:
-                    TextEditingController(text: controller.selectedValue.value),
+              return ReusableTextField(
+                hintText: 'Enter Property sft',
+                keyboardtype: TextInputType.phone,
+                controller: TextEditingController(text: controller.selectedValue.value),
               );
             }),
-            //Utility & Others cost
-            const CustomTextIcon(
-              text: "Utility & Others cost",
-            ),
+            const CustomTextIcon(text: "Utility & Others cost"),
             Obx(() {
-              return TextField(
-                decoration: const InputDecoration(
-                  hintText: 'If any others cost',
-                  border: OutlineInputBorder(),
-                ),
-                onTap: () {},
-                controller:
-                    TextEditingController(text: controller.selectedValue.value),
+              return ReusableTextField(
+                hintText: 'If any others cost',
+                keyboardtype: TextInputType.phone,
+                controller: TextEditingController(text: controller.selectedValue.value),
               );
             }),
-            const CustomTextIcon(
-              text: "Price in total",
-            ),
+            const CustomTextIcon(text: "Price in total"),
             Obx(() {
-              return TextField(
-                decoration: const InputDecoration(
-                  hintText: 'total price',
-                  border: OutlineInputBorder(),
-                ),
-                onTap: () {},
-                controller:
-                    TextEditingController(text: controller.selectedValue.value),
+              return ReusableTextField(
+                hintText: 'total price',
+                keyboardtype: TextInputType.phone,
+                controller: TextEditingController(text: controller.selectedValue.value),
               );
             }),
-            const SizedBox(
-              height: 10,
-            ),
-
-            const CustomText(
-              text: "Property basic features",
-            ),
-
-            const CustomTextIcon(
-              text: "Bedroom",
-            ),
+            const SizedBox(height: 10),
+            const CustomText(text: "Property basic features"),
+            const CustomTextIcon(text: "Bedroom"),
             Obx(() {
-              return TextField(
-                decoration: const InputDecoration(
-                  hintText: '1',
-                  border: OutlineInputBorder(),
-                ),
-                onTap: () {},
-                controller:
-                    TextEditingController(text: controller.selectedValue.value),
+              return ReusableTextField(
+                hintText: '1',
+                readOnly: true,
+                controller: TextEditingController(text: controller.selectedValue.value),
+                suffixIcon: const Icon(Icons.arrow_drop_down),
               );
             }),
-            const CustomTextIcon(
-              text: "Bathroom",
-            ),
+            const CustomTextIcon(text: "Bathroom"),
             Obx(() {
-              return TextField(
-                decoration: const InputDecoration(
-                  hintText: '1',
-                  border: OutlineInputBorder(),
-                ),
-                onTap: () {},
-                controller:
-                    TextEditingController(text: controller.selectedValue.value),
+              return ReusableTextField(
+                hintText: '1',
+                readOnly: true,
+                controller: TextEditingController(text: controller.selectedValue.value),
+                suffixIcon: const Icon(Icons.arrow_drop_down),
               );
             }),
-            const CustomTextIcon(
-              text: "Belconis",
-            ),
+            const CustomTextIcon(text: "Belconis"),
             Obx(() {
-              return TextField(
-                decoration: const InputDecoration(
-                  hintText: '1',
-                  border: OutlineInputBorder(),
-                ),
-                onTap: () {},
-                controller:
-                    TextEditingController(text: controller.selectedValue.value),
+              return ReusableTextField(
+                hintText: '1',
+                readOnly: true,
+                controller: TextEditingController(text: controller.selectedValue.value),
+                suffixIcon: const Icon(Icons.arrow_drop_down),
               );
             }),
-            const CustomTextIcon(
-              text: "Garages",
-            ),
+            const CustomTextIcon(text: "Garages"),
             Obx(() {
-              return TextField(
-                decoration: const InputDecoration(
-                  hintText: '1',
-                  border: OutlineInputBorder(),
-                ),
-                onTap: () {},
-                controller:
-                    TextEditingController(text: controller.selectedValue.value),
+              return ReusableTextField(
+                hintText: '1',
+                readOnly: true,
+                controller: TextEditingController(text: controller.selectedValue.value),
+                suffixIcon: const Icon(Icons.arrow_drop_down),
               );
             }),
-            SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             CustomButton(
               text: "Next",
+
               ontap: () {
                 _pageController.nextPage(
                     duration: const Duration(milliseconds: 300),
@@ -271,79 +181,42 @@ class AddPropertyScreen extends StatelessWidget {
                       curve: Curves.easeInOut);
                 },
                 icon: const Icon(Icons.arrow_back_ios)),
-
-            const CustomText(
-              text: "Property additional information",
-            ),
-
-            const CustomTextIcon(
-              text: "Total number of floor",
-            ),
+            const CustomText(text: "Property additional information"),
+            const CustomTextIcon(text: "Total number of floor"),
             Obx(() {
-              return TextField(
+              return ReusableTextField(
+                hintText: '1',
+                controller: TextEditingController(text: controller.selectedValue.value),
                 readOnly: true,
-                decoration: const InputDecoration(
-                  hintText: '1',
-                  border: OutlineInputBorder(),
-                  suffixIcon: Icon(Icons.arrow_drop_down),
-                ),
-                onTap: () {},
-                controller:
-                    TextEditingController(text: controller.selectedValue.value),
+                suffixIcon: const Icon(Icons.arrow_drop_down),
               );
             }),
-            //Address
-            const CustomTextIcon(
-              text: "Title",
-            ),
+            const CustomTextIcon(text: "Title"),
             Obx(() {
-              return TextField(
+              return ReusableTextField(
+                hintText: '212 sqft, 1 Bed Almost Ready Apartment/Flats for Sale at Karatia',
+                controller: TextEditingController(text: controller.selectedValue.value),
                 maxLines: 2,
-                decoration: const InputDecoration(
-                  hintText:
-                      '212 sqft, 1 Bed Almost Ready Apartment/Flats for Sale at Karatia',
-                  border: OutlineInputBorder(),
-                ),
-                onTap: () {},
-                controller:
-                    TextEditingController(text: controller.selectedValue.value),
               );
             }),
-            //Property name
-            const CustomTextIcon(
-              text: "Discription",
-            ),
+            const CustomTextIcon(text: "Description"),
             Obx(() {
-              return TextField(
+              return ReusableTextField(
+                hintText: 'Enter Description',
+                controller: TextEditingController(text: controller.selectedValue.value),
                 maxLines: 4,
-                decoration: const InputDecoration(
-                  hintText: 'Enter Discription',
-                  border: OutlineInputBorder(),
-                ),
-                onTap: () {},
-                controller:
-                    TextEditingController(text: controller.selectedValue.value),
               );
             }),
-            //Constructions status
-            const CustomTextIcon(
-              text: "Phone Number",
-            ),
+            const CustomTextIcon(text: "Phone Number"),
             Obx(() {
-              return TextField(
-                decoration: const InputDecoration(
-                  hintText: '+8801*********',
-                  border: OutlineInputBorder(),
-                  suffixIcon: Icon(Icons.arrow_drop_down),
-                ),
-                onTap: () {},
-                controller:
-                    TextEditingController(text: controller.selectedValue.value),
+              return ReusableTextField(
+                hintText: '+8801*********',
+                keyboardtype: TextInputType.phone,
+                controller: TextEditingController(text: controller.selectedValue.value),
+                suffixIcon: Icon(Icons.arrow_drop_down),
               );
             }),
-            const SizedBox(
-              height: 10.0,
-            ),
+            const SizedBox(height: 10.0),
             CustomButton(
               text: "Post",
               ontap: () {},
