@@ -28,9 +28,9 @@ class SearchPage extends StatelessWidget {
               children: [
                 const Row(
                   children: [
-                    Icon(Icons.play_arrow_outlined),
+                    Icon(Icons.location_searching),
                     CustomText(
-                      text: "I want to",
+                      text: " I want to",
                     ),
                   ],
                 ),

@@ -2,17 +2,31 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:universe_it_project/presentation/modules/client%20review/views/video_screen.dart';
-
+import 'package:universe_it_project/presentation/modules/client%20review/views/video_controller.dart';
 import 'package:universe_it_project/widgets/custom_card.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
 
 
 class ReviewCard extends StatelessWidget {
-   const ReviewCard({super.key});
+    ReviewCard({super.key});
+
+
+   final List<Map<String, String>> videoData = [
+     {
+       'url':
+       'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4',
+       'title': 'Video 1'
+     },
+     {
+       'url':
+       'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4',
+       'title': 'Video 2'
+     },
+     // Add more videos as needed
+   ];
+
   @override
   Widget build(BuildContext context) {
-    final w = MediaQuery.of(context).size.width;
     return InkWell(
         onTap: () {
         },
@@ -45,10 +59,11 @@ class ReviewCard extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      for (int i = 0; i < 10; i++)
+                      for (int i = 0; i < videoData.length; i++)
                         InkWell(
-                          onTap: (){
-
+                          onTap: () {
+                            Get.put(VideoController())
+                                .initializeVideo(videoData[i]["url"].toString());
                           },
                           child: Container(
                             height: 130.0,
@@ -64,18 +79,18 @@ class ReviewCard extends StatelessWidget {
                               color: Colors.black26,
                               padding:
                                   const EdgeInsets.only(left: 5.0, bottom: 5.0),
-                              child: const Column(
+                              child:  Column(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   CustomText(
                                     text:
-                                        "Tips for Selling Your Home Quickly and Efficiently",
+                                    videoData[i]["title"].toString(),
                                     maxline: 2,
                                     color: Colors.white,
                                     fontsize: 14.0,
                                   ),
-                                  CustomText(
+                                  const CustomText(
                                     text: "May 16, 2024",
                                     color: Colors.white,
                                     fontsize: 12.0,

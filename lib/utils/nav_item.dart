@@ -6,17 +6,18 @@ import 'package:universe_it_project/presentation/modules/favourite/view/faviorit
 import 'package:universe_it_project/presentation/modules/settings/views/thame_page.dart';
 
 import '../presentation/modules/about_us/views/about_screen.dart';
+import '../presentation/modules/all property/view/all_property_details.dart';
 
 final List<Map<String, dynamic>> navItem = [
   {
     'icon': Icons.add_home_outlined,
     'title': 'All Property',
-    'screen': AddDetailsScreen()
+    'screen': AllPropertyDetails()
   },
   {
     'icon': Icons.add_home_work_outlined,
     'title': 'Add Property',
-    'screen':  AddDetailsScreen()
+    'screen': FavioriteScreen()
   },
   {
     'icon': Icons.favorite_border,
@@ -25,10 +26,10 @@ final List<Map<String, dynamic>> navItem = [
   },
   {'icon': Icons.library_books, 'title': 'Blogs', 'screen': BlogItem()},
   {
-    'icon': Icons.person_outline_rounded,
-    'title': 'Contact Us',
+    'icon': Icons.privacy_tip_outlined,
+    'title': 'Privacy',
     'screen': AboutScreen()
   },
-  {'icon': Icons.message, 'title': 'About Us', 'screen': ThemePage()},
+  {'icon': Icons.message, 'title': 'Contact Us', 'screen': ThemePage()},
   {'icon': Icons.settings, 'title': 'Settings', 'screen': ThemePage()},
 ];

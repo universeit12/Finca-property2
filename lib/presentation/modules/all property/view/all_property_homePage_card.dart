@@ -12,13 +12,12 @@ class AllPropertyHomepageCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final w = MediaQuery.of(context).size.width;
     return InkWell(
         onTap: () {},
         child: CustomCard(
           child: Column(
             children: [
-               Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 7.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,7 +26,7 @@ class AllPropertyHomepageCard extends StatelessWidget {
                       text: "All Property",
                     ),
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         Get.to(const AllPropertyScreen());
                       },
                       child: const CustomText(
@@ -52,7 +51,7 @@ class AllPropertyHomepageCard extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 15.0),
                       child: CircleAvatar(
-                        backgroundColor: Colors.teal.withOpacity(0.4),
+                          backgroundColor: Colors.teal.withOpacity(0.4),
                           child: IconButton(
                               onPressed: () {
                                 Get.to(const AllPropertyScreen());

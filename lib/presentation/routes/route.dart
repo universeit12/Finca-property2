@@ -1,11 +1,8 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:universe_it_project/presentation/modules/add%20property/view/add_property_card.dart';
 import 'package:universe_it_project/presentation/modules/forget%20password/views/forget_pass.dart';
-import 'package:universe_it_project/presentation/modules/signin/bindigns/signinBindingis.dart';
 import 'package:universe_it_project/presentation/modules/signin/view/signinpage.dart';
 import 'package:universe_it_project/presentation/modules/signup/views/signup_screen.dart';
-
-import '../modules/add property/view/details_screen.dart';
+import '../modules/add property/view/add_property_screen.dart';
 import '../modules/home/home.dart';
 import '../modules/splash/splash.dart';
 import '../modules/splash/splash_bindings.dart';
@@ -41,6 +38,6 @@ List<GetPage> getPages = [
   ),
   GetPage(
     name: addproperty,
-    page: () => AddDetailsScreen(),
+    page: () => AddPropertyScreen(),
   ),
 ];

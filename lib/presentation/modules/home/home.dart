@@ -39,7 +39,7 @@ class Home extends StatelessWidget {
                       borderRadius:
                           BorderRadius.only(topRight: Radius.circular(40.0)),
                     ),
-                    child: const Padding(
+                    child:  Padding(
                       padding: EdgeInsets.symmetric(vertical: 20),
                       child: Column(
                         children: [
