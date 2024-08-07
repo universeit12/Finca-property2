@@ -20,23 +20,22 @@ class VideoReviewPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title:  Text(reviewText, style: const TextStyle(
-          fontSize: 16.0
-        ),),
+        title: Text(
+          reviewText,
+          style: const TextStyle(fontSize: 16.0),
+        ),
         titleSpacing: 0,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(
-              height:200, // Adjust the height as needed
+              height: 200, // Adjust the height as needed
               child: YoutubePlayer(
                 controller: controller,
                 showVideoProgressIndicator: false,
-
               ),
             ),
-
           ],
         ),
       ),
