@@ -328,7 +328,9 @@ class AddPropertyScreen extends StatelessWidget {
                     TextEditingController(text: controller.selectedValue.value),
               );
             }),
-          const SizedBox(height: 10.0,),
+            const SizedBox(
+              height: 10.0,
+            ),
             CustomButton(
               text: "Post",
               ontap: () {},
