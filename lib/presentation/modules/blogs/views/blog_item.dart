@@ -26,12 +26,12 @@ class BlogItem extends StatelessWidget {
                 Get.to(BlogsDetails(data: blogUtils[i]));
               },
               child: Container(
-                height: 120,
+                height: 100,
                 clipBehavior: Clip.antiAlias,
-                margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 decoration: BoxDecoration(
-                    color: AppColor.baseColor,
-                    borderRadius: BorderRadius.circular(8),
+                    color: AppColor.white_1,
+                    borderRadius: BorderRadius.circular(4),
                     boxShadow: const [
                       BoxShadow(
                           color: Colors.black12,
@@ -49,43 +49,23 @@ class BlogItem extends StatelessWidget {
                     ),
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(5),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             CustomText(
                               text: blogUtils[i]["title"],
                               fontsize: 14.0,
-                              color: Colors.white,
+                              color: Colors.black,
                               maxline: 2,
                             ),
                             CustomText(
                               text: blogUtils[i]["dis"],
                               fontsize: 12.0,
-                              color: Colors.white70,
+                              color: Colors.black54,
                               maxline: 2,
                             ),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.access_time,
-                                  color: Colors.white60,
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  blogUtils[i]["time"],
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      color: Colors.white60, fontSize: 15),
-                                ),
-                                Spacer(),
-                                Icon(
-                                  Icons.arrow_forward_outlined,
-                                  color: Colors.white60,
-                                ),
-                              ],
-                            )
+
                           ],
                         ),
                       ),
