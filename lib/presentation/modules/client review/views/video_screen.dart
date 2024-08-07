@@ -20,25 +20,25 @@ class VideoReviewPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Video and Review'),
+        title:  Text(reviewText, style: const TextStyle(
+          fontSize: 16.0
+        ),),
+        titleSpacing: 0,
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 300, // Adjust the height as needed
-            child: YoutubePlayer(
-              controller: controller,
-              showVideoProgressIndicator: true,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height:200, // Adjust the height as needed
+              child: YoutubePlayer(
+                controller: controller,
+                showVideoProgressIndicator: false,
+
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              reviewText,
-              style: const TextStyle(fontSize: 18),
-            ),
-          ),
-        ],
+
+          ],
+        ),
       ),
     );
   }
