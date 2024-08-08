@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:universe_it_project/presentation/modules/signin/controller/signin%20_controller.dart';
+
+import '../controller/signin _controller.dart';
 
 class Signinbindingis implements Bindings {
   @override

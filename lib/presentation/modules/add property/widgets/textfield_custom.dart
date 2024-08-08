@@ -27,21 +27,23 @@ class ReusableTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formkey,
-      child: TextFormField(
-        validator: validation,
-        readOnly: readOnly,
-        maxLines: maxLines,
-        keyboardType: keyboardtype,
-        decoration: InputDecoration(
-          hintText: hintText,
-          border: const OutlineInputBorder(),
-          suffixIcon: suffixIcon,
-        ),
-        onTap: onTap,
-        controller: controller,
+    return TextFormField(
+      readOnly: readOnly,
+      maxLines: maxLines,
+      keyboardType: keyboardtype,
+      decoration: InputDecoration(
+        hintText: hintText,
+        border: const OutlineInputBorder(),
+        suffixIcon: suffixIcon,
       ),
+      onTap: onTap,
+      controller: controller,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Fields are required';
+        }
+        return null;
+      },
     );
   }
 }

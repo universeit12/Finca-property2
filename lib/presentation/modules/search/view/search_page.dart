@@ -1,19 +1,18 @@
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
 import '../../../../widgets/custom_dropdown.dart';
-import '../../add property/controller/custom_text_icon.dart';
-import '../../add property/controller/textfield_custom.dart';
+import '../../add property/widgets/custom_text_icon.dart';
+import '../../add property/widgets/textfield_custom.dart';
 import '../controller/search_dropdown_controller.dart';
 
 class SearchPage extends StatelessWidget {
   SearchPage({super.key});
-
-  final SearchDropdownController _controller =
-      Get.put(SearchDropdownController());
+  final _controller = Get.put(SearchDropdownController());
   final TextEditingController locationcontroller = TextEditingController();
+  final locationController = SingleValueDropDownController();
+
   final locationformkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -40,12 +39,6 @@ class SearchPage extends StatelessWidget {
               const CustomTextIcon(
                 text: "Property Caterogy",
               ),
-              const ReusableTextField(
-                hintText: 'Tap to select',
-                readOnly: true,
-                suffixIcon: Icon(Icons.arrow_drop_down),
-              ),
-
               DropdownWidget(
                 dropDownList: const [
                   DropDownValueModel(
@@ -67,7 +60,6 @@ class SearchPage extends StatelessWidget {
                       name: 'Agriculture/Firm', value: "Agriculture/Firm"),
                 ],
                 hintText: "Select an item",
-                controller: _controller,
                 enablesearch: false,
                 onchanged: (val) {
                   _controller.statusSelectedValue.value = val.value;
@@ -89,7 +81,6 @@ class SearchPage extends StatelessWidget {
                       name: 'Almost Ready', value: "Almost Ready"),
                 ],
                 hintText: "Select an item",
-                controller: _controller,
                 enablesearch: false,
                 onchanged: (val) {
                   _controller.statusSelectedValue.value = val.value;
@@ -99,24 +90,33 @@ class SearchPage extends StatelessWidget {
                 text: "Location",
               ),
 
-              DropdownWidget(
-                dropDownList: const [
-                  DropDownValueModel(name: 'Dhaka', value: "Dhaka"),
-                  DropDownValueModel(name: 'Chittagong', value: "Chittagong"),
-                  DropDownValueModel(name: 'Sylhet', value: "Sylhet"),
-                  DropDownValueModel(name: 'Rajshahi', value: "Rajshahi"),
-                  DropDownValueModel(name: 'Khulna', value: "Khulna"),
-                  DropDownValueModel(name: 'Barisal', value: "Barisal"),
-                  DropDownValueModel(name: 'Rangpur', value: "Rangpur"),
-                  DropDownValueModel(name: 'Mymensingh', value: "Mymensingh"),
-                  DropDownValueModel(name: 'Jashore', value: "Jashore"),
-                  DropDownValueModel(name: 'Tangail', value: "Tangail"),
-                ],
-                hintText: "Select an item",
-                onchanged: (location) {
-                  _controller.locationSelectedValue.value = location.value;
-                },
-                controller: _controller,
+              Form(
+                key: locationformkey,
+                child: DropdownWidget(
+                  dropDownList: const [
+                    DropDownValueModel(name: 'Dhaka', value: "Dhaka"),
+                    DropDownValueModel(name: 'Chittagong', value: "Chittagong"),
+                    DropDownValueModel(name: 'Sylhet', value: "Sylhet"),
+                    DropDownValueModel(name: 'Rajshahi', value: "Rajshahi"),
+                    DropDownValueModel(name: 'Khulna', value: "Khulna"),
+                    DropDownValueModel(name: 'Barisal', value: "Barisal"),
+                    DropDownValueModel(name: 'Rangpur', value: "Rangpur"),
+                    DropDownValueModel(name: 'Mymensingh', value: "Mymensingh"),
+                    DropDownValueModel(name: 'Jashore', value: "Jashore"),
+                    DropDownValueModel(name: 'Tangail', value: "Tangail"),
+                  ],
+                  hintText: "Select an item",
+                  onchanged: (location) {
+                    _controller.locationSelectedValue.value = location.value;
+                  },
+                  controller: locationController,
+                  validation: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter an email address';
+                    }
+                    return null;
+                  },
+                ),
               ),
               const SizedBox(
                 height: 25.0,
@@ -124,8 +124,12 @@ class SearchPage extends StatelessWidget {
               CustomButton(
                 text: "Search Now",
                 ontap: () {
-                  print(_controller.statusSelectedValue);
-                  print(_controller.locationSelectedValue);
+                  if (locationformkey.currentState!.validate()) {
+                    // Process data
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Processing Data')),
+                    );
+                  }
                 },
               )
             ],

@@ -6,16 +6,21 @@ import '../presentation/modules/search/controller/search_dropdown_controller.dar
 class DropdownWidget extends StatelessWidget {
   final List<DropDownValueModel> dropDownList;
   final String hintText;
-  final SearchDropdownController controller;
+  final SearchDropdownController? searchcontroller;
+  final controller;
   final enablesearch;
   final onchanged;
+  final formkey;
+  final validation;
   const DropdownWidget({
     super.key,
     required this.dropDownList,
     this.hintText = "Select an option",
-    required this.controller,
+    this.controller,
     this.enablesearch,
     this.onchanged,
+    this.searchcontroller,
+    this.formkey, this.validation,
   });
 
   @override
@@ -25,24 +30,21 @@ class DropdownWidget extends StatelessWidget {
       decoration: BoxDecoration(
           border: Border.all(), borderRadius: BorderRadius.circular(6.0)),
       child: DropDownTextField(
-          enableSearch: enablesearch ?? true,
-          clearOption: false,
-          searchTextStyle: const TextStyle(color: Colors.red),
-          searchDecoration: InputDecoration(
-            hintText: hintText,
-          ),
-          textFieldDecoration: const InputDecoration(
-              hintText: "Tap to select", border: InputBorder.none),
-          validator: (value) {
-            if (value == null) {
-              return "Required field";
-            } else {
-              return null;
-            }
-          },
-          dropDownItemCount: dropDownList.length,
-          dropDownList: dropDownList,
-          onChanged: onchanged),
+        clearOption: false,
+        dropDownList: dropDownList,
+        controller: controller,
+        onChanged: onchanged,
+        validator: validation,
+        enableSearch: enablesearch ?? true,
+        dropDownItemCount: dropDownList.length,
+        searchTextStyle: const TextStyle(color: Colors.red),
+        searchDecoration: InputDecoration(
+          hintText: hintText,
+        ),
+        textFieldDecoration: const InputDecoration(
+            hintText: "Tap to select", border: InputBorder.none),
+
+      ),
     );
   }
 }
