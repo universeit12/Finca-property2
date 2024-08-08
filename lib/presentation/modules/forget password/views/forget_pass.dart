@@ -34,7 +34,7 @@ class ForgetPass extends StatelessWidget {
               SizedBox(height: 20.0),
               CustomTextfield(
                 hintText: "email",
-                suffixIcon: Icon(Icons.email_outlined),
+                suffixIcon: const Icon(Icons.email_outlined),
                 formKey: emailformkey,
                 validation: (value) {
                   if (value == null || value.isEmpty) {

@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
-class LocationController extends GetxController {
-  var selectedLocation = ''.obs;
+class PopupController extends GetxController {
+  var selectedValue = ''.obs;
 
-  void setLocation(String location) {
-    selectedLocation.value = location;
+  void setSelectedValue(String value) {
+    selectedValue.value = value;
   }
 }

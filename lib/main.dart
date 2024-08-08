@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'Finca properties',
       debugShowCheckedModeBanner: false,
       initialRoute: splash,
       getPages: getPages,

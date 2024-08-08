@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:universe_it_project/presentation/modules/search/view/search_result.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
 import '../../add property/controller/custom_text_icon.dart';
 import '../../add property/controller/radioController.dart';
-import '../controller/search_controller.dart';
+import '../../add property/controller/textfield_custom.dart';
 
 class SearchPage extends StatelessWidget {
   SearchPage({super.key});
   final OptionController controller = Get.put(OptionController());
+  final TextEditingController locationcontroller = TextEditingController();
+  final locationformkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    final LocationController locationController = Get.put(LocationController());
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Search'),
@@ -29,78 +29,67 @@ class SearchPage extends StatelessWidget {
                 text: "Search Keyword",
               ),
               Obx(() {
-                return TextField(
+                return ReusableTextField(
+                  hintText: 'Search text',
                   maxLines: 2,
-                  decoration: const InputDecoration(
-                    hintText: 'Search text',
-                    border: OutlineInputBorder(),
-                  ),
-                  onTap: () {},
-                  controller: TextEditingController(
-                      text: controller.selectedValue.value),
-                );
-              }), //Property type
-              const CustomTextIcon(
-                text: "Property Caterogy",
-              ),
-              Obx(() {
-                return TextField(
-                  readOnly: true,
-                  decoration: const InputDecoration(
-                    hintText: 'Tap to select',
-                    border: OutlineInputBorder(),
-                    suffixIcon: Icon(Icons.arrow_drop_down),
-                  ),
-                  onTap: () {},
                   controller: TextEditingController(
                       text: controller.selectedValue.value),
                 );
               }),
+              //Property type
+              const CustomTextIcon(
+                text: "Property Caterogy",
+              ),
+              Obx(() {
+                return ReusableTextField(
+                  hintText: 'Tap to select',
+                  readOnly: true,
+                  controller: TextEditingController(
+                      text: controller.selectedValue.value),
+                  suffixIcon: const Icon(Icons.arrow_drop_down),
+                );
+              }),
+
               //Constructions status
               const CustomTextIcon(
                 text: "Construction Status",
               ),
               Obx(() {
-                return TextField(
+                return ReusableTextField(
+                  hintText: 'ready',
                   readOnly: true,
-                  decoration: const InputDecoration(
-                    hintText: 'Ready',
-                    border: OutlineInputBorder(),
-                    suffixIcon: Icon(Icons.arrow_drop_down),
-                  ),
-                  onTap: () {},
                   controller: TextEditingController(
                       text: controller.selectedValue.value),
+                  suffixIcon: const Icon(Icons.arrow_drop_down),
                 );
               }),
               const CustomTextIcon(
                 text: "Location",
               ),
-              Obx(() {
-                return TextField(
-                  readOnly: true,
-                  decoration: const InputDecoration(
-                    hintText: 'Select Location',
-                    border: OutlineInputBorder(),
-                    suffixIcon: Icon(Icons.arrow_drop_down),
-                  ),
-                  onTap: () {},
-                  controller: TextEditingController(
-                      text: controller.selectedValue.value),
-                );
-              }),
-
+              ReusableTextField(
+                hintText: 'Select a location',
+                readOnly: true,
+                formkey: locationformkey,
+                suffixIcon: const Icon(Icons.arrow_drop_down),
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please Select a locaiton';
+                  }
+                  return null;
+                },
+              ),
               const SizedBox(
                 height: 25.0,
               ),
               CustomButton(
                 text: "Search Now",
                 ontap: () {
-                  if (locationController.selectedLocation.value.isEmpty) {
-                    Get.snackbar('Error', 'Please select a location');
-                  } else {
-                    Get.to(() => ResultsPage(
-                        location: locationController.selectedLocation.value));
+                  if (locationcontroller.text.isNotEmpty ||
+                      locationformkey.currentState!.validate()) {
+                    Fluttertoast.showToast(
+                      msg: "Send a Code",
+                    );
+                    locationcontroller.clear();
                   }
                 },
               )
