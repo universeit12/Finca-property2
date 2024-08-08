@@ -11,6 +11,29 @@ class AddPropertyScreen extends StatelessWidget {
   final OptionController controller = Get.put(OptionController());
   final PageController _pageController = PageController();
 
+  final TextEditingController pTypecontroller = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
+  final TextEditingController pNameController = TextEditingController();
+  final TextEditingController statusController = TextEditingController();
+  final TextEditingController sizeController = TextEditingController();
+  final TextEditingController utilityController = TextEditingController();
+  final TextEditingController totalpriceController = TextEditingController();
+  final TextEditingController bedroomController = TextEditingController();
+  final TextEditingController bathroomController = TextEditingController();
+  final TextEditingController belconisController = TextEditingController();
+  final TextEditingController garagesController = TextEditingController();
+  final pTypeKey = GlobalKey<FormState>();
+  final addressKey = GlobalKey<FormState>();
+  final pNameKey = GlobalKey<FormState>();
+  final statusKey = GlobalKey<FormState>();
+  final sizeKey = GlobalKey<FormState>();
+  final utilityKey = GlobalKey<FormState>();
+  final totalpriceKey = GlobalKey<FormState>();
+  final bedroomKey = GlobalKey<FormState>();
+  final bathroomKey = GlobalKey<FormState>();
+  final belconisKey = GlobalKey<FormState>();
+  final garagesKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,111 +77,177 @@ class AddPropertyScreen extends StatelessWidget {
               ],
             ),
             const CustomTextIcon(text: "Property type"),
-            Obx(() {
-              return ReusableTextField(
+            ReusableTextField(
                 hintText: 'Tap to select',
-                controller: TextEditingController(text: controller.selectedValue.value),
                 readOnly: true,
+                formkey: pTypeKey,
                 suffixIcon: const Icon(Icons.arrow_drop_down),
-              );
-            }),
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Complete the fields';
+                  }
+                  return null;
+                },
+                controller: pTypecontroller),
             const CustomTextIcon(text: "Address"),
-            Obx(() {
-              return ReusableTextField(
+            ReusableTextField(
                 hintText: 'Type Address',
-                controller: TextEditingController(text: controller.selectedValue.value),
                 maxLines: 2,
-              );
-            }),
+                formkey: addressKey,
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Complete the fields';
+                  }
+                  return null;
+                },
+                controller: addressController),
             const CustomTextIcon(text: "Enter Property name"),
-            Obx(() {
-              return ReusableTextField(
+            ReusableTextField(
                 hintText: 'Enter Property name',
-                controller: TextEditingController(text: controller.selectedValue.value),
                 maxLines: 2,
-              );
-            }),
+                formkey: pNameKey,
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Complete the fields';
+                  }
+                  return null;
+                },
+                controller: pNameController),
             const CustomTextIcon(text: "Construction Status"),
-            Obx(() {
-              return ReusableTextField(
+            ReusableTextField(
                 hintText: 'Ready',
                 readOnly: true,
-                controller: TextEditingController(text: controller.selectedValue.value),
+                formkey: statusKey,
                 suffixIcon: const Icon(Icons.arrow_drop_down),
-              );
-            }),
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Complete the fields';
+                  }
+                  return null;
+                },
+                controller: statusController),
             const SizedBox(height: 10),
             const CustomText(text: "Properties Size & Pricing"),
             const CustomTextIcon(text: "Property size in sft"),
-            Obx(() {
-              return ReusableTextField(
+            ReusableTextField(
                 hintText: 'Enter Property sft',
                 keyboardtype: TextInputType.phone,
-                controller: TextEditingController(text: controller.selectedValue.value),
-              );
-            }),
+                formkey: sizeKey,
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Complete the fields';
+                  }
+                  return null;
+                },
+                controller: sizeController),
             const CustomTextIcon(text: "Utility & Others cost"),
-            Obx(() {
-              return ReusableTextField(
+            ReusableTextField(
                 hintText: 'If any others cost',
                 keyboardtype: TextInputType.phone,
-                controller: TextEditingController(text: controller.selectedValue.value),
-              );
-            }),
+                formkey: utilityKey,
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Complete the fields';
+                  }
+                  return null;
+                },
+                controller: utilityController),
             const CustomTextIcon(text: "Price in total"),
-            Obx(() {
-              return ReusableTextField(
+            ReusableTextField(
                 hintText: 'total price',
                 keyboardtype: TextInputType.phone,
-                controller: TextEditingController(text: controller.selectedValue.value),
-              );
-            }),
+                formkey: totalpriceKey,
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Complete the fields';
+                  }
+                  return null;
+                },
+                controller: totalpriceController),
             const SizedBox(height: 10),
             const CustomText(text: "Property basic features"),
             const CustomTextIcon(text: "Bedroom"),
-            Obx(() {
-              return ReusableTextField(
+            ReusableTextField(
                 hintText: '1',
                 readOnly: true,
-                controller: TextEditingController(text: controller.selectedValue.value),
                 suffixIcon: const Icon(Icons.arrow_drop_down),
-              );
-            }),
+                formkey: bedroomKey,
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Complete the fields';
+                  }
+                  return null;
+                },
+                controller: bedroomController),
             const CustomTextIcon(text: "Bathroom"),
-            Obx(() {
-              return ReusableTextField(
+            ReusableTextField(
                 hintText: '1',
                 readOnly: true,
-                controller: TextEditingController(text: controller.selectedValue.value),
+                formkey: bathroomKey,
                 suffixIcon: const Icon(Icons.arrow_drop_down),
-              );
-            }),
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Complete the fields';
+                  }
+                  return null;
+                },
+                controller: bathroomController),
             const CustomTextIcon(text: "Belconis"),
-            Obx(() {
-              return ReusableTextField(
+            ReusableTextField(
                 hintText: '1',
                 readOnly: true,
-                controller: TextEditingController(text: controller.selectedValue.value),
+                formkey: belconisKey,
                 suffixIcon: const Icon(Icons.arrow_drop_down),
-              );
-            }),
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Complete the fields';
+                  }
+                  return null;
+                },
+                controller: belconisController),
             const CustomTextIcon(text: "Garages"),
-            Obx(() {
-              return ReusableTextField(
+            ReusableTextField(
                 hintText: '1',
                 readOnly: true,
-                controller: TextEditingController(text: controller.selectedValue.value),
+                formkey: garagesKey,
                 suffixIcon: const Icon(Icons.arrow_drop_down),
-              );
-            }),
+                validation: (value) {
+                  if (value == null || value.isEmpty) {
+                    return '';
+                  }
+                  return null;
+                },
+                controller: garagesController),
             const SizedBox(height: 20),
             CustomButton(
               text: "Next",
-
               ontap: () {
-                _pageController.nextPage(
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeInOut);
+                if (pTypecontroller.text.isNotEmpty ||
+                    pTypeKey.currentState!.validate() &&
+                        addressController.text.isNotEmpty ||
+                    addressKey.currentState!.validate() &&
+                        pNameController.text.isNotEmpty ||
+                    pNameKey.currentState!.validate() &&
+                        statusController.text.isNotEmpty ||
+                    statusKey.currentState!.validate() &&
+                        sizeController.text.isNotEmpty ||
+                    sizeKey.currentState!.validate() &&
+                        utilityController.text.isNotEmpty ||
+                    utilityKey.currentState!.validate() &&
+                        totalpriceController.text.isNotEmpty ||
+                    totalpriceKey.currentState!.validate() &&
+                        bedroomController.text.isNotEmpty ||
+                    bedroomKey.currentState!.validate() &&
+                        bathroomController.text.isNotEmpty ||
+                    bathroomKey.currentState!.validate() &&
+                        belconisController.text.isNotEmpty ||
+                    belconisKey.currentState!.validate() &&
+                        garagesController.text.isNotEmpty ||
+                    garagesKey.currentState!.validate()) {
+                  _pageController.nextPage(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut);
+                }
               },
             )
           ],
@@ -186,7 +275,8 @@ class AddPropertyScreen extends StatelessWidget {
             Obx(() {
               return ReusableTextField(
                 hintText: '1',
-                controller: TextEditingController(text: controller.selectedValue.value),
+                controller:
+                    TextEditingController(text: controller.selectedValue.value),
                 readOnly: true,
                 suffixIcon: const Icon(Icons.arrow_drop_down),
               );
@@ -194,8 +284,10 @@ class AddPropertyScreen extends StatelessWidget {
             const CustomTextIcon(text: "Title"),
             Obx(() {
               return ReusableTextField(
-                hintText: '212 sqft, 1 Bed Almost Ready Apartment/Flats for Sale at Karatia',
-                controller: TextEditingController(text: controller.selectedValue.value),
+                hintText:
+                    '212 sqft, 1 Bed Almost Ready Apartment/Flats for Sale at Karatia',
+                controller:
+                    TextEditingController(text: controller.selectedValue.value),
                 maxLines: 2,
               );
             }),
@@ -203,7 +295,8 @@ class AddPropertyScreen extends StatelessWidget {
             Obx(() {
               return ReusableTextField(
                 hintText: 'Enter Description',
-                controller: TextEditingController(text: controller.selectedValue.value),
+                controller:
+                    TextEditingController(text: controller.selectedValue.value),
                 maxLines: 4,
               );
             }),
@@ -212,7 +305,8 @@ class AddPropertyScreen extends StatelessWidget {
               return ReusableTextField(
                 hintText: '+8801*********',
                 keyboardtype: TextInputType.phone,
-                controller: TextEditingController(text: controller.selectedValue.value),
+                controller:
+                    TextEditingController(text: controller.selectedValue.value),
                 suffixIcon: Icon(Icons.arrow_drop_down),
               );
             }),

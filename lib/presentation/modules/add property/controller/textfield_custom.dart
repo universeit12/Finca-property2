@@ -12,7 +12,8 @@ class ReusableTextField extends StatelessWidget {
   final formkey;
   final validation;
 
-  ReusableTextField({
+  const ReusableTextField({
+    super.key,
     required this.hintText,
     this.controller,
     this.readOnly = false,
@@ -20,7 +21,8 @@ class ReusableTextField extends StatelessWidget {
     this.onTap,
     this.maxLines = 1,
     this.keyboardtype,
-    this.formkey, this.validation,
+    this.formkey,
+    this.validation,
   });
 
   @override
@@ -34,7 +36,6 @@ class ReusableTextField extends StatelessWidget {
         keyboardType: keyboardtype,
         decoration: InputDecoration(
           hintText: hintText,
-
           border: const OutlineInputBorder(),
           suffixIcon: suffixIcon,
         ),

@@ -23,7 +23,7 @@ class ForgetPass extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
           child: Column(
             children: [
-              CustomText(
+              const CustomText(
                 text:
                     "Please enter a valid email in field an press 'SEND' button. An automated email shall be genarated to be spacified email address with intructions of resetting password.",
                 fontsize: 18.0,
@@ -31,7 +31,7 @@ class ForgetPass extends StatelessWidget {
                 fontweight: FontWeight.w500,
                 color: Colors.black54,
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               CustomTextfield(
                 hintText: "email",
                 suffixIcon: const Icon(Icons.email_outlined),
@@ -52,7 +52,8 @@ class ForgetPass extends StatelessWidget {
                 text: "CREATE ACCOUNT",
                 ontap: () {
                   if (emailcontroller.text.isNotEmpty ||
-                      emailformkey.currentState!.validate()) {
+                      emailformkey.currentState!.validate()
+                  ) {
                     Fluttertoast.showToast(
                       msg: "Send a Code",
                     );
