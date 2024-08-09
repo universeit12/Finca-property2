@@ -5,7 +5,7 @@ import 'package:universe_it_project/presentation/modules/blogs/views/blog_card.d
 import 'package:universe_it_project/presentation/modules/client%20review/views/review_card.dart';
 import 'package:universe_it_project/presentation/modules/favourite/view/favourite_card.dart';
 import 'package:universe_it_project/presentation/modules/header/view/header_view.dart';
-import 'package:universe_it_project/presentation/modules/populer%20citys/views/populer_city.dart';
+import 'package:universe_it_project/presentation/modules/populer%20citys/views/populer_city_card.dart';
 import 'package:universe_it_project/widgets/custom_drawer.dart';
 
 class Home extends StatelessWidget {

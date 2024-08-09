@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:universe_it_project/presentation/modules/populer%20citys/views/populer_city_screen.dart';
 import 'package:universe_it_project/widgets/custom_card.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
 
@@ -8,11 +10,13 @@ class PopulerCity extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        onTap: () {},
+        onTap: () {
+          Get.to(()=>const PopulerCityScreen());
+        },
         child: CustomCard(
             width: double.infinity,
             padding:
-            const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+                const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -24,7 +28,6 @@ class PopulerCity extends StatelessWidget {
                       CustomText(
                         text: "Populer City",
                       ),
-
                     ],
                   ),
                 ),
@@ -48,14 +51,14 @@ class PopulerCity extends StatelessWidget {
                                   fit: BoxFit.cover)),
                           child: Container(
                             color: Colors.black26,
-                            padding: const EdgeInsets.only(left: 5.0, bottom: 5.0),
+                            padding:
+                                const EdgeInsets.only(left: 5.0, bottom: 5.0),
                             child: const Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 CustomText(
-                                  text:
-                                  "Dhaka",
+                                  text: "Dhaka",
                                   maxline: 2,
                                   color: Colors.white,
                                   fontsize: 14.0,

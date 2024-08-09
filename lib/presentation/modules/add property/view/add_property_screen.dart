@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,8 +10,14 @@ import '../../../../widgets/custom_dropdown.dart';
 import '../widgets/custom_text_icon.dart';
 import '../widgets/textfield_custom.dart';
 
-class AddPropertyScreen extends StatelessWidget {
+class AddPropertyScreen extends StatefulWidget {
   AddPropertyScreen({super.key});
+
+  @override
+  State<AddPropertyScreen> createState() => _AddPropertyScreenState();
+}
+
+class _AddPropertyScreenState extends State<AddPropertyScreen> {
   final _pageController = PageController();
   final controller = Get.put(AddPropertyController());
 
@@ -23,8 +31,21 @@ class AddPropertyScreen extends StatelessWidget {
   final bathroomController = SingleValueDropDownController();
   final belconisController = SingleValueDropDownController();
   final garagesController = SingleValueDropDownController();
-
   final formkey = GlobalKey<FormState>();
+
+  String selectedPropertyType = '';
+  String _sizeFieldLabel = 'Property size in sft';
+  void _updatePropertyType(String type) {
+    setState(() {
+      selectedPropertyType = type;
+      if (['Residential Plot', 'Commercial Plot', 'Agriculture/Firm']
+          .contains(type)) {
+        _sizeFieldLabel = 'Property Size in Katha';
+      } else {
+        _sizeFieldLabel = 'Property size in sft';
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +62,6 @@ class AddPropertyScreen extends StatelessWidget {
   }
 
   //PAGE NUMBER-2------------>>>
-
   Widget addPage1() {
     return SingleChildScrollView(
       child: Padding(
@@ -75,8 +95,8 @@ class AddPropertyScreen extends StatelessWidget {
                 ],
               ),
               const CustomTextIcon(text: "Property type"),
-              const DropdownWidget(
-                dropDownList: [
+              DropdownWidget(
+                dropDownList: const [
                   DropDownValueModel(
                       name: 'Apartment/Flats', value: "Apartment/Flats"),
                   DropDownValueModel(
@@ -97,8 +117,10 @@ class AddPropertyScreen extends StatelessWidget {
                 ],
                 hintText: "Select an item",
                 enablesearch: false,
+                onchanged: (value) {
+                  _updatePropertyType(value.value);
+                },
               ),
-
               //STATUS
               const CustomTextIcon(text: "Construction Status"),
               const DropdownWidget(
@@ -137,9 +159,9 @@ class AddPropertyScreen extends StatelessWidget {
               const CustomText(text: "Properties Size & Pricing"),
 
               //SIZE
-              const CustomTextIcon(text: "Property size in sft"),
-              const ReusableTextField(
-                hintText: 'Enter Property sft',
+              CustomTextIcon(text: _sizeFieldLabel),
+              ReusableTextField(
+                hintText: _sizeFieldLabel,
                 keyboardtype: TextInputType.phone,
               ),
 
@@ -235,7 +257,6 @@ class AddPropertyScreen extends StatelessWidget {
   }
 
   //PAGE NUMBER-2------------>>>
-
   Widget addPage2() {
     return SingleChildScrollView(
       child: Padding(
@@ -252,28 +273,28 @@ class AddPropertyScreen extends StatelessWidget {
                 icon: const Icon(Icons.arrow_back_ios)),
             const CustomText(text: "Property additional information"),
             const CustomTextIcon(text: "Total number of floor"),
-        ReusableTextField(
-          hintText: '1',
-          readOnly: true,
-          suffixIcon: Icon(Icons.arrow_drop_down),
-        ),
+            const ReusableTextField(
+              hintText: '1',
+              readOnly: true,
+              suffixIcon: Icon(Icons.arrow_drop_down),
+            ),
             const CustomTextIcon(text: "Title"),
-            ReusableTextField(
+            const ReusableTextField(
               hintText:
-              '212 sqft, 1 Bed Almost Ready Apartment/Flats for Sale at Karatia',
+                  '212 sqft, 1 Bed Almost Ready Apartment/Flats for Sale at Karatia',
               maxLines: 2,
             ),
             const CustomTextIcon(text: "Description"),
-        ReusableTextField(
-          hintText: 'Enter Description',
-          maxLines: 4,
-        ),
+            const ReusableTextField(
+              hintText: 'Enter Description',
+              maxLines: 4,
+            ),
             const CustomTextIcon(text: "Phone Number"),
-        ReusableTextField(
-          hintText: '+8801*********',
-          keyboardtype: TextInputType.phone,
-          suffixIcon: Icon(Icons.arrow_drop_down),
-        ),
+            const ReusableTextField(
+              hintText: '+8801*********',
+              keyboardtype: TextInputType.phone,
+              suffixIcon: Icon(Icons.arrow_drop_down),
+            ),
             const SizedBox(height: 10.0),
             CustomButton(
               text: "Post",
