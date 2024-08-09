@@ -110,12 +110,6 @@ class SearchPage extends StatelessWidget {
                     _controller.locationSelectedValue.value = location.value;
                   },
                   controller: locationController,
-                  validation: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter an email address';
-                    }
-                    return null;
-                  },
                 ),
               ),
               const SizedBox(

@@ -11,7 +11,7 @@ class DropdownWidget extends StatelessWidget {
   final enablesearch;
   final onchanged;
   final formkey;
-  final validation;
+
   const DropdownWidget({
     super.key,
     required this.dropDownList,
@@ -20,7 +20,7 @@ class DropdownWidget extends StatelessWidget {
     this.enablesearch,
     this.onchanged,
     this.searchcontroller,
-    this.formkey, this.validation,
+    this.formkey,
   });
 
   @override
@@ -34,7 +34,6 @@ class DropdownWidget extends StatelessWidget {
         dropDownList: dropDownList,
         controller: controller,
         onChanged: onchanged,
-        validator: validation,
         enableSearch: enablesearch ?? true,
         dropDownItemCount: dropDownList.length,
         searchTextStyle: const TextStyle(color: Colors.red),
@@ -43,7 +42,12 @@ class DropdownWidget extends StatelessWidget {
         ),
         textFieldDecoration: const InputDecoration(
             hintText: "Tap to select", border: InputBorder.none),
-
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please enter an email address';
+          }
+          return null;
+        },
       ),
     );
   }
