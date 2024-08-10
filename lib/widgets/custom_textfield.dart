@@ -8,7 +8,6 @@ class CustomTextfield extends StatelessWidget {
     this.controller,
     this.hintText,
     this.suffixIcon,
-    this.formKey,
     this.validation,
     this.readonly,
     this.ontap,
@@ -19,27 +18,23 @@ class CustomTextfield extends StatelessWidget {
   final TextEditingController? controller;
   final String? hintText;
   final Widget? suffixIcon;
-  final GlobalKey<FormState>? formKey;
   final String? Function(String?)? validation;
   final readonly;
   final ontap;
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: TextFormField(
-        onTap: ontap,
-        validator: validation,
-        onChanged: onChanged,
-        obscureText: obscureText ?? false,
-        controller: controller,
-        readOnly: readonly ?? false,
-        maxLines: 1,
-        decoration: InputDecoration(
-          hintText: hintText ?? "Email",
-          suffixIcon: suffixIcon ?? const Icon(Icons.email_outlined),
-        ),
+    return TextFormField(
+      onTap: ontap,
+      validator: validation,
+      onChanged: onChanged,
+      obscureText: obscureText ?? false,
+      controller: controller,
+      readOnly: readonly ?? false,
+      maxLines: 1,
+      decoration: InputDecoration(
+        hintText: hintText ?? "Email",
+        suffixIcon: suffixIcon ?? const Icon(Icons.email_outlined),
       ),
     );
   }

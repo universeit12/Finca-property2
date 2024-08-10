@@ -11,10 +11,8 @@ class SignupScreen extends StatelessWidget {
   final TextEditingController emailcontroller = TextEditingController();
   final TextEditingController namecontroller = TextEditingController();
   final TextEditingController passcontroller = TextEditingController();
-  final emailformkey = GlobalKey<FormState>();
-  final passwordkey = GlobalKey<FormState>();
-  final namewordkey = GlobalKey<FormState>();
-  final mobilewordkey = GlobalKey<FormState>();
+
+  final formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +23,8 @@ class SignupScreen extends StatelessWidget {
         titleSpacing: 0.0,
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(),
+        child: Form(
+          key: formkey,
           child: Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
@@ -36,7 +34,6 @@ class SignupScreen extends StatelessWidget {
                 CustomTextfield(
                   hintText: "Name",
                   suffixIcon: const Icon(Icons.person_outline_rounded),
-                  formKey: namewordkey,
                   validation: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your name';
@@ -49,7 +46,6 @@ class SignupScreen extends StatelessWidget {
                 CustomTextfield(
                   hintText: "Email",
                   suffixIcon: const Icon(Icons.email_outlined),
-                  formKey: emailformkey,
                   validation: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter an email address';
@@ -66,7 +62,6 @@ class SignupScreen extends StatelessWidget {
                 CustomTextfield(
                   hintText: "Password",
                   suffixIcon: const Icon(Icons.remove_red_eye_outlined),
-                  formKey: passwordkey,
                   validation: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter a password';
@@ -88,7 +83,6 @@ class SignupScreen extends StatelessWidget {
                 CustomTextfield(
                   hintText: "Mobile Number",
                   suffixIcon: const Icon(Icons.phone),
-                  formKey: mobilewordkey,
                   validation: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter an email address';
@@ -125,14 +119,8 @@ class SignupScreen extends StatelessWidget {
                 CustomButton(
                   text: "CREATE ACCOUNT",
                   ontap: () {
-                    if (namecontroller.text.isNotEmpty ||
-                        emailcontroller.text.isNotEmpty ||
-                        passcontroller.text.isNotEmpty ||
-                        mobilegecontroller.text.isNotEmpty ||
-                        namewordkey.currentState!.validate() ||
-                        emailformkey.currentState!.validate() ||
-                        passwordkey.currentState!.validate() ||
-                        mobilewordkey.currentState!.validate()) {
+                    if (
+                        formkey.currentState!.validate()) {
                       Fluttertoast.showToast(
                         msg: "Sign up Done",
                       );

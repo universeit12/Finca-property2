@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:universe_it_project/presentation/modules/add%20property/view/details_screen.dart';
-import 'package:universe_it_project/presentation/modules/settings/views/thame_page.dart';
 
 final List<Map<String, dynamic>> blogUtils = [
   {

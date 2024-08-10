@@ -1,9 +1,10 @@
-import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:universe_it_project/widgets/custom_button.dart';
-import 'package:universe_it_project/widgets/custom_text.dart';
-import 'package:universe_it_project/widgets/custom_dropdown.dart';
+import 'package:dropdown_textfield/dropdown_textfield.dart';
+import '../../../../widgets/custom_button.dart';
+import '../../../../widgets/custom_dropdown.dart';
+import '../../../../widgets/custom_text.dart';
+import '../controller/add_property_controller.dart';
 import '../controller/addpage1_controller.dart';
 import '../widgets/custom_text_icon.dart';
 import '../widgets/textfield_custom.dart';
@@ -13,7 +14,9 @@ class AddPage1 extends StatelessWidget {
   AddPage1({super.key, required this.pageController});
 
   final controller = Get.put(Addpage1Controller());
+  final addcontroller = Get.put(AddPropertyController());
   final formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Obx(() {
@@ -74,14 +77,18 @@ class AddPage1 extends StatelessWidget {
                   enablesearch: false,
                   controller: controller.typeController,
                   onchanged: (value) {
-                    controller.updatePropertyType(value.value);
+                    addcontroller.selectedValue.value = value.value;
+                    controller.updatePropertyType(
+                        value.value); // Update property value
+                    addcontroller.selectedValue.value =
+                        value.value; // Also update selected value
                   },
                 ),
 
                 //STATUS
                 const CustomTextIcon(text: "Construction Status"),
                 DropdownWidget(
-                  dropDownList: [
+                  dropDownList: const [
                     DropDownValueModel(name: 'Any', value: "Any"),
                     DropDownValueModel(name: 'Ready', value: "Ready"),
                     DropDownValueModel(
@@ -118,7 +125,6 @@ class AddPage1 extends StatelessWidget {
                 const CustomText(text: "Properties Size & Pricing"),
 
                 //SIZE
-
                 const CustomTextIcon(text: "Property size & sft"),
                 ReusableTextField(
                   hintText: "Property size & sft",
@@ -143,12 +149,9 @@ class AddPage1 extends StatelessWidget {
                   controller: controller.priceController,
                 ),
 
-                //BASIC FEATURES
-                if (controller.showAdditionalFields.value)
-                  const CustomText(text: "Property basic features"),
-
                 //BEDROOM
-                if (controller.showAdditionalFields.value) ...[
+                if (controller.propertyvalue.value) ...[
+                  const CustomText(text: "Property basic features"),
                   const CustomTextIcon(text: "Bedroom"),
                   DropdownWidget(
                     dropDownList: const [
@@ -165,8 +168,7 @@ class AddPage1 extends StatelessWidget {
                 ],
 
                 //BATHROOM
-
-                if (controller.showAdditionalFields.value) ...[
+                if (controller.propertyvalue.value) ...[
                   const CustomTextIcon(text: "Bathroom"),
                   DropdownWidget(
                     dropDownList: const [
@@ -182,8 +184,7 @@ class AddPage1 extends StatelessWidget {
                 ],
 
                 //BELCONIS
-
-                if (controller.showAdditionalFields.value) ...[
+                if (controller.propertyvalue.value) ...[
                   const CustomTextIcon(text: "Belconis"),
                   DropdownWidget(
                     dropDownList: const [
@@ -224,6 +225,7 @@ class AddPage1 extends StatelessWidget {
                         curve: Curves.easeInOut,
                       );
                     }
+                    print(addcontroller.selectedValue);
                   },
                 )
               ],

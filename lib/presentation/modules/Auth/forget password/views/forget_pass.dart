@@ -7,7 +7,7 @@ import 'package:universe_it_project/widgets/custom_textfield.dart';
 class ForgetPass extends StatelessWidget {
   ForgetPass({super.key});
   final TextEditingController emailcontroller = TextEditingController();
-  final emailformkey = GlobalKey<FormState>();
+  final formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +17,8 @@ class ForgetPass extends StatelessWidget {
         title: const Text("PASSWORD RECOVERY"),
         titleSpacing: 0.0,
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(),
+      body: Form(
+        key: formkey,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
           child: Column(
@@ -35,7 +35,6 @@ class ForgetPass extends StatelessWidget {
               CustomTextfield(
                 hintText: "email",
                 suffixIcon: const Icon(Icons.email_outlined),
-                formKey: emailformkey,
                 validation: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter an email address';
@@ -52,8 +51,7 @@ class ForgetPass extends StatelessWidget {
                 text: "CREATE ACCOUNT",
                 ontap: () {
                   if (emailcontroller.text.isNotEmpty ||
-                      emailformkey.currentState!.validate()
-                  ) {
+                      formkey.currentState!.validate()) {
                     Fluttertoast.showToast(
                       msg: "Send a Code",
                     );

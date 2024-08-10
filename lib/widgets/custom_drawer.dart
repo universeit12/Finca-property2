@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:universe_it_project/utils/app_color.dart';
 import 'package:universe_it_project/utils/app_string.dart';
 import 'package:universe_it_project/utils/nav_item.dart';
-import 'drawer_tile.dart';
+
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});

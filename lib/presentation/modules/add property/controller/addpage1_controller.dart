@@ -20,11 +20,11 @@ class Addpage1Controller extends GetxController {
       SingleValueDropDownController();
   final SingleValueDropDownController garagesController =
       SingleValueDropDownController();
-  final RxBool showAdditionalFields = false.obs;
-  final RxBool showAdditionalFields2 = false.obs;
+  final RxBool propertyvalue = false.obs;
+
 
   void updatePropertyType(String type) {
-    showAdditionalFields.value = [
+    propertyvalue.value = [
       'Apartment/Flats',
       'Independent House',
       'Duplex/Home',
