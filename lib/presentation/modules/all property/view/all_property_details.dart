@@ -2,250 +2,237 @@ import 'package:flutter/material.dart';
 import 'package:universe_it_project/utils/app_color.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class AllPropertyDetails extends StatelessWidget {
-  const AllPropertyDetails({super.key});
-  Future<void> _launchDialer(String phoneNumber) async {
-    final Uri launchUri = Uri(
-      scheme: 'tel',
-      path: phoneNumber,
-    );
-    if (await canLaunchUrl(launchUri)) {
-      await launchUrl(launchUri);
-    } else {
-      throw 'Could not launch $launchUri';
-    }
-  }
+  final data;
+  const AllPropertyDetails({super.key, this.data});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("All Property Details"),
+        title: const Text("Apartment/Flat Sell"),
         backgroundColor: AppColor.baseColor,
+        titleSpacing: 0,
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const CustomText(
-                text: "16000 sqrt let at Gulsan 01",
-                fontsize: 22.0,
-              ),
-              const SizedBox(height: 15.0),
-              Image.asset(
-                "assets/images/flat.jpg",
-                height: 160,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
-              const SizedBox(height: 30.0),
-              const CustomText(
-                text: "Call for sell",
-                fontsize: 18.0,
-                color: AppColor.baseColor,
-              ),
-              const CustomText(
-                text: "Apartment/Flat for sell",
-                fontsize: 18.0,
-                color: AppColor.black_,
-              ),
-              const Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.asset(
+              data["img"],
+              height: 160,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.location_on_outlined),
                   CustomText(
-                    text: "Aftabnagar, badda, dhaka",
+                    text: data["title"],
+                    fontsize: 22.0,
+                    maxline: 3,
+                  ),
+                  CustomText(
+                    text: data["location"],
                     fontsize: 14.0,
                     color: AppColor.black_2,
                   ),
-                ],
-              ),
-              const SizedBox(height: 15.0),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
+                  const SizedBox(height: 15.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(Icons.bedroom_child_outlined),
-                      CustomText(
-                        text: "03 Beds",
-                        fontsize: 14.0,
-                        color: AppColor.black_2,
+                      Column(
+                        children: [
+                          Icon(Icons.bedroom_child_outlined),
+                          CustomText(
+                            text: data["bedroom"],
+                            fontsize: 14.0,
+                            color: AppColor.black_2,
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Icon(Icons.bathroom_outlined),
+                          CustomText(
+                            text: data["bathroom"],
+                            fontsize: 14.0,
+                            color: AppColor.black_2,
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          const Icon(Icons.fit_screen),
+                          CustomText(
+                            text: data["size"],
+                            fontsize: 14.0,
+                            color: AppColor.black_2,
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                  Column(
+                  const SizedBox(height: 15.0),
+                  const Divider(
+                    color: Colors.black12,
+                  ),
+                  const SizedBox(height: 15.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(Icons.bathroom_outlined),
-                      CustomText(
-                        text: "02 bathroom",
-                        fontsize: 14.0,
-                        color: AppColor.black_2,
+                      Flexible(
+                        child: CustomButton(
+                          text: "Call Owner",
+                          ontap: () async {},
+                        ),
                       ),
+                      const Icon(
+                        Icons.favorite_border,
+                        size: 35.0,
+                        color: Colors.teal,
+                      )
                     ],
                   ),
-                  Column(
-                    children: [
-                      Icon(Icons.fit_screen),
-                      CustomText(
-                        text: "1650 sqrt",
-                        fontsize: 14.0,
-                        color: AppColor.black_2,
-                      ),
-                    ],
+                  const SizedBox(height: 15.0),
+                  const Divider(
+                    color: Colors.black12,
                   ),
-                ],
-              ),
-              const SizedBox(height: 15.0),
-              const Divider(
-                color: Colors.black12,
-              ),
-              const SizedBox(height: 15.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    child: CustomButton(
-                      text: "Call Owner",
-                      ontap: () async {
-                        _launchDialer('01763551316');
-                      },
-                    ),
+                  const SizedBox(height: 15.0),
+                  const CustomText(
+                    text: "PROPERTY SUMMARY",
                   ),
-                  Icon(
-                    Icons.favorite_border,
-                    size: 40.0,
+                  Container(
+                    height: 5,
+                    width: 50,
                     color: Colors.teal,
-                  )
-                ],
-              ),
-              const SizedBox(height: 15.0),
-              const Divider(
-                color: Colors.black12,
-              ),
-              const SizedBox(height: 15.0),
-              const CustomText(
-                text: "PROPERTY SUMMARY",
-              ),
-              Container(
-                height: 5,
-                width: 50,
-                color: Colors.teal,
-              ),
-              const SizedBox(height: 10.0),
-              const Row(
-                children: [
-                  Icon(Icons.play_arrow_outlined),
-                  CustomText(
-                    text: "Property Name: ",
                   ),
-                  CustomText(
-                    text: "Modhu City",
-                    fontsize: 13.0,
-                  )
-                ],
-              ),
-              const Row(
-                children: [
-                  Icon(Icons.play_arrow_outlined),
-                  CustomText(
-                    text: "Property Type: ",
+                  const SizedBox(height: 10.0),
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      const Icon(Icons.play_arrow_outlined),
+                      const CustomText(
+                        text: "Property Name: ",
+                      ),
+                      CustomText(
+                        text: data["property_name"],
+                        fontsize: 13.0,
+                      )
+                    ],
                   ),
-                  CustomText(
-                    text: "Resitential",
-                    fontsize: 13.0,
-                  )
-                ],
-              ),
-              const Row(
-                children: [
-                  Icon(Icons.play_arrow_outlined),
-                  CustomText(
-                    text: "Property for: ",
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      const Icon(Icons.play_arrow_outlined),
+                      const CustomText(
+                        text: "Property Type: ",
+                      ),
+                      CustomText(
+                        text: data["type"],
+                        fontsize: 13.0,
+                      )
+                    ],
                   ),
-                  CustomText(
-                    text: "Sell",
-                    fontsize: 13.0,
-                  )
-                ],
-              ),
-              const Row(
-                children: [
-                  Icon(Icons.play_arrow_outlined),
-                  CustomText(
-                    text: "Location: ",
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      const Icon(Icons.play_arrow_outlined),
+                      const CustomText(
+                        text: "Property for: ",
+                      ),
+                      CustomText(
+                        text: data["for"],
+                        fontsize: 13.0,
+                      )
+                    ],
                   ),
-                  CustomText(
-                    text: "Modhu City",
-                    fontsize: 13.0,
-                  )
-                ],
-              ),
-              const Row(
-                children: [
-                  Icon(Icons.play_arrow_outlined),
-                  CustomText(
-                    text: "Constructions state: ",
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      const Icon(Icons.play_arrow_outlined),
+                      const CustomText(
+                        text: "Location: ",
+                      ),
+                      CustomText(
+                        text: data["location"],
+                        fontsize: 13.0,
+                      )
+                    ],
                   ),
-                  CustomText(
-                    text: "Ready",
-                    fontsize: 13.0,
-                  )
-                ],
-              ),
-              const Row(
-                children: [
-                  Icon(Icons.play_arrow_outlined),
-                  CustomText(
-                    text: "Floor available now: ",
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      const Icon(Icons.play_arrow_outlined),
+                      const CustomText(
+                        text: "Constructions state: ",
+                      ),
+                      CustomText(
+                        text: data["status"],
+                        fontsize: 13.0,
+                      )
+                    ],
                   ),
-                  CustomText(
-                    text: "Modhu City",
-                    fontsize: 13.0,
-                  )
-                ],
-              ),
-              const Row(
-                children: [
-                  Icon(Icons.play_arrow_outlined),
-                  CustomText(
-                    text: "Floor available now: ",
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      const Icon(Icons.play_arrow_outlined),
+                      const CustomText(
+                        text: "Floor available now: ",
+                      ),
+                      CustomText(
+                        text: data["floor_available_now"],
+                        fontsize: 13.0,
+                      )
+                    ],
                   ),
-                  CustomText(
-                    text: "Modhu City",
-                    fontsize: 13.0,
-                  )
-                ],
-              ),
-              const Row(
-                children: [
-                  Icon(Icons.play_arrow_outlined),
-                  CustomText(
-                    text: "Transaction Now: ",
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      const Icon(Icons.play_arrow_outlined),
+                      const CustomText(
+                        text: "Transaction Now: ",
+                      ),
+                      CustomText(
+                        text: data["transaction_now"],
+                        fontsize: 13.0,
+                      )
+                    ],
                   ),
-                  CustomText(
-                    text: "New",
-                    fontsize: 13.0,
-                  )
-                ],
-              ),
-              const Row(
-                children: [
-                  Icon(Icons.play_arrow_outlined),
-                  CustomText(
-                    text: "Garages: ",
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      const Icon(Icons.play_arrow_outlined),
+                      const CustomText(
+                        text: "Garages: ",
+                      ),
+                      CustomText(
+                        text: data["transaction_now"],
+                        fontsize: 13.0,
+                      )
+                    ],
                   ),
-                  CustomText(
-                    text: "No parking",
-                    fontsize: 13.0,
+                  const SizedBox(height: 20.0),
+                  const CustomText(
+                    text: "DESCRIPTION",
+                  ),
+                  Container(
+                    height: 5,
+                    width: 50,
+                    color: Colors.teal,
+                  ),
+                  const SizedBox(height: 5.0),
+                  Text(
+                    data["dis"],
                   )
                 ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

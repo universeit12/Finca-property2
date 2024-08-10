@@ -43,10 +43,7 @@ class FavouriteCard extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    for (int i = 0; i < 2; i++)
-                      const HomePropertyCard(
-                        icon: Icons.favorite,
-                      ),
+
                     Padding(
                       padding: const EdgeInsets.only(right: 15.0),
                       child: CircleAvatar(
