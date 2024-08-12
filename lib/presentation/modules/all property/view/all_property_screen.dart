@@ -22,6 +22,7 @@ class AllPropertyScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                //Search Location
                 Row(
                   children: [
                     IconButton(
@@ -39,6 +40,8 @@ class AllPropertyScreen extends StatelessWidget {
                 const SizedBox(
                   height: 15.0,
                 ),
+
+                //all properties
                 Obx(
                   () => ListView.builder(
                     shrinkWrap: true,
@@ -48,6 +51,8 @@ class AllPropertyScreen extends StatelessWidget {
                       // ignore: unused_local_variable
                       final isFavorite = favoriteController.favoriteItems
                           .any((fav) => fav['Id'] == item['Id']);
+
+                      //Navigate the Details screen
                       return InkWell(
                         onTap: () {
                           Get.to(() => AllPropertyDetails(
@@ -73,12 +78,15 @@ class AllPropertyScreen extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
+                              //Property image
                               Image.asset(
                                 controller.foundItem[index]["img"],
                                 width: w / 3.5,
                                 fit: BoxFit.cover,
                                 height: 140,
                               ),
+
+                              //Property Info
                               Expanded(
                                 child: Padding(
                                   padding: const EdgeInsets.all(8),
@@ -88,6 +96,7 @@ class AllPropertyScreen extends StatelessWidget {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
+                                      //Property Title
                                       CustomText(
                                         text: controller.foundItem[index]
                                             ["title"],
@@ -95,18 +104,24 @@ class AllPropertyScreen extends StatelessWidget {
                                         maxline: 2,
                                         fontsize: 14.0,
                                       ),
+
+                                      //Property name
                                       CustomText(
                                         text: controller.foundItem[index]
                                             ["property_name"],
                                         color: Colors.black38,
                                         fontsize: 12.0,
                                       ),
+
+                                      //Property Location
                                       CustomText(
                                         text: controller.foundItem[index]
                                             ["location"],
                                         color: Colors.black38,
                                         fontsize: 12.0,
                                       ),
+
+                                      //add favorite
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,

@@ -39,16 +39,16 @@ class Home extends StatelessWidget {
                       borderRadius:
                           BorderRadius.only(topRight: Radius.circular(40.0)),
                     ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 20),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
                       child: Column(
                         children: [
-                          AddHomeCard(),
+                          const AddHomeCard(),
                           AllPropertyHomepageCard(),
-                          FavouriteCard(),
-                          BlogCard(),
-                          PopulerCity(),
-                          ReviewCard(),
+                          const FavouriteCard(),
+                          const BlogCard(),
+                          const PopulerCity(),
+                          const ReviewCard(),
                         ],
                       ),
                     )),

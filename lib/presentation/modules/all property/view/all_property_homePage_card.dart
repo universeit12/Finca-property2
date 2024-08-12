@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:universe_it_project/presentation/modules/all%20property/contoller/favorte_controller.dart';
 import 'package:universe_it_project/presentation/modules/all%20property/utils/property_data.dart';
 import 'package:universe_it_project/presentation/modules/all%20property/view/all_property_details.dart';
 import 'package:universe_it_project/presentation/modules/all%20property/view/all_property_screen.dart';
@@ -7,7 +8,8 @@ import 'package:universe_it_project/widgets/custom_card.dart';
 import '../../../../widgets/custom_text.dart';
 
 class AllPropertyHomepageCard extends StatelessWidget {
-  const AllPropertyHomepageCard({super.key});
+  AllPropertyHomepageCard({super.key});
+  final favoriteController = Get.put(FavoriteController());
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +43,10 @@ class AllPropertyHomepageCard extends StatelessWidget {
               itemCount: propertyData.length > 2 ? 2 : propertyData.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (_, index) {
+                final item = propertyData[index];
+                // ignore: unused_local_variable
+                final isFavorite = favoriteController.favoriteItems
+                    .any((fav) => fav['Id'] == item['Id']);
                 return InkWell(
                   onTap: () {
                     Get.to(() => AllPropertyDetails(
@@ -58,17 +64,37 @@ class AllPropertyHomepageCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Container(
-                          height: 100.0,
-                          width: 220.0,
-                          decoration: BoxDecoration(
-                            color: Colors.black12,
-                            borderRadius: BorderRadius.circular(8.0),
-                            image: DecorationImage(
-                              image: AssetImage(propertyData[index]["img"]),
-                              fit: BoxFit.cover,
+                        Stack(
+                          children: [
+                            Container(
+                              height: 100.0,
+                              width: 220.0,
+                              decoration: BoxDecoration(
+                                color: Colors.black12,
+                                borderRadius: BorderRadius.circular(8.0),
+                                image: DecorationImage(
+                                  image: AssetImage(propertyData[index]["img"]),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             ),
-                          ),
+                            Obx(() {
+                              bool isFavorite =
+                                  favoriteController.isFavorite(item['id']);
+                              return IconButton(
+                                onPressed: () {
+                                  favoriteController.toggleFavorite(item);
+                                },
+                                icon: Icon(
+                                  isFavorite
+                                      ? Icons.favorite
+                                      : Icons.favorite_border,
+                                  color: Colors.red,
+                                  size: 30.0,
+                                ),
+                              );
+                            }),
+                          ],
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 5.0),
