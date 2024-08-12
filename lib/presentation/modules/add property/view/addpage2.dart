@@ -2,6 +2,7 @@ import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:universe_it_project/presentation/modules/add%20property/controller/add_controller.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
 import '../../../../widgets/custom_dropdown.dart';
@@ -14,6 +15,7 @@ class AddPage2 extends StatelessWidget {
 
   AddPage2({super.key, required this.pageController});
   final controller = Get.put(Addpage2Controller());
+  final addcontroller = Get.put(AddPropertyController());
   final formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,8 @@ class AddPage2 extends StatelessWidget {
                   icon: const Icon(Icons.arrow_back_ios)),
               const CustomText(text: "Property additional information"),
               const CustomTextIcon(text: "Total number of floor"),
+
+              //Number of floor
               DropdownWidget(
                 dropDownList: [
                   DropDownValueModel(name: '1', value: "1"),
@@ -48,33 +52,52 @@ class AddPage2 extends StatelessWidget {
                 hintText: "Select an item",
                 enablesearch: false,
                 controller: controller.florController,
+                onchanged: (value) {
+                  addcontroller.floorNumber.value = value.value;
+                },
               ),
+
+              //Title
               const CustomTextIcon(text: "Title"),
               ReusableTextField(
                 hintText:
                     '212 sqft, 1 Bed Almost Ready Apartment/Flats for Sale at Karatia',
                 maxLines: 2,
                 controller: controller.titlecontroller,
+                onchanged: (value) {
+                  addcontroller.title.value = value;
+                },
               ),
+
+              //Description
               const CustomTextIcon(text: "Description"),
               ReusableTextField(
                 hintText: 'Enter Description',
                 maxLines: 4,
                 controller: controller.descriptioncontroller,
+                onchanged: (value) {
+                  addcontroller.Description.value = value;
+                },
               ),
+
+              //Mobile
               const CustomTextIcon(text: "Phone Number"),
               ReusableTextField(
                 hintText: '+8801*********',
                 keyboardtype: TextInputType.phone,
                 suffixIcon: Icon(Icons.arrow_drop_down),
                 controller: controller.mobilecontroller,
+                onchanged: (value) {
+                  addcontroller.mobile.value = value;
+                },
               ),
               const SizedBox(height: 10.0),
               CustomButton(
                 text: "Post",
                 ontap: () {
                   if (formkey.currentState!.validate()) {
-                    Fluttertoast.showToast(msg: "Post Done");
+                    Fluttertoast.showToast(msg: addcontroller.title.toString());
+                    addcontroller.printAllData();
                   }
                 },
               ),

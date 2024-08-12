@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:universe_it_project/presentation/modules/home/home.dart';
-import 'package:universe_it_project/presentation/modules/my_properties/views/my_properties_screen.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
 import 'package:universe_it_project/widgets/custom_textfield.dart';

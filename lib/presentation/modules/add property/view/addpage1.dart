@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
 import 'package:get/get.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import '../../../../widgets/custom_button.dart';
 import '../../../../widgets/custom_dropdown.dart';
 import '../../../../widgets/custom_text.dart';
-import '../controller/add_property_controller.dart';
+import '../controller/add_controller.dart';
 import '../controller/addpage1_controller.dart';
 import '../widgets/custom_text_icon.dart';
 import '../widgets/textfield_custom.dart';
@@ -77,11 +79,8 @@ class AddPage1 extends StatelessWidget {
                   enablesearch: false,
                   controller: controller.typeController,
                   onchanged: (value) {
-                    addcontroller.selectedValue.value = value.value;
-                    controller.updatePropertyType(
-                        value.value); // Update property value
-                    addcontroller.selectedValue.value =
-                        value.value; // Also update selected value
+                    addcontroller.type.value = value.value;
+                    controller.updatePropertyType(value.value);
                   },
                 ),
 
@@ -102,6 +101,9 @@ class AddPage1 extends StatelessWidget {
                   controller: controller.statusController,
                   hintText: "Select an item",
                   enablesearch: false,
+                  onchanged: (value) {
+                    addcontroller.status.value = value.value;
+                  },
                 ),
 
                 //ADDRESS
@@ -110,6 +112,9 @@ class AddPage1 extends StatelessWidget {
                   hintText: 'Type Address',
                   maxLines: 2,
                   controller: controller.addressController,
+                  onchanged: (value) {
+                    addcontroller.addressName.value = value;
+                  },
                 ),
 
                 //PROPERTY NAME
@@ -118,6 +123,9 @@ class AddPage1 extends StatelessWidget {
                   hintText: 'Enter Property name',
                   maxLines: 2,
                   controller: controller.propertyNameController,
+                  onchanged: (value) {
+                    addcontroller.propertyName.value = value;
+                  },
                 ),
                 const SizedBox(height: 10),
 
@@ -130,6 +138,9 @@ class AddPage1 extends StatelessWidget {
                   hintText: "Property size & sft",
                   keyboardtype: TextInputType.phone,
                   controller: controller.sizesftController,
+                  onchanged: (value) {
+                    addcontroller.size.value = value;
+                  },
                 ),
 
                 //UTILITY COST
@@ -138,15 +149,20 @@ class AddPage1 extends StatelessWidget {
                   hintText: 'If any others cost',
                   keyboardtype: TextInputType.phone,
                   controller: controller.utilitytController,
+                  onchanged: (value) {
+                    addcontroller.utilityCost.value = value;
+                  },
                 ),
 
                 //TOTAL PRICE
-
                 const CustomTextIcon(text: "Price in total"),
                 ReusableTextField(
                   hintText: 'total price',
                   keyboardtype: TextInputType.phone,
                   controller: controller.priceController,
+                  onchanged: (Value) {
+                    addcontroller.totalPrice.value = Value;
+                  },
                 ),
 
                 //BEDROOM
@@ -164,6 +180,9 @@ class AddPage1 extends StatelessWidget {
                     hintText: "Select an item",
                     enablesearch: false,
                     controller: controller.bedroomController,
+                    onchanged: (value) {
+                      addcontroller.Bedroom.value = value.value;
+                    },
                   )
                 ],
 
@@ -180,7 +199,9 @@ class AddPage1 extends StatelessWidget {
                     hintText: "Select an item",
                     enablesearch: false,
                     controller: controller.bathroomController,
-
+                    onchanged: (value) {
+                      addcontroller.Bathroom.value = value.value;
+                    },
                   ),
                 ],
 
@@ -197,6 +218,9 @@ class AddPage1 extends StatelessWidget {
                     hintText: "Select an item",
                     enablesearch: false,
                     controller: controller.belconisController,
+                    onchanged: (value) {
+                      addcontroller.Belconis.value = value.value;
+                    },
                   ),
                 ],
 
@@ -213,6 +237,9 @@ class AddPage1 extends StatelessWidget {
                   hintText: "Select an item",
                   enablesearch: false,
                   controller: controller.garagesController,
+                  onchanged: (value) {
+                    addcontroller.garages.value = value.value;
+                  },
                 ),
                 const SizedBox(height: 20),
 
@@ -226,7 +253,9 @@ class AddPage1 extends StatelessWidget {
                         curve: Curves.easeInOut,
                       );
                     }
-                    print(addcontroller.selectedValue);
+                    Fluttertoast.showToast(
+                        msg: addcontroller.addressName.toString() +
+                            addcontroller.propertyName.toString());
                   },
                 )
               ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:universe_it_project/presentation/modules/add%20property/controller/add_property_controller.dart';
+import 'package:universe_it_project/presentation/modules/add%20property/controller/add_controller.dart';
 import 'package:universe_it_project/presentation/modules/add%20property/view/addpage2.dart';
 import 'addpage1.dart';
 

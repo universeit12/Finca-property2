@@ -10,6 +10,7 @@ class ReusableTextField extends StatelessWidget {
   final keyboardtype;
   final formkey;
   final validation;
+  final onchanged;
 
   const ReusableTextField({
     super.key,
@@ -22,6 +23,7 @@ class ReusableTextField extends StatelessWidget {
     this.keyboardtype,
     this.formkey,
     this.validation,
+    this.onchanged,
   });
 
   @override
@@ -29,6 +31,7 @@ class ReusableTextField extends StatelessWidget {
     return TextFormField(
       readOnly: readOnly,
       maxLines: maxLines,
+      onChanged: onchanged,
       keyboardType: keyboardtype,
       decoration: InputDecoration(
         hintText: hintText,
