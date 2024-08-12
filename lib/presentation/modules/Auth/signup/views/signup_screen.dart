@@ -1,6 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
+import 'package:universe_it_project/presentation/modules/home/home.dart';
+import 'package:universe_it_project/presentation/modules/my_properties/views/my_properties_screen.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
 import 'package:universe_it_project/widgets/custom_textfield.dart';
@@ -83,13 +85,10 @@ class SignupScreen extends StatelessWidget {
                 CustomTextfield(
                   hintText: "Mobile Number",
                   suffixIcon: const Icon(Icons.phone),
+                  inputype: TextInputType.number,
                   validation: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter an email address';
-                    }
-                    final emailRegExp = RegExp(r'^[^@]+@[^@]+\.[^@]+$');
-                    if (!emailRegExp.hasMatch(value)) {
-                      return 'Please enter a valid email address';
+                      return 'Enter Phone Number';
                     }
                     return null;
                   },
@@ -119,11 +118,12 @@ class SignupScreen extends StatelessWidget {
                 CustomButton(
                   text: "CREATE ACCOUNT",
                   ontap: () {
-                    if (
-                        formkey.currentState!.validate()) {
+                    if (formkey.currentState!.validate()) {
+                      Get.to(() => Home());
                       Fluttertoast.showToast(
                         msg: "Sign up Done",
                       );
+
                       namecontroller.clear();
                       emailcontroller.clear();
                       passcontroller.clear();

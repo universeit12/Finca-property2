@@ -10,7 +10,8 @@ class CustomTextfield extends StatelessWidget {
     this.suffixIcon,
     this.validation,
     this.readonly,
-    this.ontap,
+    this.ontap, this.inputype,
+  
   });
 
   final ValueChanged<String>? onChanged;
@@ -21,6 +22,7 @@ class CustomTextfield extends StatelessWidget {
   final String? Function(String?)? validation;
   final readonly;
   final ontap;
+  final inputype;
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +32,14 @@ class CustomTextfield extends StatelessWidget {
       onChanged: onChanged,
       obscureText: obscureText ?? false,
       controller: controller,
+      keyboardType: inputype,
       readOnly: readonly ?? false,
       maxLines: 1,
       decoration: InputDecoration(
         hintText: hintText ?? "Email",
         suffixIcon: suffixIcon ?? const Icon(Icons.email_outlined),
       ),
+      
     );
   }
 }
