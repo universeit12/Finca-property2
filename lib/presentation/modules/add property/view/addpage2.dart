@@ -97,7 +97,10 @@ class AddPage2 extends StatelessWidget {
                 ontap: () {
                   if (formkey.currentState!.validate()) {
                     Fluttertoast.showToast(msg: addcontroller.title.toString());
-                    addcontroller.printAllData();
+
+                    Fluttertoast.showToast(
+                        msg: addcontroller.addressName.toString() +
+                            addcontroller.propertyName.toString());
                   }
                 },
               ),
