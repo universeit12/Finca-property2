@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:universe_it_project/presentation/modules/add%20property/widgets/custom_dialog.dart';
 import 'package:universe_it_project/utils/app_color.dart';
+import 'package:universe_it_project/widgets/custom_dialog.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
 
 class MyPropertiesScreen extends StatelessWidget {

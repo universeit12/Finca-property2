@@ -4,8 +4,8 @@ import 'package:universe_it_project/widgets/custom_button.dart';
 
 import '../../../../widgets/custom_text.dart';
 
-class AddPropertyCard extends StatelessWidget {
-  const AddPropertyCard({super.key});
+class AddHomeCard extends StatelessWidget {
+  const AddHomeCard({super.key});
 
   @override
   Widget build(BuildContext context) {

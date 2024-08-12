@@ -11,9 +11,9 @@ import '../controller/addpage1_controller.dart';
 import '../widgets/custom_text_icon.dart';
 import '../widgets/textfield_custom.dart';
 
-class AddPage1 extends StatelessWidget {
+class Addscreen1 extends StatelessWidget {
   final PageController pageController;
-  AddPage1({super.key, required this.pageController});
+  Addscreen1({super.key, required this.pageController});
 
   final controller = Get.put(Addpage1Controller());
   final addcontroller = Get.put(AddPropertyController());

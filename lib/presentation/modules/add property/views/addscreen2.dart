@@ -10,10 +10,10 @@ import '../controller/addpage2_controller.dart';
 import '../widgets/custom_text_icon.dart';
 import '../widgets/textfield_custom.dart';
 
-class AddPage2 extends StatelessWidget {
+class Addscreen2 extends StatelessWidget {
   final PageController pageController;
 
-  AddPage2({super.key, required this.pageController});
+  Addscreen2({super.key, required this.pageController});
   final controller = Get.put(Addpage2Controller());
   final addcontroller = Get.put(AddPropertyController());
   final formkey = GlobalKey<FormState>();

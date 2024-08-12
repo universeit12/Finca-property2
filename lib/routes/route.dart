@@ -2,7 +2,7 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import '../presentation/modules/Auth/forget password/views/forget_pass.dart';
 import '../presentation/modules/Auth/signin/view/signinpage.dart';
 import '../presentation/modules/Auth/signup/views/signup_screen.dart';
-import '../presentation/modules/add property/view/add_property_screen.dart';
+import '../presentation/modules/add property/views/add_property_screen.dart';
 import '../presentation/modules/home/home.dart';
 import '../presentation/modules/splash/splash.dart';
 import '../presentation/modules/splash/splash_bindings.dart';
