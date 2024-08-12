@@ -26,7 +26,11 @@ class FavoriteController extends GetxController {
       );
     }
     await saveFavorites();
-    update(); // Notify listeners
+    update();
+  }
+
+  bool isFavorite(String itemId) {
+    return favoriteItems.any((fav) => fav['id'] == itemId);
   }
 
   Future<void> saveFavorites() async {

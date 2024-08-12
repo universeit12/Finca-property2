@@ -4,8 +4,7 @@ import 'package:universe_it_project/presentation/modules/all%20property/view/all
 import 'package:universe_it_project/widgets/custom_textfield3.dart';
 import '../../../../utils/app_color.dart';
 import '../../../../widgets/custom_text.dart';
-import '../../../../widgets/popupmenu.dart';
-import '../contoller/property_type_controller.dart';
+import '../contoller/favorte_controller.dart';
 import '../contoller/search_controller.dart';
 
 class AllPropertyScreen extends StatelessWidget {
@@ -117,12 +116,21 @@ class AllPropertyScreen extends StatelessWidget {
                                             color: Colors.blue,
                                             fontsize: 14.0,
                                           ),
-                                          CustomPopupmenu(
-                                            ontap: () {
-                                              favoriteController
-                                                  .toggleFavorite(item);
-                                            },
-                                          ),
+                                          Obx(() {
+                                            bool isFavorite = favoriteController
+                                                .isFavorite(item['id']);
+                                            return IconButton(
+                                              onPressed: () {
+                                                favoriteController
+                                                    .toggleFavorite(item);
+                                              },
+                                              icon: Icon(
+                                                isFavorite
+                                                    ? Icons.favorite
+                                                    : Icons.favorite_border,
+                                              ),
+                                            );
+                                          }),
                                         ],
                                       ),
                                     ],

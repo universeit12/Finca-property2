@@ -21,7 +21,7 @@ class CustomPopupmenu extends StatelessWidget {
               child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Favorite"),
+                Icon(Icons.favorite)
                 ],
               )),
         ];

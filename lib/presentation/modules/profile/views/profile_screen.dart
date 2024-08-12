@@ -17,7 +17,7 @@ class Profile_Screen extends StatelessWidget {
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Center(
-          child: Padding( 
+          child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -68,7 +68,7 @@ class Profile_Screen extends StatelessWidget {
                                 imageController.pickImage();
                               },
                               icon: Icon(
-                                Icons.add_a_photo_rounded,
+                                Icons.more_vert,
                                 color: Colors.black,
                               )),
                         );

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:universe_it_project/presentation/modules/all%20property/view/all_property_screen.dart';
 import '../../../../utils/app_color.dart';
 import '../../../../widgets/custom_text.dart';
-import '../../all property/contoller/property_type_controller.dart';
+import '../../all property/contoller/favorte_controller.dart';
 import '../../all property/view/all_property_details.dart';
 
 class FavoriteScreen extends StatelessWidget {
@@ -14,7 +15,17 @@ class FavoriteScreen extends StatelessWidget {
     final w = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Favorite Properties'),
+        title: const Text(
+          'Favorite',
+        ),
+        titleSpacing: 0,
+        actions: [
+          TextButton(
+              onPressed: () {
+                Get.to(() => AllPropertyScreen());
+              },
+              child: Text("Add"))
+        ],
       ),
       body: Obx(() {
         return ListView.builder(
