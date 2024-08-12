@@ -252,10 +252,10 @@ class Addscreen1 extends StatelessWidget {
                         duration: const Duration(milliseconds: 300),
                         curve: Curves.easeInOut,
                       );
+                      Fluttertoast.showToast(
+                          msg: addcontroller.addressName.toString() +
+                              addcontroller.propertyName.toString());
                     }
-                    Fluttertoast.showToast(
-                        msg: addcontroller.addressName.toString() +
-                            addcontroller.propertyName.toString());
                   },
                 )
               ],
