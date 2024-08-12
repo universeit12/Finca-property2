@@ -17,7 +17,7 @@ class Profile_Screen extends StatelessWidget {
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Center(
-          child: Padding(
+          child: Padding( 
             padding: const EdgeInsets.all(20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
