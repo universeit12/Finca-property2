@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../widgets/custom_text.dart';
 
 class CustomTextIcon extends StatelessWidget {
   final text;

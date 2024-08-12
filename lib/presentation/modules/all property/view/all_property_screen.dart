@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:universe_it_project/presentation/modules/all%20property/view/all_property_details.dart';
 import 'package:universe_it_project/widgets/custom_textfield3.dart';
-import 'package:universe_it_project/widgets/popup_menu.dart';
 import '../../../../utils/app_color.dart';
 import '../../../../widgets/custom_text.dart';
 import '../../../../widgets/popupmenu.dart';
@@ -47,6 +46,7 @@ class AllPropertyScreen extends StatelessWidget {
                     itemCount: controller.foundItem.length,
                     itemBuilder: (context, index) {
                       final item = controller.foundItem[index];
+                      // ignore: unused_local_variable
                       final isFavorite = favoriteController.favoriteItems
                           .any((fav) => fav['Id'] == item['Id']);
                       return InkWell(

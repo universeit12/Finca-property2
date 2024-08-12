@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:universe_it_project/presentation/modules/Auth/signin/view/signinpage.dart';
+import 'package:universe_it_project/presentation/modules/my_properties/views/my_properties_screen.dart';
 import 'package:universe_it_project/presentation/modules/profile/widgets/profile_listtile.dart';
 import 'package:universe_it_project/presentation/modules/settings/views/thame_page.dart';
 
@@ -59,12 +60,16 @@ class Profile_Screen extends StatelessWidget {
                   title: "abdulhakim@gmail.com",
                 ),
                 ProfileListtile(
-                  icon: Icons.house,
-                  title: "My properties",
-                ),
-                ProfileListtile(
                   icon: Icons.phone,
                   title: "01760******",
+                ),
+                ProfileListtile(
+                  icon: Icons.house,
+                  title: "My properties",
+                  arrowicon: Icons.arrow_forward_ios_outlined,
+                  ontap: () {
+                    Get.to(() => MyPropertiesScreen());
+                  },
                 ),
                 ProfileListtile(
                   icon: Icons.settings,

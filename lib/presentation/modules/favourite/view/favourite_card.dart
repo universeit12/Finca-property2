@@ -4,7 +4,7 @@ import 'package:universe_it_project/presentation/modules/favourite/view/faviorit
 import 'package:universe_it_project/widgets/custom_card.dart';
 import '../../../../widgets/custom_text.dart';
 import '../../all property/utils/property_data.dart';
-import '../../all property/view/all_property_details.dart';
+
 
 class FavouriteCard extends StatelessWidget {
   const FavouriteCard({super.key});
