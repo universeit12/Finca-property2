@@ -180,6 +180,7 @@ class AddPage1 extends StatelessWidget {
                     hintText: "Select an item",
                     enablesearch: false,
                     controller: controller.bathroomController,
+
                   ),
                 ],
 

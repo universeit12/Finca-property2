@@ -4,10 +4,12 @@ import 'package:universe_it_project/presentation/modules/add%20property/view/add
 import 'package:universe_it_project/presentation/modules/all%20property/view/all_property_screen.dart';
 import 'package:universe_it_project/presentation/modules/blogs/views/blog_item.dart';
 import 'package:universe_it_project/presentation/modules/favourite/view/faviorite_screen.dart';
+import 'package:universe_it_project/presentation/modules/profile/views/profile_screen.dart';
 import 'package:universe_it_project/presentation/modules/settings/views/thame_page.dart';
 import '../presentation/modules/contact/views/contact_screen.dart';
 
 final List<Map<String, dynamic>> navItem = [
+  {'icon': Icons.person, 'title': 'Profile', 'screen': const Profile_Screen()},
   {
     'icon': Icons.add_home_outlined,
     'title': 'All Property',
@@ -21,7 +23,7 @@ final List<Map<String, dynamic>> navItem = [
   {
     'icon': Icons.favorite_border,
     'title': 'Favorite',
-    'screen': const FavioriteScreen()
+    'screen': const FavoriteScreen()
   },
   {'icon': Icons.library_books, 'title': 'Blogs', 'screen': const BlogItem()},
   {

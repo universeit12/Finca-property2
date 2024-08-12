@@ -1,6 +1,7 @@
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:universe_it_project/presentation/modules/search/view/search_result.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
 import '../../../../widgets/custom_dropdown.dart';
 import '../../add property/widgets/custom_text_icon.dart';
@@ -119,6 +120,8 @@ class SearchPage extends StatelessWidget {
                 text: "Search Now",
                 ontap: () {
                   if (locationformkey.currentState!.validate()) {
+                    Get.to(() => SearchResult());
+
                     // Process data
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Processing Data')),

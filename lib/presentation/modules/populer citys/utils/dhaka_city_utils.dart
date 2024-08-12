@@ -1,6 +1,5 @@
-final List<Map<String, dynamic>> propertyData = [
+final List<Map<String, dynamic>> populerCity = [
   {
-    "id": "1",
     'img': "assets/images/flat.jpg",
     'title': "16000 sqrt let at Gulsan-116000 sqrt let at Gulsan-1",
     'location': "Aftabnogor, Badda, Dhaka",
@@ -20,11 +19,29 @@ final List<Map<String, dynamic>> propertyData = [
         "A property description is a thorough report that details the characteristics, amenities, and conditions of a property.",
   },
   {
-    "id": "2",
     'img': "assets/images/flat2.jpg",
     'title': "16000 sqrt let at Gulsan-116000 sqrt let at Gulsan-1",
     'location': "Rampura, Badda, Dhaka",
-    'city': "Badda",
+    'city': "rampura",
+    'bedroom': "3 bedroom",
+    'bathroom': "3 bathroom",
+    'size': "1600 sqrt",
+    'mobile': "01763551316",
+    'property_name': "Modhu city",
+    'type': "Residential",
+    'for': "Sell",
+    'status': "Ready",
+    'floor_available_now': "7",
+    'transaction_now': "new",
+    'garages': "No Parking",
+    'dis':
+        "A property description is a thorough report that details the characteristics, amenities, and conditions of a property.",
+  },
+  {
+    'img': "assets/images/flat3.jpg",
+    'title': "16000 sqrt let at Gulsan-116000 sqrt let at Gulsan-1",
+    'location': "Badda, Badda, Dhaka",
+    'city': "gazipur",
     'bedroom': "3 bedroom",
     'bathroom': "3 bathroom",
     'size': "1600 sqrt",

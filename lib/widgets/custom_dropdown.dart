@@ -44,7 +44,7 @@ class DropdownWidget extends StatelessWidget {
             hintText: "Tap to select", border: InputBorder.none),
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'Please enter an email address';
+            return 'Fields are required';
           }
           return null;
         },

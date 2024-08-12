@@ -24,7 +24,7 @@ class AllPropertyHomepageCard extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Get.to(const AllPropertyScreen());
+                    Get.to(AllPropertyScreen());
                   },
                   child: const CustomText(
                     text: "See all..",
@@ -43,7 +43,9 @@ class AllPropertyHomepageCard extends StatelessWidget {
               itemBuilder: (_, index) {
                 return InkWell(
                   onTap: () {
-                    Get.to(() => AllPropertyDetails(data: propertyData[index]));
+                    Get.to(() => AllPropertyDetails(
+                          data: propertyData[index],
+                        ));
                   },
                   child: Container(
                     width: 210.0,

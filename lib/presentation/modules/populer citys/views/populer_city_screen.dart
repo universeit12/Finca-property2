@@ -1,106 +1,137 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:universe_it_project/presentation/modules/all%20property/view/all_property_details.dart';
-import 'package:universe_it_project/presentation/modules/all%20property/view/all_property_slider.dart';
+import 'package:universe_it_project/widgets/custom_textfield3.dart';
 import '../../../../utils/app_color.dart';
-import '../../../../utils/property_utils.dart';
 import '../../../../widgets/custom_text.dart';
+import '../../all property/view/all_property_details.dart';
+import '../controller/populer_city_search_controller.dart';
 
 class PopulerCityScreen extends StatelessWidget {
-  const PopulerCityScreen({super.key});
-
+  PopulerCityScreen({super.key});
+  final searchcontroller = Get.put(PopulerCitySearchController());
   @override
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Dhaka city"),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const AllPropertySlider(),
-            const SizedBox(
-              height: 15.0,
-            ),
-            for (int i = 0; i < propertyUtils.length; i++)
-              InkWell(
-                onTap: () {
-                  Get.to(const AllPropertyDetails());
-                },
-                child: Container(
-                  height: 120,
-                  clipBehavior: Clip.antiAlias,
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                  decoration: BoxDecoration(
-                      color: AppColor.white_1,
-                      borderRadius: BorderRadius.circular(8),
-                      boxShadow: const [
-                        BoxShadow(
-                            color: Colors.black12,
-                            spreadRadius: 1.0,
-                            blurRadius: 8.0)
-                      ]),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Image.asset(
-                        propertyUtils[i]["img"],
-                        width: w / 3.5,
-                        fit: BoxFit.cover,
-                        height: 120,
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+      body: Padding(
+        padding: const EdgeInsets.only(top: 15.0, right: 10.0),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    IconButton(
+                        onPressed: () {
+                          Get.back();
+                        },
+                        icon: const Icon(Icons.arrow_back_ios_new_outlined)),
+                    Flexible(child: CustomTextfield3(
+                      onchanged: (value) {
+                        searchcontroller.runFilter(value);
+                      },
+                    )),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15.0,
+                ),
+                Obx(
+                  () => ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: searchcontroller.foundItem.length,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Get.to(() => AllPropertyDetails(
+                                data: searchcontroller.foundItem[index],
+                              ));
+                        },
+                        child: Container(
+                          key:
+                              ValueKey(searchcontroller.foundItem[index]["Id"]),
+                          height: 120,
+                          clipBehavior: Clip.antiAlias,
+                          margin: const EdgeInsets.only(left: 10.0, top: 10.0),
+                          decoration: BoxDecoration(
+                            color: AppColor.white_1,
+                            borderRadius: BorderRadius.circular(6.0),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.black12,
+                                spreadRadius: 1.0,
+                                blurRadius: 8.0,
+                              )
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              CustomText(
-                                text: propertyUtils[i]["city"],
-                                fontsize: 16.0,
-                                color: Colors.teal,
-                                maxline: 2,
+                              Image.asset(
+                                searchcontroller.foundItem[index]["img"],
+                                width: w / 3.5,
+                                fit: BoxFit.cover,
+                                height: 120,
                               ),
-                              CustomText(
-                                text: propertyUtils[i]["features"],
-                                fontsize: 12.0,
-                                color: Colors.black54,
-                                maxline: 2,
-                              ),
-                              CustomText(
-                                text: propertyUtils[i]["price"],
-                                fontsize: 15.0,
-                                color: Colors.red,
-                                maxline: 2,
-                              ),
-                              Row(
-                                children: [
-                                  const Icon(
-                                    Icons.location_on,
-                                    color: Colors.black54,
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      CustomText(
+                                        text: searchcontroller.foundItem[index]
+                                            ["title"],
+                                        color: Colors.black,
+                                        maxline: 2,
+                                        fontsize: 14.0,
+                                      ),
+                                      CustomText(
+                                        text: searchcontroller.foundItem[index]
+                                            ["property_name"],
+                                        color: Colors.black38,
+                                        fontsize: 12.0,
+                                      ),
+                                      CustomText(
+                                        text: searchcontroller.foundItem[index]
+                                            ["location"],
+                                        color: Colors.black38,
+                                        fontsize: 12.0,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          CustomText(
+                                            text: searchcontroller
+                                                .foundItem[index]["for"],
+                                            color: Colors.blue,
+                                            fontsize: 14.0,
+                                          ),
+                                          const CustomText(
+                                            text: "more..",
+                                            color: Colors.blue,
+                                            fontsize: 14.0,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
-                                  const SizedBox(width: 5),
-                                  Text(
-                                    propertyUtils[i]["location"],
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: const TextStyle(
-                                        color: Colors.black54, fontSize: 15),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              )
                             ],
                           ),
                         ),
-                      )
-                    ],
+                      );
+                    },
                   ),
-                ),
-              ),
-          ],
+                )
+              ],
+            ),
+          ),
         ),
       ),
     );

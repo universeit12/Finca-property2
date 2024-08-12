@@ -92,7 +92,7 @@ class AllPropertyDetails extends StatelessWidget {
                         ),
                       ),
                       const Icon(
-                        Icons.favorite_border,
+                        Icons.copy,
                         size: 35.0,
                         color: Colors.teal,
                       )
