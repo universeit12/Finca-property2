@@ -14,7 +14,7 @@ final List<Map<String, dynamic>> navItem = [
   {
     'icon': Icons.home,
     'title': 'My Properties',
-    'screen': const MyPropertiesScreen()
+    'screen':  MyPropertiesScreen()
   },
   {
     'icon': Icons.add_home_outlined,
