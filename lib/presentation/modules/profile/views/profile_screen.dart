@@ -1,11 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:universe_it_project/presentation/modules/Auth/signin/view/signinpage.dart';
-import 'package:universe_it_project/presentation/modules/my_properties/views/my_properties_screen.dart';
 import 'package:universe_it_project/presentation/modules/profile/controller/image_controller.dart';
 import 'package:universe_it_project/presentation/modules/profile/widgets/profile_listtile.dart';
-import 'package:universe_it_project/presentation/modules/settings/views/thame_page.dart';
 
 class Profile_Screen extends StatelessWidget {
   Profile_Screen({super.key});
@@ -68,8 +65,8 @@ class Profile_Screen extends StatelessWidget {
                                 imageController.pickImage();
                               },
                               icon: Icon(
-                                Icons.more_vert,
-                                color: Colors.black,
+                                Icons.add_a_photo,
+                                color: Colors.red,
                               )),
                         );
                 }),
@@ -101,37 +98,6 @@ class Profile_Screen extends StatelessWidget {
                   icon: Icons.phone,
                   title: "01760******",
                 ),
-
-                //User Properties
-                ProfileListtile(
-                  icon: Icons.house,
-                  title: "My properties",
-                  arrowicon: Icons.arrow_forward_ios_outlined,
-                  ontap: () {
-                    Get.to(() => MyPropertiesScreen());
-                  },
-                ),
-
-                //Settings
-                ProfileListtile(
-                  icon: Icons.settings,
-                  title: "Settings",
-                  arrowicon: Icons.arrow_forward_ios_outlined,
-                  ontap: () {
-                    Get.to(() => ThemePage());
-                  },
-                ),
-
-                //Logout
-                ProfileListtile(
-                  icon: Icons.logout,
-                  title: "Log Out",
-                  arrowicon: Icons.arrow_forward_ios_outlined,
-                  ontap: () {
-                    Get.to(() => Signinpage());
-                  },
-                ),
-                const SizedBox(height: 20.0),
               ],
             ),
           ),

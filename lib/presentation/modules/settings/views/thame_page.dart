@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:universe_it_project/utils/app_color.dart';
+import '../../Auth/signin/view/signinpage.dart';
+import '../../profile/widgets/profile_listtile.dart';
 import '../controller/theme_controller.dart';
 
 class ThemePage extends StatelessWidget {
@@ -48,6 +50,28 @@ class ThemePage extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 18.0),
+
+              //Settings
+              ProfileListtile(
+                icon: Icons.settings,
+                title: "Settings",
+                arrowicon: Icons.arrow_forward_ios_outlined,
+                ontap: () {
+                  Get.to(() => ThemePage());
+                },
+              ),
+              const SizedBox(height: 10.0),
+              //Logout
+              ProfileListtile(
+                icon: Icons.logout,
+                title: "Log Out",
+                arrowicon: Icons.arrow_forward_ios_outlined,
+                ontap: () {
+                  Get.to(() => Signinpage());
+                },
+              ),
+              const SizedBox(height: 20.0),
             ],
           ),
         ));
