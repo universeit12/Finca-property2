@@ -25,7 +25,7 @@ class MyCompleteProperties extends StatelessWidget {
                   margin: const EdgeInsets.only(
                       left: 10.0, top: 10.0, right: 10.0, bottom: 10.0),
                   decoration: BoxDecoration(
-                    color: AppColor.white_1,
+                    color: AppColor.white,
                     borderRadius: BorderRadius.circular(6.0),
                     boxShadow: const [
                       BoxShadow(

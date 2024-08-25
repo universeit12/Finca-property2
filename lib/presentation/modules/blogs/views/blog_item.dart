@@ -31,7 +31,7 @@ class BlogItem extends StatelessWidget {
                 margin:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 decoration: BoxDecoration(
-                    color: AppColor.white_1,
+                    color: AppColor.white,
                     borderRadius: BorderRadius.circular(4),
                     boxShadow: const [
                       BoxShadow(

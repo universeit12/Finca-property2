@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:universe_it_project/presentation/modules/home/home.dart';
+import 'package:universe_it_project/widgets/back_app_bar.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
 import 'package:universe_it_project/widgets/custom_textfield.dart';
@@ -18,11 +19,8 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 10,
-        title: const Text("SIGN IN"),
-        titleSpacing: 0.0,
-      ),
+      appBar: Backappbar(title: 'Sign In'),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Form(
           key: formkey,
@@ -32,9 +30,9 @@ class SignupScreen extends StatelessWidget {
             child: Column(
               children: [
                 //name
-                CustomTextfield(
-                  hintText: "Name",
-                  suffixIcon: const Icon(Icons.person_outline_rounded),
+                Textfield1(
+                  hinttext: Text("Name"),
+                  suffixicon: Icons.person_outline_rounded,
                   validation: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your name';
@@ -44,9 +42,9 @@ class SignupScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20.0),
                 //email
-                CustomTextfield(
-                  hintText: "Email",
-                  suffixIcon: const Icon(Icons.email_outlined),
+                Textfield1(
+                  hinttext: Text("Email"),
+                  suffixicon: Icons.email_outlined,
                   validation: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter an email address';
@@ -60,9 +58,9 @@ class SignupScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20.0),
                 //password
-                CustomTextfield(
-                  hintText: "Password",
-                  suffixIcon: const Icon(Icons.remove_red_eye_outlined),
+                Textfield1(
+                  hinttext: Text("Password"),
+                  suffixicon: Icons.remove_red_eye_outlined,
                   validation: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter a password';
@@ -75,15 +73,15 @@ class SignupScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20.0),
                 //confirm password
-                const CustomTextfield(
-                  hintText: "Confirm Password",
-                  suffixIcon: Icon(Icons.remove_red_eye_outlined),
+                const Textfield1(
+                  hinttext: Text("Confirm Password"),
+                  suffixicon: Icons.remove_red_eye_outlined,
                 ),
                 const SizedBox(height: 20.0),
                 //mobile phone
-                CustomTextfield(
-                  hintText: "Mobile Number",
-                  suffixIcon: const Icon(Icons.phone),
+                Textfield1(
+                  hinttext: Text("Mobile Number"),
+                  suffixicon: Icons.phone,
                   inputype: TextInputType.number,
                   validation: (value) {
                     if (value == null || value.isEmpty) {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
-import 'package:universe_it_project/widgets/custom_textfield.dart';
+import '../../../../../widgets/custom_textfield.dart';
 
 class ForgetPass extends StatelessWidget {
   ForgetPass({super.key});
@@ -32,9 +32,9 @@ class ForgetPass extends StatelessWidget {
                 color: Colors.black54,
               ),
               const SizedBox(height: 20.0),
-              CustomTextfield(
-                hintText: "email",
-                suffixIcon: const Icon(Icons.email_outlined),
+              Textfield1(
+                hinttext: Text("email"),
+                suffixicon: Icons.email_outlined,
                 validation: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter an email address';

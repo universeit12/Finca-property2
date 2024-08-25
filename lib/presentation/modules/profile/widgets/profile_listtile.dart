@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 class ProfileListtile extends StatelessWidget {
   const ProfileListtile({
@@ -21,28 +22,29 @@ class ProfileListtile extends StatelessWidget {
     return InkWell(
       onTap: ontap,
       child: Container(
-          margin: const EdgeInsets.symmetric(
-            vertical: 5,
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 15.0),
+          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
           decoration: BoxDecoration(
-            color: Colors.blue.withOpacity(0.1),
-            border: Border.all(color: Colors.white38),
+            border: Border.all(color: Colors.black.withOpacity(0.1)),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              CircleAvatar(child: Icon(icon ?? Icons.add)),
+              CircleAvatar(
+                  backgroundColor: Colors.blueGrey,
+                  child: Icon(
+                    icon ?? Iconsax.mobile,
+                    color: Colors.white,
+                  )),
+              SizedBox(width: 20.0),
               Text(
                 title ?? "",
                 style: const TextStyle(
                   fontSize: 18.0,
                 ),
               ),
-              SizedBox(),
-              SizedBox(),
-              SizedBox(),
+              Spacer(),
               Icon(
                 arrowicon,
                 color: Colors.green,

@@ -15,16 +15,18 @@ class CustomButton extends StatelessWidget {
       child: Container(
         width: double.infinity,
         alignment: Alignment.center,
-        padding: const EdgeInsets.symmetric(vertical: 10.0),
+        padding: const EdgeInsets.symmetric(vertical: 12.0),
         margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
         decoration: BoxDecoration(
             color: background ?? Colors.teal,
-            borderRadius: BorderRadius.circular(8.0),
-            border: Border.all(width: 0.5)),
+            borderRadius: BorderRadius.circular(20.0),
+            border: Border.all(width: 0.1)),
         child: Text(
           text!,
           style: TextStyle(
-              color:fontcolor?? Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
+              color: fontcolor ?? Colors.white,
+              fontSize: 17,
+              fontWeight: FontWeight.bold),
         ),
       ),
     );

@@ -10,11 +10,11 @@ import 'package:universe_it_project/presentation/modules/settings/views/thame_pa
 import '../presentation/modules/contact/views/contact_screen.dart';
 
 final List<Map<String, dynamic>> navItem = [
-  {'icon': Icons.person, 'title': 'Profile', 'screen':  Profile_Screen()},
+  {'icon': Icons.person, 'title': 'Profile', 'screen': Profile_Screen()},
   {
     'icon': Icons.home,
     'title': 'My Properties',
-    'screen':  MyPropertiesScreen()
+    'screen': MyPropertiesScreen()
   },
   {
     'icon': Icons.add_home_outlined,

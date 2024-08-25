@@ -17,7 +17,7 @@ const String addproperty = '/add_property';
 List<GetPage> getPages = [
   GetPage(
     name: splash,
-    page: () => const Splash(),
+    page: () =>  Splash(),
     binding: SplashBinding(),
   ),
   GetPage(

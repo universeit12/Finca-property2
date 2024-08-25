@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:universe_it_project/utils/app_color.dart';
-import 'package:universe_it_project/utils/app_string.dart';
-import 'package:universe_it_project/utils/nav_item.dart';
+import 'package:universe_it_project/utils/app_config.dart';
 
+import 'package:universe_it_project/utils/nav_item.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -20,7 +20,7 @@ class CustomDrawer extends StatelessWidget {
             child: Column(
               children: [
                 const Text(
-                  AppString.name,
+                  AppConfig.appName,
                   style: TextStyle(
                       color: AppColor.baseColor,
                       fontSize: 22.0,

@@ -1,7 +1,5 @@
-class AppString {
-  ///main app string
-  static const String name = "Finca properties";
+import 'package:universe_it_project/utils/app_config.dart';
 
-  ///signin page string
-  static const String welcome = "Welcome to Bpoperty.com";
+class AppString {
+  static const String welcome = "Welcome to ${AppConfig.appName}";
 }

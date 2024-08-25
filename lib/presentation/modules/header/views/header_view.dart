@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:universe_it_project/presentation/modules/search/view/search_page.dart';
+import 'package:universe_it_project/utils/app_config.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
-import '../../../../utils/app_string.dart';
 import '../../../../widgets/custom_searchBar.dart';
 
 class HeaderView extends StatelessWidget {
@@ -31,7 +31,7 @@ class HeaderView extends StatelessWidget {
                     size: 30.0,
                   )),
               const CustomText(
-                text: AppString.name,
+                text: AppConfig.appName,
                 fontsize: 19.0,
                 color: Colors.white,
               ),
