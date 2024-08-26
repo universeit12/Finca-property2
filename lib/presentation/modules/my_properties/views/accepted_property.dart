@@ -5,8 +5,8 @@ import '../../../../utils/app_color.dart';
 import '../../../../widgets/custom_dialog.dart';
 import '../../../../widgets/custom_text.dart';
 
-class MyAllProperties extends StatelessWidget {
-  const MyAllProperties({super.key});
+class AcceptedProperty extends StatelessWidget {
+  const AcceptedProperty({super.key});
 
   @override
   Widget build(BuildContext context) {
