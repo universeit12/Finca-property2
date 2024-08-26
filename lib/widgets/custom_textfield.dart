@@ -9,7 +9,7 @@ class Textfield1 extends StatelessWidget {
       this.validation,
       this.obscuretext,
       this.onchanged,
-      this.inputype});
+      this.inputype, this.maxline});
 
   final hinttext;
   final IconData? suffixicon;
@@ -17,6 +17,7 @@ class Textfield1 extends StatelessWidget {
   final obscuretext;
   final onchanged;
   final inputype;
+  final maxline;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +25,7 @@ class Textfield1 extends StatelessWidget {
       height: 55.0,
       width: double.infinity,
       child: TextFormField(
+        maxLines: maxline,
         onChanged: onchanged,
         validator: validation,
         obscureText: obscuretext ?? false,

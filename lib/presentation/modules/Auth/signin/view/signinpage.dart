@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -45,14 +44,14 @@ class Signinpage extends StatelessWidget {
                     text: 'Login Now',
                     fontsize: 25.0,
                   ),
-                  const CustomText(
+                  CustomText(
                     text: AppString.welcome,
                     color: Colors.teal,
                     fontsize: 16.0,
                   ),
                   const SizedBox(height: 20.0),
                   Textfield1(
-                    hinttext: Text('"Phone Number"'),
+                    hinttext: Text('Phone Number'),
                     suffixicon: Icons.phone,
                     validation: (value) {
                       if (value == null || value.isEmpty) {

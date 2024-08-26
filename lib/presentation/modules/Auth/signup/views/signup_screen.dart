@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:universe_it_project/presentation/modules/home/home.dart';
+import 'package:universe_it_project/presentation/modules/Auth/signup/controller/signup_controller.dart';
+import 'package:universe_it_project/presentation/modules/Auth/signup/views/company_signup.dart';
+import 'package:universe_it_project/presentation/modules/Auth/signup/views/user_signup.dart';
+import 'package:universe_it_project/presentation/modules/Auth/signup/widgets/signup_select_option.dart';
 import 'package:universe_it_project/widgets/back_app_bar.dart';
-import 'package:universe_it_project/widgets/custom_button.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
-import 'package:universe_it_project/widgets/custom_textfield.dart';
+import '../../../../../utils/app_string.dart';
+import '../../../../../widgets/custom_button.dart';
+import '../../../home/home.dart';
 
 class SignupScreen extends StatelessWidget {
   SignupScreen({super.key});
-  final TextEditingController mobilegecontroller = TextEditingController();
-  final TextEditingController emailcontroller = TextEditingController();
-  final TextEditingController namecontroller = TextEditingController();
-  final TextEditingController passcontroller = TextEditingController();
-
+  final controller = Get.put(SignupController());
   final formkey = GlobalKey<FormState>();
 
   @override
@@ -21,118 +21,75 @@ class SignupScreen extends StatelessWidget {
     return Scaffold(
       appBar: Backappbar(title: 'Sign In'),
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Form(
-          key: formkey,
-          child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
-            child: Column(
-              children: [
-                //name
-                Textfield1(
-                  hinttext: Text("Name"),
-                  suffixicon: Icons.person_outline_rounded,
-                  validation: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your name';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 20.0),
-                //email
-                Textfield1(
-                  hinttext: Text("Email"),
-                  suffixicon: Icons.email_outlined,
-                  validation: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter an email address';
-                    }
-                    final emailRegExp = RegExp(r'^[^@]+@[^@]+\.[^@]+$');
-                    if (!emailRegExp.hasMatch(value)) {
-                      return 'Please enter a valid email address';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 20.0),
-                //password
-                Textfield1(
-                  hinttext: Text("Password"),
-                  suffixicon: Icons.remove_red_eye_outlined,
-                  validation: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter a password';
-                    }
-                    if (value.length < 6) {
-                      return 'Password must be at least 6 characters long';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 20.0),
-                //confirm password
-                const Textfield1(
-                  hinttext: Text("Confirm Password"),
-                  suffixicon: Icons.remove_red_eye_outlined,
-                ),
-                const SizedBox(height: 20.0),
-                //mobile phone
-                Textfield1(
-                  hinttext: Text("Mobile Number"),
-                  suffixicon: Icons.phone,
-                  inputype: TextInputType.number,
-                  validation: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Enter Phone Number';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 20.0),
-                const CustomText(
-                  text: "All fields are required.",
-                  color: Colors.black38,
-                ),
-                const SizedBox(height: 20.0),
-                const Wrap(
-                  children: [
-                    CustomText(
-                      text:
-                          "By taping on 'Create Account' you are agreeing to Bpoperty.com's ",
-                      color: Colors.black,
-                      fontsize: 18.0,
-                      maxline: 3,
-                    ),
-                    CustomText(
-                      text: "Terms of use",
-                      color: Colors.teal,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20.0),
-                CustomButton(
-                  text: "CREATE ACCOUNT",
-                  ontap: () {
-                    if (formkey.currentState!.validate()) {
-                      Get.to(() => Home());
-                      Fluttertoast.showToast(
-                        msg: "Sign up Done",
-                      );
+      body: Obx(() {
+        return SingleChildScrollView(
+          child: Form(
+            key: formkey,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+              child: Column(
+                children: [
+                  CustomText(
+                    text: 'Register Now',
+                    fontsize: 25.0,
+                  ),
+                  CustomText(
+                    text: AppString.signupWelcome,
+                    color: Colors.teal,
+                    fontsize: 14.0,
+                    maxline: 5,
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 20),
+                  SignupSelectOption(),
+                  if (controller.selectedOption.value == 'User')
+                    UserRegistrationForm()
+                  else
+                    CompanySignup(),
+                  SizedBox(height: 20.0),
 
-                      namecontroller.clear();
-                      emailcontroller.clear();
-                      passcontroller.clear();
-                      mobilegecontroller.clear();
-                    }
-                  },
-                )
-              ],
+                  ///Submit Button--->
+                  CustomButton(
+                    text: "REGISTER",
+                    ontap: () {
+                      if (formkey.currentState!.validate()) {
+                        Get.to(() => Home());
+                        Fluttertoast.showToast(
+                          msg: "Sign up Done",
+                        );
+                        controller.namecontroller.clear();
+                        controller.emailcontroller.clear();
+                        controller.passcontroller.clear();
+                        controller.mobilegecontroller.clear();
+                      }
+                    },
+                  ),
+                  SizedBox(height: 30.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const CustomText(
+                        text: "You hava allready account?   ",
+                        color: Colors.black,
+                        fontsize: 16.0,
+                      ),
+                      InkWell(
+                        onTap: () => Get.toNamed('/signin_screen'),
+                        child: const CustomText(
+                          text: "Log In",
+                          color: Colors.teal,
+                          fontsize: 17.0,
+                          fontweight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 }
