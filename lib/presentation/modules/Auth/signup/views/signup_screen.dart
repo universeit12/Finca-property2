@@ -19,7 +19,7 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Backappbar(title: 'Sign In'),
+      appBar: Backappbar(title: 'Regiter'),
       backgroundColor: Colors.white,
       body: Obx(() {
         return SingleChildScrollView(
