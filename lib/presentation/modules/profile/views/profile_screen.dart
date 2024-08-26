@@ -6,6 +6,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:universe_it_project/presentation/modules/Auth/signin/view/signinpage.dart';
 import 'package:universe_it_project/presentation/modules/profile/controller/image_controller.dart';
 import 'package:universe_it_project/presentation/modules/profile/views/dashboard_screen.dart';
+import 'package:universe_it_project/presentation/modules/profile/views/edit_profile.dart';
 import 'package:universe_it_project/presentation/modules/profile/views/profile_property_list.dart';
 import 'package:universe_it_project/presentation/modules/profile/widgets/profile_listtile.dart';
 
@@ -45,8 +46,8 @@ class Profile_Screen extends StatelessWidget {
                       ),
                     )
                   : Container(
-                      height: 90,
-                      width: 90,
+                      height: 120,
+                      width: 120,
                       clipBehavior: Clip.antiAlias,
                       alignment: Alignment.bottomRight,
                       decoration: BoxDecoration(
@@ -61,7 +62,7 @@ class Profile_Screen extends StatelessWidget {
                             imageController.pickImage();
                           },
                           icon: Icon(
-                            Icons.add_a_photo,
+                            Iconsax.camera,
                             color: Colors.red,
                           )),
                     );
@@ -80,6 +81,9 @@ class Profile_Screen extends StatelessWidget {
               icon: Icons.person,
               title: "Edit Profile",
               arrowicon: Iconsax.edit,
+              ontap: () {
+                Get.to(() => EditProfile());
+              },
             ),
             ProfileListtile(
               icon: Icons.dashboard,
