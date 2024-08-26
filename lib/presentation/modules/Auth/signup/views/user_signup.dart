@@ -12,10 +12,13 @@ class UserRegistrationForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignupController());
     return Column(
       children: [
         Textfield1(
-          hinttext: Text("Name"),
+          controller: controller.nameController,
+
+          hinttext: "Name",
           suffixicon: Icons.person_outline_rounded,
           validation: (value) {
             if (value == null || value.isEmpty) {
@@ -26,7 +29,8 @@ class UserRegistrationForm extends StatelessWidget {
         ),
         const SizedBox(height: 20.0),
         Textfield1(
-          hinttext: Text("Mobile Number"),
+          controller: controller.mobileController,
+          hinttext: "Mobile Number",
           suffixicon: Icons.phone,
           inputype: TextInputType.number,
           validation: (value) {
@@ -38,7 +42,8 @@ class UserRegistrationForm extends StatelessWidget {
         ),
         const SizedBox(height: 20.0),
         Textfield1(
-          hinttext: Text("Email"),
+          controller: controller.emailController,
+          hinttext:"Email",
           suffixicon: Icons.email_outlined,
           validation: (value) {
             if (value == null || value.isEmpty) {
@@ -53,7 +58,8 @@ class UserRegistrationForm extends StatelessWidget {
         ),
         const SizedBox(height: 20.0),
         Textfield1(
-          hinttext: Text("Password"),
+          controller: controller.passController,
+          hinttext: "Password",
           suffixicon: Icons.remove_red_eye_outlined,
           validation: (value) {
             if (value == null || value.isEmpty) {
@@ -66,8 +72,9 @@ class UserRegistrationForm extends StatelessWidget {
           },
         ),
         const SizedBox(height: 20.0),
-        const Textfield1(
-          hinttext: Text("Confirm Password"),
+         Textfield1(
+          controller: controller.confirmPassController,
+          hinttext:"Confirm Password" ,
           suffixicon: Icons.remove_red_eye_outlined,
         ),
         const SizedBox(height: 20.0),

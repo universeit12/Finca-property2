@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -6,8 +5,8 @@ import '../../../../utils/app_color.dart';
 import '../../../../widgets/custom_dialog.dart';
 import '../../../../widgets/custom_text.dart';
 
-class MyCompleteProperties extends StatelessWidget {
-  const MyCompleteProperties({super.key});
+class RejectedProperties extends StatelessWidget {
+  const RejectedProperties({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +15,7 @@ class MyCompleteProperties extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 1; i++)
               InkWell(
                 onTap: () {},
                 child: Container(
@@ -49,8 +48,7 @@ class MyCompleteProperties extends StatelessWidget {
                           padding: const EdgeInsets.all(8),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment:
-                            MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               CustomText(
                                 text: "1770 sqrt Rampura flat",
@@ -70,11 +68,10 @@ class MyCompleteProperties extends StatelessWidget {
                               ),
                               Spacer(),
                               Padding(
-                                padding:
-                                EdgeInsets.symmetric(horizontal: 15.0),
+                                padding: EdgeInsets.symmetric(horizontal: 15.0),
                                 child: Row(
                                   mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Icon(
                                       Icons.edit,
@@ -84,16 +81,14 @@ class MyCompleteProperties extends StatelessWidget {
                                       onTap: () {
                                         showDialog(
                                           context: context,
-                                          builder: (context) =>
-                                              CustomDialog(
-                                                title: 'Do you now delete post',
-                                                onConfirm: () {
-                                                  Navigator.pop(context);
-                                                  Fluttertoast.showToast(
-                                                      msg:
-                                                      "Successfully Delete.");
-                                                },
-                                              ),
+                                          builder: (context) => CustomDialog(
+                                            title: 'Do you now delete post',
+                                            onConfirm: () {
+                                              Navigator.pop(context);
+                                              Fluttertoast.showToast(
+                                                  msg: "Successfully Delete.");
+                                            },
+                                          ),
                                         );
                                       },
                                       child: Icon(

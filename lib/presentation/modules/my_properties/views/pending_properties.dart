@@ -6,8 +6,8 @@ import '../../../../utils/app_color.dart';
 import '../../../../widgets/custom_dialog.dart';
 import '../../../../widgets/custom_text.dart';
 
-class MyPendingProperties extends StatelessWidget {
-  const MyPendingProperties({super.key});
+class PendingProperties extends StatelessWidget {
+  const PendingProperties({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class MyPendingProperties extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 4; i++)
               InkWell(
                 onTap: () {},
                 child: Container(

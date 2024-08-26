@@ -9,7 +9,7 @@ class Textfield1 extends StatelessWidget {
       this.validation,
       this.obscuretext,
       this.onchanged,
-      this.inputype, this.maxline});
+      this.inputype, this.maxline,  this.controller});
 
   final hinttext;
   final IconData? suffixicon;
@@ -18,20 +18,24 @@ class Textfield1 extends StatelessWidget {
   final onchanged;
   final inputype;
   final maxline;
+  final TextEditingController?  controller;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+
       height: 55.0,
       width: double.infinity,
       child: TextFormField(
+        controller: controller,
         maxLines: maxline,
         onChanged: onchanged,
         validator: validation,
         obscureText: obscuretext ?? false,
         keyboardType: inputype ?? TextInputType.text,
         decoration: InputDecoration(
-          label: hinttext,
+
+          hintText: hinttext,
           suffixIcon: suffixicon != null ? Icon(suffixicon) : null,
         ),
       ),

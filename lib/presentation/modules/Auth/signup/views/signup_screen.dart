@@ -19,7 +19,7 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Backappbar(title: 'Regiter'),
+      appBar: Backappbar(title: 'Register',fontSize: 18,),
       backgroundColor: Colors.white,
       body: Obx(() {
         return SingleChildScrollView(
@@ -52,16 +52,20 @@ class SignupScreen extends StatelessWidget {
                   CustomButton(
                     text: "REGISTER",
                     ontap: () {
-                      if (formkey.currentState!.validate()) {
-                        Get.to(() => Home());
-                        Fluttertoast.showToast(
-                          msg: "Sign up Done",
-                        );
-                        controller.namecontroller.clear();
-                        controller.emailcontroller.clear();
-                        controller.passcontroller.clear();
-                        controller.mobilegecontroller.clear();
+                      if(controller.selectedOption.value == "User"){
+                        if (formkey.currentState!.validate()) {
+                          controller.customerRegisterApi(context);
+
+
+                          controller.nameController.clear();
+                          controller.emailController.clear();
+                          controller.passController.clear();
+                          controller.mobileController.clear();
+                          controller.confirmPassController.clear();
+                        }
+
                       }
+
                     },
                   ),
                   SizedBox(height: 30.0),
@@ -69,7 +73,7 @@ class SignupScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const CustomText(
-                        text: "You hava allready account?   ",
+                        text: "You have allready account?   ",
                         color: Colors.black,
                         fontsize: 16.0,
                       ),

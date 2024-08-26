@@ -6,7 +6,10 @@ import 'package:iconsax/iconsax.dart';
 import 'package:universe_it_project/presentation/modules/Auth/signin/view/signinpage.dart';
 import 'package:universe_it_project/presentation/modules/profile/controller/image_controller.dart';
 import 'package:universe_it_project/presentation/modules/profile/views/dashboard_screen.dart';
+import 'package:universe_it_project/presentation/modules/profile/views/profile_property_list.dart';
 import 'package:universe_it_project/presentation/modules/profile/widgets/profile_listtile.dart';
+
+import '../../my_properties/views/property_list_screen.dart';
 
 class Profile_Screen extends StatelessWidget {
   Profile_Screen({super.key});
@@ -90,6 +93,9 @@ class Profile_Screen extends StatelessWidget {
               icon: Iconsax.home4,
               title: "Property List",
               arrowicon: Iconsax.arrow_right,
+              ontap: () {
+                Get.to(() => PropertyListScreen());
+              },
             ),
             SizedBox(height: 20.0),
             SizedBox(

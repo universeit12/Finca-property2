@@ -3,9 +3,12 @@ import 'package:get/get.dart';
 import 'package:universe_it_project/utils/app_color.dart';
 
 class Backappbar extends StatelessWidget implements PreferredSizeWidget {
-  const Backappbar({super.key, this.title, this.actions});
+  const Backappbar({super.key, this.title, this.actions, this.bottom,this.isTrue=false,this.fontSize=16.0});
   final title;
   final actions;
+  final bottom;
+  final bool? isTrue;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +24,13 @@ class Backappbar extends StatelessWidget implements PreferredSizeWidget {
           )),
       backgroundColor: AppColor.white2,
       titleSpacing: 0,
+      centerTitle: isTrue,
       title: Text(
         title,
-        style: const TextStyle(fontSize: 16.0, color: AppColor.black_),
+        style:  TextStyle(fontSize: fontSize, color: AppColor.black_),
       ),
       actions: actions ?? [],
+      bottom: bottom,
     );
   }
 
