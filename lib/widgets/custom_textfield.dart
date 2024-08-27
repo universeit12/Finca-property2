@@ -31,7 +31,6 @@ class Textfield1 extends StatelessWidget {
       ),
       margin: const EdgeInsets.only(bottom: 5.0),
       child: TextFormField(
-        controller: controller,
         maxLines: maxline,
         onChanged: onchanged,
         validator: validation,
