@@ -13,8 +13,8 @@ import '../../../profile/views/profile_screen.dart';
 
 class SignInController extends GetxController {
   // Variables
-  final TextEditingController mobileController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final mobileController = TextEditingController();
+  final passwordController = TextEditingController();
 
   // Login Function
 
