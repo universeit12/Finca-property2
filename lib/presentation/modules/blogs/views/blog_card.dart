@@ -15,6 +15,7 @@ class BlogCard extends StatelessWidget {
         onTap: () {},
         child: CustomCard(
             width: double.infinity,
+
             padding:
                 const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
             child: Column(

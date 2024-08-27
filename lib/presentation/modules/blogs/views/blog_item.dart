@@ -15,7 +15,7 @@ class BlogItem extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Blogs"),
-        titleSpacing: 0,
+        centerTitle: true,
       ),
       body: SizedBox(
           child: ListView(
@@ -26,12 +26,12 @@ class BlogItem extends StatelessWidget {
                 Get.to(BlogsDetails(data: blogUtils[i]));
               },
               child: Container(
-                height: 100,
+                height: 130,
                 clipBehavior: Clip.antiAlias,
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 decoration: BoxDecoration(
                     color: AppColor.white,
+                    border: Border.all(color: Colors.black, width: 0.2),
                     borderRadius: BorderRadius.circular(4),
                     boxShadow: const [
                       BoxShadow(
@@ -66,6 +66,19 @@ class BlogItem extends StatelessWidget {
                               color: Colors.black54,
                               maxline: 2,
                             ),
+                            Row(
+                              children: [
+                                Icon(Icons.calendar_month),
+                                Flexible(
+                                  child: CustomText(
+                                    text: "August 7, 2024",
+                                    fontsize: 12.0,
+                                    color: Colors.black54,
+                                    maxline: 1,
+                                  ),
+                                ),
+                              ],
+                            )
                           ],
                         ),
                       ),
