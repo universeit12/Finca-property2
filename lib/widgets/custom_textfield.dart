@@ -9,7 +9,7 @@ class Textfield1 extends StatelessWidget {
       this.obscuretext,
       this.onchanged,
       this.inputype,
-      this.maxline});
+      this.maxline, this.controller});
 
   final hinttext;
   final IconData? suffixicon;
@@ -18,6 +18,7 @@ class Textfield1 extends StatelessWidget {
   final onchanged;
   final inputype;
   final maxline;
+  final controller;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,6 +30,7 @@ class Textfield1 extends StatelessWidget {
         maxLines: maxline,
         onChanged: onchanged,
         validator: validation,
+        controller: controller,
         obscureText: obscuretext ?? false,
         keyboardType: inputype ?? TextInputType.text,
         decoration: InputDecoration(

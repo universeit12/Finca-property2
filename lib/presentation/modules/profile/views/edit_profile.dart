@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
+import 'package:universe_it_project/presentation/modules/profile/controller/profile_controller.dart';
+import 'package:universe_it_project/presentation/modules/profile/views/profile_screen.dart';
 import 'package:universe_it_project/widgets/back_app_bar.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
-import 'package:universe_it_project/widgets/custom_text.dart';
+
 import 'package:universe_it_project/widgets/custom_textfield.dart';
 
+import '../../add property/widgets/custom_text_icon.dart';
+
 class EditProfile extends StatelessWidget {
-  const EditProfile({super.key});
+  EditProfile({super.key});
+  final controller = Get.put(ProileController());
 
   @override
   Widget build(BuildContext context) {
@@ -20,25 +26,45 @@ class EditProfile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CustomText(text: 'Phone'),
-                Textfield1(),
-                CustomText(text: 'Email'),
-                Textfield1(),
-                CustomText(text: 'Name'),
-                Textfield1(),
-                CustomText(text: 'Monthly Income'),
-                Textfield1(),
-                CustomText(text: 'Permanent Address'),
-                Textfield1(),
-                CustomText(text: 'Present Address'),
-                Textfield1(),
+                CustomTextIcon(text: "Phone"),
+                Textfield1(
+                  controller: controller.phoneController,
+                ),
+                CustomTextIcon(text: "Email"),
+                Textfield1(
+                  controller: controller.emailController,
+                ),
+                CustomTextIcon(text: "Name"),
+                Textfield1(
+                  controller: controller.nameController,
+                ),
+                CustomTextIcon(text: "Monthly"),
+                Textfield1(
+                  controller: controller.monthly_incomeController,
+                ),
+                CustomTextIcon(text: "Permanent Address"),
+                Textfield1(
+                  controller: controller.permanent_addreessController,
+                ),
+                CustomTextIcon(text: "Present Address"),
+                Textfield1(
+                  controller: controller.present_addressController,
+                ),
                 SizedBox(height: 30.0),
-                CustomButton(
-                  text: 'SUBMIT',
-                )
               ],
             ),
           ),
+        ),
+      ),
+      bottomSheet: Container(
+        color: Colors.transparent,
+        margin: EdgeInsets.only(right: 15.0, left: 15.0, bottom: 10.0),
+        height: 60,
+        child: CustomButton(
+          text: 'SUBMIT',
+          ontap: (){
+            Fluttertoast.showToast(msg: 'Profile Updated');
+          },
         ),
       ),
     );
