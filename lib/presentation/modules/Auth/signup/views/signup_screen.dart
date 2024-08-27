@@ -34,7 +34,11 @@ class SignupScreen extends StatelessWidget {
                     fontsize: 25.0,
                   ),
                   CustomText(
-                    text: 'Register Now',
+                    text: "asdfasdfasdfasdfasdf",
+                    fontsize: 25.0,
+                  ),
+                  CustomText(
+                    text: "asdfasdfasdfasdfasdf",
                     fontsize: 25.0,
                   ),
                   CustomText(
