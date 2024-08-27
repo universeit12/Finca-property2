@@ -20,7 +20,9 @@ class Textfield1 extends StatelessWidget {
   final onchanged;
   final inputype;
   final maxline;
-  final TextEditingController? controller;
+
+ 
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,10 +32,11 @@ class Textfield1 extends StatelessWidget {
       ),
       margin: const EdgeInsets.only(bottom: 5.0),
       child: TextFormField(
-        controller: controller,
+       
         maxLines: maxline,
         onChanged: onchanged,
         validator: validation,
+        controller: controller,
         obscureText: obscuretext ?? false,
         keyboardType: inputype ?? TextInputType.text,
         decoration: InputDecoration(

@@ -11,21 +11,14 @@ import 'package:http/http.dart' as http;
 import '../../../home/home.dart';
 import '../../../profile/views/profile_screen.dart';
 
-class SignInController extends GetxController{
-
+class SignInController extends GetxController {
   // Variables
   final TextEditingController mobileController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-
-
-
-
-
   // Login Function
 
-  loginApi( context) async {
-
+  loginApi(context) async {
     try {
       var url = "${API.fincaURL}/${API.routeURL}/user/login";
       var data = {
@@ -34,11 +27,12 @@ class SignInController extends GetxController{
       };
       var body = json.encode(data);
       var urlParse = Uri.parse(url);
-      var response = await http.post(urlParse,
-          body: body, headers: {"Content-Type": "application/json",'x-API-Key':"${API.APIKey}"});
+      var response = await http.post(urlParse, body: body, headers: {
+        "Content-Type": "application/json",
+        'x-API-Key': "${API.APIKey}"
+      });
 
-
-      if(response.statusCode == 200){
+      if (response.statusCode == 200) {
         var data2 = jsonDecode(response.body);
 
         Get.to(() => Profile_Screen());
@@ -49,25 +43,11 @@ class SignInController extends GetxController{
         debugPrint(data2.toString());
         print(data2["token"]);
         Get.snackbar("Token", data2["token"].toString());
-
-      }
-      else{
+      } else {
         Get.snackbar("Error", "Not valid user");
       }
-
-
-
-
-
-
     } catch (e) {
       Get.snackbar("Error", "Some thing went wrong");
-
     }
-
-
   }
-
-
-
 }
