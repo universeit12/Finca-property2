@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:universe_it_project/presentation/modules/all%20property/view/all_property_screen.dart';
 import '../../../../utils/app_color.dart';
 import '../../../../widgets/custom_text.dart';
@@ -15,16 +16,24 @@ class FavoriteScreen extends StatelessWidget {
     final w = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'Favorite',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
         ),
+        centerTitle: true,
         titleSpacing: 0,
         actions: [
           TextButton(
               onPressed: () {
                 Get.to(() => AllPropertyScreen());
               },
-              child: Text("Add"))
+              child: Text(
+                "Add",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
+                    fontSize: 14.0),
+              ))
         ],
       ),
       body: Obx(() {
@@ -32,83 +41,90 @@ class FavoriteScreen extends StatelessWidget {
           itemCount: controller.favoriteItems.length,
           itemBuilder: (context, index) {
             final item = controller.favoriteItems[index];
-            return InkWell(
-              onTap: () {
-                Get.to(() =>
-                    AllPropertyDetails(data: controller.favoriteItems[index]));
-              },
-              child: Container(
-                height: 125,
-                clipBehavior: Clip.antiAlias,
-                margin:
-                    const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
-                decoration: BoxDecoration(
-                  color: AppColor.white,
-                  borderRadius: BorderRadius.circular(6.0),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black12,
-                      spreadRadius: 1.0,
-                      blurRadius: 8.0,
-                    )
-                  ],
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image.asset(
-                      item["img"],
-                      width: w / 3.5,
-                      fit: BoxFit.cover,
-                      height: 125,
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            CustomText(
-                              text: item["title"],
-                              color: Colors.black,
-                              maxline: 2,
-                              fontsize: 14.0,
-                            ),
-                            CustomText(
-                              text: item["property_name"],
-                              color: Colors.black38,
-                              fontsize: 12.0,
-                            ),
-                            CustomText(
-                              text: item["location"],
-                              color: Colors.black38,
-                              fontsize: 12.0,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const CustomText(
-                                  text: "more..",
-                                  color: Colors.blue,
-                                  fontsize: 14.0,
-                                ),
-                                InkWell(
-                                  child: const Icon(Icons.delete),
-                                  onTap: () {
-                                    controller.toggleFavorite(item);
-                                  },
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+            if (item.isNotEmpty) {
+
+               InkWell(
+                onTap: () {
+                  Get.to(() =>
+                      AllPropertyDetails(data: controller.favoriteItems[index]));
+                },
+                child: Container(
+                  height: 125,
+                  clipBehavior: Clip.antiAlias,
+                  margin:
+                  const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
+                  decoration: BoxDecoration(
+                    color: AppColor.white,
+                    borderRadius: BorderRadius.circular(6.0),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black12,
+                        spreadRadius: 1.0,
+                        blurRadius: 8.0,
+                      )
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Image.asset(
+                        item["img"],
+                        width: w / 3.5,
+                        fit: BoxFit.cover,
+                        height: 125,
                       ),
-                    )
-                  ],
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              CustomText(
+                                text: item["title"],
+                                color: Colors.black,
+                                maxline: 2,
+                                fontsize: 14.0,
+                              ),
+                              CustomText(
+                                text: item["property_name"],
+                                color: Colors.black38,
+                                fontsize: 12.0,
+                              ),
+                              CustomText(
+                                text: item["location"],
+                                color: Colors.black38,
+                                fontsize: 12.0,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const CustomText(
+                                    text: "more..",
+                                    color: Colors.blue,
+                                    fontsize: 14.0,
+                                  ),
+                                  InkWell(
+                                    child: Icon(
+                                      Iconsax.heart_remove5,
+                                      color: Colors.red,
+                                    ),
+                                    onTap: () {
+                                      controller.toggleFavorite(item);
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            );
+              );
+            }
+            return Center(child: Text("No Faverite Item"));
           },
         );
       }),
