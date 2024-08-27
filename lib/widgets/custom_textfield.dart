@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 
 class Textfield1 extends StatelessWidget {
   const Textfield1(
@@ -9,7 +11,7 @@ class Textfield1 extends StatelessWidget {
       this.obscuretext,
       this.onchanged,
       this.inputype,
-      this.maxline});
+      this.maxline, this.controller});
 
   final hinttext;
   final IconData? suffixicon;
@@ -18,46 +20,54 @@ class Textfield1 extends StatelessWidget {
   final onchanged;
   final inputype;
   final maxline;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return Container(
+
       padding: const EdgeInsets.symmetric(
         horizontal: 5,
       ),
       margin: const EdgeInsets.only(bottom: 5.0),
       child: TextFormField(
+        controller: controller,
         maxLines: maxline,
         onChanged: onchanged,
         validator: validation,
         obscureText: obscuretext ?? false,
         keyboardType: inputype ?? TextInputType.text,
         decoration: InputDecoration(
-          label: hinttext,
+          labelText: hinttext,
           suffixIcon: suffixicon != null ? Icon(suffixicon) : null,
           prefixIconColor: Colors.white,
           hintStyle: const TextStyle(color: Colors.blueGrey, fontSize: 14),
           filled: false,
           fillColor: Colors.white,
           //enable-->
-          enabledBorder: const OutlineInputBorder(
+          enabledBorder:  OutlineInputBorder(
             borderSide: BorderSide(
               color: Colors.black26,
             ),
+            borderRadius:BorderRadius.circular(10),
           ),
 
           //focus-->
-          focusedBorder: const OutlineInputBorder(
+          focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.blueAccent, width: 2),
+            borderRadius:BorderRadius.circular(10),
           ),
 
-          errorBorder: const OutlineInputBorder(
+          errorBorder:  OutlineInputBorder(
             borderSide: BorderSide(color: Colors.red, width: 2),
+            borderRadius:BorderRadius.circular(10),
           ),
-          disabledBorder: const OutlineInputBorder(
+          disabledBorder:  OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black26, width: 2),
+            borderRadius:BorderRadius.circular(10),
           ),
-          focusedErrorBorder: const OutlineInputBorder(
+          focusedErrorBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black26, width: 2),
+            borderRadius:BorderRadius.circular(10),
           ),
         ),
       ),

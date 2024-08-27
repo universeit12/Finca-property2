@@ -18,7 +18,7 @@ class SignupController extends GetxController {
   final passController = TextEditingController();
   final confirmPassController = TextEditingController();
 
-  final api_key ="finca12jh%\$ds(\$utftcyPr0Pe4T1Ei1sE3";
+
    var selectedOption = 'User'.obs;
 
   void setSelectedOption(String option) {

@@ -3,9 +3,12 @@ import 'package:get/get.dart';
 import 'package:universe_it_project/utils/app_color.dart';
 
 class Backappbar extends StatelessWidget implements PreferredSizeWidget {
-  const Backappbar({super.key, this.title, this.actions});
-  final title;
+
+  final  title;
   final actions;
+  final double? fontSize;
+  Backappbar({this.title,this.actions,this.fontSize=16.0});
+
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class Backappbar extends StatelessWidget implements PreferredSizeWidget {
       titleSpacing: 0,
       title: Text(
         title,
-        style: const TextStyle(fontSize: 16.0, color: AppColor.black_),
+        style: TextStyle(fontSize: fontSize, color: AppColor.black_),
       ),
       actions: actions ?? [],
     );
