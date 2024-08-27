@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:universe_it_project/presentation/modules/profile/controller/profile_controller.dart';
-import 'package:universe_it_project/presentation/modules/profile/views/profile_screen.dart';
 import 'package:universe_it_project/widgets/back_app_bar.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
-
 import 'package:universe_it_project/widgets/custom_textfield.dart';
-
 import '../../add property/widgets/custom_text_icon.dart';
 
 class EditProfile extends StatelessWidget {

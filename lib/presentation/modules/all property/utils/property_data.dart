@@ -2,7 +2,7 @@ final List<Map<String, dynamic>> propertyData = [
   {
     "id": "1",
     'img': "assets/images/flat.jpg",
-    'title': "16000 sqrt let at Gulsan-116000 sqrt let at Gulsan-1",
+    'title': "16000 sqrt let at Gulsan -116000 sqrt let at Gulsan-1",
     'location': "Aftabnogor, Badda, Dhaka",
     'city': "Badda",
     'bedroom': "3 bedroom",

@@ -2,18 +2,23 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton(
-      {super.key, this.text, this.background, this.ontap, this.fontcolor});
+      {super.key,
+      this.text,
+      this.background,
+      this.ontap,
+      this.fontcolor,
+      this.width});
   final String? text;
   final background;
   final ontap;
   final fontcolor;
+  final width;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: ontap,
       child: Container(
-        width: double.infinity,
         alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(vertical: 12.0),
         margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
