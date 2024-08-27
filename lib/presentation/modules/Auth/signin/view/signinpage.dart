@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:universe_it_project/presentation/modules/Auth/signin/controller/signin%20_controller.dart';
+import 'package:universe_it_project/presentation/modules/home/home.dart';
 import 'package:universe_it_project/utils/app_string.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
@@ -10,13 +12,12 @@ class Signinpage extends StatelessWidget {
   Signinpage({
     super.key,
   });
-  final TextEditingController messagecontroller = TextEditingController();
-  final TextEditingController emailcontroller = TextEditingController();
-  final TextEditingController namecontroller = TextEditingController();
+
   final emailformkey = GlobalKey<FormState>();
   final formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignInController());
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -51,31 +52,31 @@ class Signinpage extends StatelessWidget {
                   ),
                   const SizedBox(height: 20.0),
                   Textfield1(
-                    hinttext: Text('Phone Number'),
+                    controller: controller.mobileController,
+                    hinttext: 'Phone Number',
                     suffixicon: Icons.phone,
                     validation: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter an email address';
+                        return 'Please enter phone number';
                       }
-                      final emailRegExp = RegExp(r'^[^@]+@[^@]+\.[^@]+$');
-                      if (!emailRegExp.hasMatch(value)) {
-                        return 'Please enter a valid email address';
+
+                      if (value.length == 10) {
+                        return 'Please enter 11 digit of number';
                       }
                       return null;
                     },
                   ),
                   const SizedBox(height: 20.0),
                   Textfield1(
+                    controller: controller.passwordController,
                     suffixicon: Icons.remove_red_eye_outlined,
-                    hinttext: Text('Password'),
-                    inputype: TextInputType.phone,
+                    hinttext: 'Password',
+                    inputype: TextInputType.name,
                     validation: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter a password';
                       }
-                      if (value.length < 6) {
-                        return 'Password must be at least 6 characters long';
-                      }
+
                       return null;
                     },
                   ),
@@ -96,12 +97,10 @@ class Signinpage extends StatelessWidget {
                     text: "LOG IN",
                     ontap: () {
                       if (formkey.currentState!.validate()) {
-                        Fluttertoast.showToast(
-                          msg: "Sign in Done",
-                        );
-                        messagecontroller.clear();
-                        emailcontroller.clear();
-                        namecontroller.clear();
+                        controller.loginApi(context);
+
+
+
                       }
                     },
                   ),
