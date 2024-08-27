@@ -34,6 +34,10 @@ class SignupScreen extends StatelessWidget {
                     fontsize: 25.0,
                   ),
                   CustomText(
+                    text: 'Register Now',
+                    fontsize: 25.0,
+                  ),
+                  CustomText(
                     text: AppString.signupWelcome,
                     color: Colors.teal,
                     fontsize: 14.0,
