@@ -52,7 +52,9 @@ class Signinpage extends StatelessWidget {
                   ),
                   const SizedBox(height: 20.0),
                   Textfield1(
+                    inputype: TextInputType.number,
                     controller: controller.mobileController,
+
                     hinttext: 'Phone Number',
                     suffixicon: Icons.phone,
                     validation: (value) {

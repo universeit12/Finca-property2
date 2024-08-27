@@ -14,7 +14,7 @@ class CompanySignup extends StatelessWidget {
     return Column(
       children: [
         Textfield1(
-          hinttext: Text("Company Name"),
+          hinttext: "Company Name",
           suffixicon: Iconsax.house,
           validation: (value) {
             if (value == null || value.isEmpty) {
@@ -25,7 +25,7 @@ class CompanySignup extends StatelessWidget {
         ),
         const SizedBox(height: 20.0),
         Textfield1(
-          hinttext: Text("Client Name"),
+          hinttext: "Client Name",
           suffixicon: Icons.person_outline_rounded,
           validation: (value) {
             if (value == null || value.isEmpty) {
@@ -36,7 +36,7 @@ class CompanySignup extends StatelessWidget {
         ),
         const SizedBox(height: 20.0),
         Textfield1(
-          hinttext: Text("Mobile"),
+          hinttext: "Mobile",
           suffixicon: Iconsax.call,
           validation: (value) {
             if (value == null || value.isEmpty) {
@@ -51,7 +51,7 @@ class CompanySignup extends StatelessWidget {
         const SizedBox(height: 20.0),
         //email
         Textfield1(
-          hinttext: Text("Email"),
+          hinttext: "Email",
           suffixicon: Icons.email_outlined,
           validation: (value) {
             if (value == null || value.isEmpty) {
@@ -67,7 +67,7 @@ class CompanySignup extends StatelessWidget {
         const SizedBox(height: 20.0),
         //password
         Textfield1(
-          hinttext: Text("Destination"),
+          hinttext: "Destination",
           suffixicon: Icons.work_outline,
           validation: (value) {
             if (value == null || value.isEmpty) {
@@ -79,7 +79,7 @@ class CompanySignup extends StatelessWidget {
         ),
         const SizedBox(height: 20.0),
         Textfield1(
-          hinttext: Text("Mobile 2"),
+          hinttext: "Mobile 2",
           suffixicon: Iconsax.call,
           validation: (value) {
             if (value == null || value.isEmpty) {
@@ -93,7 +93,7 @@ class CompanySignup extends StatelessWidget {
         ),
         const SizedBox(height: 20.0),
         Textfield1(
-          hinttext: Text("Office Address"),
+          hinttext: "Office Address",
           suffixicon: Iconsax.home_wifi,
           maxline: 3,
           validation: (value) {
@@ -106,7 +106,7 @@ class CompanySignup extends StatelessWidget {
         const SizedBox(height: 20.0),
         //password
         Textfield1(
-          hinttext: Text("Password"),
+          hinttext: "Password",
           suffixicon: Icons.remove_red_eye_outlined,
           validation: (value) {
             if (value == null || value.isEmpty) {
@@ -121,7 +121,7 @@ class CompanySignup extends StatelessWidget {
         const SizedBox(height: 20.0),
         //confirm password
         const Textfield1(
-          hinttext: Text("Confirm Password"),
+          hinttext: "Confirm Password",
           suffixicon: Icons.remove_red_eye_outlined,
         ),
         const SizedBox(height: 20.0),

@@ -33,7 +33,7 @@ class ForgetPass extends StatelessWidget {
               ),
               const SizedBox(height: 20.0),
               Textfield1(
-                hinttext: Text("email"),
+                hinttext:"email",
                 suffixicon: Icons.email_outlined,
                 validation: (value) {
                   if (value == null || value.isEmpty) {
@@ -48,7 +48,7 @@ class ForgetPass extends StatelessWidget {
               ),
               const Spacer(),
               CustomButton(
-                text: "CREATE ACCOUNT",
+                text: "Submit",
                 ontap: () {
                   if (emailcontroller.text.isNotEmpty ||
                       formkey.currentState!.validate()) {
