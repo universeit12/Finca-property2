@@ -6,8 +6,9 @@ class Backappbar extends StatelessWidget implements PreferredSizeWidget {
 
   final  title;
   final actions;
+  final bgcolor;
   final double? fontSize;
-  Backappbar({this.title,this.actions,this.fontSize=16.0});
+  Backappbar({this.title,this.actions,this.fontSize=16.0, this.bgcolor});
 
 
   @override
@@ -22,7 +23,7 @@ class Backappbar extends StatelessWidget implements PreferredSizeWidget {
             Icons.arrow_back,
             color: AppColor.black_,
           )),
-      backgroundColor: AppColor.white2,
+      backgroundColor:bgcolor?? AppColor.white2,
       titleSpacing: 0,
       title: Text(
         title,
