@@ -42,6 +42,7 @@ class SignupScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   SignupSelectOption(),
+                  SizedBox(height: 10),
                   if (controller.selectedOption.value == 'User')
                     UserRegistrationForm()
                   else
