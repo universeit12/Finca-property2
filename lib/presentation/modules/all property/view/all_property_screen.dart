@@ -61,7 +61,7 @@ class AllPropertyScreen extends StatelessWidget {
                         },
                         child: Container(
                           key: ValueKey(controller.foundItem[index]["Id"]),
-                          height: 140,
+                          height: 120,
                           clipBehavior: Clip.antiAlias,
                           margin: const EdgeInsets.only(left: 10.0, top: 10.0),
                           decoration: BoxDecoration(
@@ -79,11 +79,31 @@ class AllPropertyScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               //Property image
-                              Image.asset(
-                                controller.foundItem[index]["img"],
-                                width: w / 3.5,
-                                fit: BoxFit.cover,
-                                height: 140,
+                              Stack(
+                                children: [
+                                  Image.asset(
+                                    controller.foundItem[index]["img"],
+                                    width: w / 3.5,
+                                    fit: BoxFit.cover,
+                                    height: 140,
+                                  ),
+                                  Obx(() {
+                                    bool isFavorite = favoriteController
+                                        .isFavorite(item['id']);
+                                    return IconButton(
+                                      onPressed: () {
+                                        favoriteController.toggleFavorite(item);
+                                      },
+                                      icon: Icon(
+                                        isFavorite
+                                            ? Icons.favorite
+                                            : Icons.favorite_border,
+                                        color: Colors.red,
+                                        size: 35.0,
+                                      ),
+                                    );
+                                  }),
+                                ],
                               ),
 
                               //Property Info
@@ -96,57 +116,28 @@ class AllPropertyScreen extends StatelessWidget {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
-                                      //Property Title
                                       CustomText(
-                                        text: controller.foundItem[index]
-                                            ["title"],
-                                        color: Colors.black,
+                                        text:
+                                            "16000 sqrt let at Gulsan -116000 sqrt let at Gulsan-1",
+                                        color: Colors.teal,
                                         maxline: 2,
                                         fontsize: 14.0,
                                       ),
-
-                                      //Property name
                                       CustomText(
-                                        text: controller.foundItem[index]
-                                            ["property_name"],
-                                        color: Colors.black38,
-                                        fontsize: 12.0,
+                                        text: "Gulsan 45, Dhaka",
+                                        color: Colors.black,
+                                        fontsize: 14.0,
                                       ),
-
-                                      //Property Location
                                       CustomText(
-                                        text: controller.foundItem[index]
-                                            ["location"],
+                                        text: "Aug. 7, 2024",
                                         color: Colors.black38,
-                                        fontsize: 12.0,
+                                        fontsize: 1.0,
                                       ),
-
-                                      //add favorite
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          const CustomText(
-                                            text: "more..",
-                                            color: Colors.blue,
-                                            fontsize: 14.0,
-                                          ),
-                                          Obx(() {
-                                            bool isFavorite = favoriteController
-                                                .isFavorite(item['id']);
-                                            return IconButton(
-                                              onPressed: () {
-                                                favoriteController
-                                                    .toggleFavorite(item);
-                                              },
-                                              icon: Icon(
-                                                isFavorite
-                                                    ? Icons.favorite
-                                                    : Icons.favorite_border,
-                                              ),
-                                            );
-                                          }),
-                                        ],
+                                      SizedBox(height: 5.0),
+                                      const CustomText(
+                                        text: "Tk- 545454",
+                                        color: Colors.blue,
+                                        fontsize: 16.0,
                                       ),
                                     ],
                                   ),

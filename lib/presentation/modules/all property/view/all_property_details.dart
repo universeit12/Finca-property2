@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
+import 'package:universe_it_project/presentation/modules/all%20property/contoller/all_property_controller.dart';
 import 'package:universe_it_project/presentation/modules/all%20property/widgets/contact_button.dart';
 import 'package:universe_it_project/presentation/modules/all%20property/widgets/property_semmary.dart';
+import 'package:universe_it_project/presentation/modules/booking%20now/views/booking_screen.dart';
 import 'package:universe_it_project/utils/app_color.dart';
 import 'package:universe_it_project/widgets/back_app_bar.dart';
-import 'package:universe_it_project/widgets/custom_button.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
 
 class AllPropertyDetails extends StatelessWidget {
   final data;
-  const AllPropertyDetails({super.key, this.data});
+  AllPropertyDetails({super.key, this.data});
+  final controller = Get.put(AllPropertyController());
+  final _pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +23,65 @@ class AllPropertyDetails extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(
-              data["img"],
-              height: 160,
-              width: double.infinity,
-              fit: BoxFit.cover,
+            Stack(
+              children: [
+                Container(
+                  height: 200, // Set the height to 2/3 of the screen
+                  child: Obx(() {
+                    return PageView.builder(
+                      controller: _pageController,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: controller.imageList.length,
+                      itemBuilder: (context, index) {
+                        return Image.asset(
+                          controller.imageList[index],
+                          fit: BoxFit.cover,
+                        );
+                      },
+                    );
+                  }),
+                ),
+                Positioned(
+                  right: 16,
+                  top: 80,
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.arrow_forward_ios,
+                      size: 30,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      if (_pageController.page!.toInt() <
+                          controller.imageList.length - 1) {
+                        _pageController.nextPage(
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      }
+                    },
+                  ),
+                ),
+                Positioned(
+                  left: 16,
+                  top: 80,
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.arrow_back_ios,
+                      size: 30,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      if (_pageController.page!.toInt() <
+                          controller.imageList.length - 1) {
+                        _pageController.previousPage(
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      }
+                    },
+                  ),
+                ),
+              ],
             ),
             Padding(
               padding:
@@ -101,17 +159,20 @@ class AllPropertyDetails extends StatelessWidget {
                   SizedBox(height: 30.0),
 
                   ///Contact Now
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       ContactButton(
                         text: "Call Now",
-                        ontap: () {},
+                        ontap: () {
+                          controller.makePhoneCall('01763551316');
+                        },
                       ),
                       ContactButton(
                         text: "Booking Now",
-                        ontap: () {},
+                        ontap: () {
+                          Get.to(()=>BookingScreen());
+                        },
                       ),
                     ],
                   )

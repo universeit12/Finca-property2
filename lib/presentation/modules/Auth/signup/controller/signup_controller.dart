@@ -6,10 +6,6 @@ import 'package:get/get.dart';
 import 'package:universe_it_project/api/api.dart';
 import 'package:http/http.dart' as http;
 import 'package:universe_it_project/presentation/modules/Auth/signin/view/signinpage.dart';
-import 'package:universe_it_project/presentation/modules/profile/views/profile_screen.dart';
-
-import '../../../home/home.dart';
-
 
 class SignupController extends GetxController {
   final mobileController = TextEditingController();
@@ -18,8 +14,7 @@ class SignupController extends GetxController {
   final passController = TextEditingController();
   final confirmPassController = TextEditingController();
 
-
-   var selectedOption = 'User'.obs;
+  var selectedOption = 'User'.obs;
 
   void setSelectedOption(String option) {
     selectedOption.value = option;
@@ -38,22 +33,17 @@ class SignupController extends GetxController {
       };
       var body = json.encode(data);
       var urlParse = Uri.parse(url);
-      var response = await http.post(urlParse,
-          body: body, headers: {"Content-Type": "application/json",'x-API-Key':"${API.APIKey}"});
-
+      var response = await http.post(urlParse, body: body, headers: {
+        "Content-Type": "application/json",
+        'x-API-Key': "${API.APIKey}"
+      });
 
       Get.to(() => Signinpage());
       Fluttertoast.showToast(
         msg: "Sign up Done",
       );
-
-
-
-
     } catch (e) {
       Get.snackbar("Error", "Some thing went wrong");
-
     }
   }
-
 }
