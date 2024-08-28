@@ -11,7 +11,7 @@ class AllPropertySlider extends StatelessWidget {
         width: double.infinity,
         clipBehavior: Clip.antiAlias,
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
-decoration: const BoxDecoration(),
+        decoration: const BoxDecoration(),
         child: AnotherCarousel(dotSize: 4, dotSpacing: 10, images: [
           for (int i = 1; i < 10; i++)
             Image.asset(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:universe_it_project/presentation/modules/Auth/signup/controller/signup_controller.dart';
 import 'package:universe_it_project/presentation/modules/Auth/signup/views/company_signup.dart';
@@ -9,7 +8,6 @@ import 'package:universe_it_project/widgets/back_app_bar.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
 import '../../../../../utils/app_string.dart';
 import '../../../../../widgets/custom_button.dart';
-import '../../../home/home.dart';
 
 class SignupScreen extends StatelessWidget {
   SignupScreen({super.key});
@@ -19,7 +17,9 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Backappbar(title: 'Register',fontSize: 18,),
+      appBar: Backappbar(
+        title: 'Register',
+      ),
       backgroundColor: Colors.white,
       body: Obx(() {
         return SingleChildScrollView(
@@ -33,6 +33,7 @@ class SignupScreen extends StatelessWidget {
                     text: 'Register Now',
                     fontsize: 25.0,
                   ),
+
                   CustomText(
                     text: AppString.signupWelcome,
                     color: Colors.teal,
@@ -53,10 +54,9 @@ class SignupScreen extends StatelessWidget {
                   CustomButton(
                     text: "REGISTER",
                     ontap: () {
-                      if(controller.selectedOption.value == "User"){
+                      if (controller.selectedOption.value == "User") {
                         if (formkey.currentState!.validate()) {
                           controller.customerRegisterApi(context);
-
 
                           controller.nameController.clear();
                           controller.emailController.clear();
@@ -64,9 +64,7 @@ class SignupScreen extends StatelessWidget {
                           controller.mobileController.clear();
                           controller.confirmPassController.clear();
                         }
-
                       }
-
                     },
                   ),
                   SizedBox(height: 30.0),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:universe_it_project/presentation/modules/all%20property/contoller/favorte_controller.dart';
 import 'package:universe_it_project/presentation/modules/all%20property/utils/property_data.dart';
 import 'package:universe_it_project/presentation/modules/all%20property/view/all_property_details.dart';
@@ -78,22 +79,23 @@ class AllPropertyHomepageCard extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            Obx(() {
-                              bool isFavorite =
-                                  favoriteController.isFavorite(item['id']);
-                              return IconButton(
-                                onPressed: () {
-                                  favoriteController.toggleFavorite(item);
-                                },
-                                icon: Icon(
-                                  isFavorite
-                                      ? Icons.favorite
-                                      : Icons.favorite_border,
-                                  color: Colors.red,
-                                  size: 30.0,
-                                ),
-                              );
-                            }),
+                            Positioned(
+                              right: 0,
+                              child: Obx(() {
+                                bool isFavorite =
+                                    favoriteController.isFavorite(item['id']);
+                                return IconButton(
+                                  onPressed: () {
+                                    favoriteController.toggleFavorite(item);
+                                  },
+                                  icon: Icon(
+                                    isFavorite ? Iconsax.heart5 : Iconsax.heart,
+                                    color: Colors.red,
+                                    size: 30.0,
+                                  ),
+                                );
+                              }),
+                            ),
                           ],
                         ),
                         Padding(
@@ -104,39 +106,26 @@ class AllPropertyHomepageCard extends StatelessWidget {
                               const SizedBox(height: 5.0),
                               CustomText(
                                 text: propertyData[index]["title"],
-                                color: Colors.black,
+                                color: Colors.teal,
                                 maxline: 2,
                                 fontsize: 14.0,
                               ),
                               CustomText(
-                                text: propertyData[index]["property_name"],
-                                color: Colors.black38,
-                                fontsize: 12.0,
+                                text: "Gulsan 45, Dhaka",
+                                color: Colors.black,
+                                fontsize: 14.0,
                               ),
                               CustomText(
-                                text: propertyData[index]["location"],
+                                text: "Aug. 7, 2024",
                                 color: Colors.black38,
-                                fontsize: 12.0,
+                                fontsize: 1.0,
                               ),
-                              const SizedBox(
-                                height: 10.0,
+                              SizedBox(height: 5.0),
+                              const CustomText(
+                                text: "Tk- 545454",
+                                color: Colors.blue,
+                                fontsize: 16.0,
                               ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CustomText(
-                                    text: propertyData[index]["for"],
-                                    color: Colors.blue,
-                                    fontsize: 14.0,
-                                  ),
-                                  const CustomText(
-                                    text: "more..",
-                                    color: Colors.blue,
-                                    fontsize: 14.0,
-                                  ),
-                                ],
-                              )
                             ],
                           ),
                         ),
