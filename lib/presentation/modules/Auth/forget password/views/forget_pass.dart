@@ -36,8 +36,12 @@ class ForgetPass extends StatelessWidget {
               ),
               const SizedBox(height: 20.0),
               Textfield1(
+
+                hinttext: "email",
+
                 controller: controller.emailController,
                 hinttext:"email",
+
                 suffixicon: Icons.email_outlined,
                 validation: (value) {
                   if (value == null || value.isEmpty) {

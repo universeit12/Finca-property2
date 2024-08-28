@@ -19,12 +19,9 @@ class CustomDrawer extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 30.0),
             child: Column(
               children: [
-                const Text(
-                  AppConfig.appName,
-                  style: TextStyle(
-                      color: AppColor.baseColor,
-                      fontSize: 22.0,
-                      fontWeight: FontWeight.bold),
+                Image.asset(
+                  AppConfig.appLogo,
+                  width: 100,
                 ),
                 const SizedBox(
                   height: 15.0,
@@ -62,7 +59,26 @@ class CustomDrawer extends StatelessWidget {
                     onTap: () {
                       Get.to(navItem[i]["screen"]);
                     },
-                  )
+                  ),
+                Divider(height: 15.0),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  child: RichText(
+                      text: TextSpan(children: [
+                    TextSpan(
+                        text: 'All right reserved by ',
+                        style: TextStyle(color: Colors.black)),
+                    TextSpan(
+                        text: '© Finca Properties \n',
+                        style: TextStyle(color: Colors.teal)),
+                    TextSpan(
+                        text: 'Design & Developed by ',
+                        style: TextStyle(color: Colors.black)),
+                    TextSpan(
+                        text: '© Universe Soft Tech',
+                        style: TextStyle(color: Colors.teal)),
+                  ])),
+                ),
               ],
             ),
           ),
@@ -71,12 +87,3 @@ class CustomDrawer extends StatelessWidget {
     );
   }
 }
-/*
-    CustomDrawerTile(
-                      text: navItem[i]["title"],
-                      icon: navItem[i]["icon"],
-                      onTap: () {
-                        Get.to(() => navItem[i]['screen']);
-                      })
-*
-* */

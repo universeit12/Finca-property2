@@ -1,42 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:universe_it_project/presentation/modules/contact/controller/contact_controller.dart';
-import 'package:universe_it_project/utils/app_color.dart';
-import 'package:universe_it_project/widgets/custom_button.dart';
-import 'package:universe_it_project/widgets/custom_text.dart';
-import '../../../../widgets/custom_textfield.dart';
+import 'package:universe_it_project/widgets/back_app_bar.dart';
 
-class ContactScreen extends StatelessWidget {
-  ContactScreen({super.key});
-  final controller = Get.put(ContactController());
+import '../../../../widgets/custom_button.dart';
+import '../../../../widgets/custom_textfield.dart';
+import '../controller/booking_controller.dart';
+
+class BookingScreen extends StatelessWidget {
+  BookingScreen({super.key});
+  final controller = Get.put(BookingController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Contact"),
-        titleSpacing: 0,
-        backgroundColor: AppColor.baseColor,
-      ),
-      body: SingleChildScrollView(
+      appBar: Backappbar(title: "Booking Now"),
+      body: Center(
+          child: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+          padding: EdgeInsets.symmetric(horizontal: 15),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CustomText(
-                text: "Get In Touch",
-                maxline: 5,
-                fontsize: 30.0,
+              Text(
+                'Booking Now',
+                style: TextStyle(color: Colors.black, fontSize: 22.0),
               ),
-              SizedBox(height: 10.0),
-              CustomText(
-                text:
-                    "If you have any questions about this Privacy Policy, please contact us at:\n",
-                maxline: 20,
-                fontsize: 15.0,
+              Text(
+                'You can provide information what type properties are your choice',
+                style: TextStyle(color: Colors.blue, fontSize: 15.0),
+                textAlign: TextAlign.center,
               ),
+              SizedBox(height: 15.0),
               Textfield1(
                 hintText: "Your Name",
                 controller: controller.nameController,
@@ -52,13 +47,6 @@ class ContactScreen extends StatelessWidget {
                 },
               ),
               Textfield1(
-                hintText: "Subject",
-                controller: controller.nameController,
-                onchanged: (value) {
-                  controller.subject.value = value;
-                },
-              ),
-              Textfield1(
                 hintText: "Your Phone",
                 controller: controller.nameController,
                 onchanged: (value) {
@@ -66,9 +54,17 @@ class ContactScreen extends StatelessWidget {
                 },
               ),
               Textfield1(
-                hintText: "Message",
+                hintText: "Property Name",
+                readonly: true,
                 controller: controller.nameController,
-                maxline: 3,
+                onchanged: (value) {
+                  controller.subject.value = value;
+                },
+              ),
+              Textfield1(
+                hintText: "Write A Short Description",
+                controller: controller.nameController,
+                maxline: 4,
                 onchanged: (value) {
                   controller.message.value = value;
                 },
@@ -83,7 +79,7 @@ class ContactScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
+      )),
     );
   }
 }

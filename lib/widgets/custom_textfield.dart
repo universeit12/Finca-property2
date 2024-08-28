@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
 
 class Textfield1 extends StatelessWidget {
   const Textfield1(
@@ -12,16 +10,20 @@ class Textfield1 extends StatelessWidget {
       this.onchanged,
       this.inputype,
       this.maxline,
-      this.controller});
+      this.hintText,
+      this.controller,
+      this.readonly});
 
   final hinttext;
   final IconData? suffixicon;
   final validation;
+  final hintText;
   final obscuretext;
   final onchanged;
   final inputype;
   final maxline;
   final controller;
+  final readonly;
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +36,12 @@ class Textfield1 extends StatelessWidget {
         maxLines: maxline,
         onChanged: onchanged,
         validator: validation,
+        readOnly: readonly ?? false,
         obscureText: obscuretext ?? false,
         keyboardType: inputype ?? TextInputType.text,
         decoration: InputDecoration(
           labelText: hinttext,
+          hintText: hintText,
           suffixIcon: suffixicon != null ? Icon(suffixicon) : null,
           prefixIconColor: Colors.white,
           hintStyle: const TextStyle(color: Colors.blueGrey, fontSize: 14),
