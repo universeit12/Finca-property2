@@ -1,8 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:universe_it_project/presentation/modules/Auth/forget%20password/views/reset_password.dart';
 import 'package:universe_it_project/presentation/modules/blogs/views/blogs_details.dart';
 
 import '../../../../../api/api.dart';
@@ -10,12 +13,15 @@ import 'package:http/http.dart' as http;
 
 import '../../../home/home.dart';
 import '../../../profile/views/profile_screen.dart';
+import '../view/signinpage.dart';
 
 class SignInController extends GetxController{
 
   // Variables
   final TextEditingController mobileController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  final tokenStorage = FlutterSecureStorage();
 
 
 
@@ -45,6 +51,7 @@ class SignInController extends GetxController{
         Fluttertoast.showToast(
           msg: "Sign in Done",
         );
+       await tokenStorage.write(key: "token", value: data2["token"]);
 
         debugPrint(data2.toString());
         print(data2["token"]);
@@ -66,6 +73,18 @@ class SignInController extends GetxController{
     }
 
 
+  }
+
+
+
+  // log out api
+  void logOut()async{
+    Get.snackbar("Token", tokenStorage.toString());
+
+    await tokenStorage.delete(key: "token");
+    Get.offAll(()=> Signinpage());
+
+    Get.snackbar("Token", tokenStorage.toString());
   }
 
 

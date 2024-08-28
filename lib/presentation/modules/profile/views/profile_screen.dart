@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:universe_it_project/presentation/modules/Auth/signin/controller/signin%20_controller.dart';
 import 'package:universe_it_project/presentation/modules/Auth/signin/view/signinpage.dart';
 import 'package:universe_it_project/presentation/modules/profile/controller/image_controller.dart';
+import 'package:universe_it_project/presentation/modules/profile/controller/profile_controller.dart';
 import 'package:universe_it_project/presentation/modules/profile/views/dashboard_screen.dart';
 import 'package:universe_it_project/presentation/modules/profile/views/edit_profile.dart';
 import 'package:universe_it_project/presentation/modules/profile/views/profile_property_list.dart';
@@ -18,6 +20,7 @@ class Profile_Screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignInController());
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(),
@@ -107,8 +110,9 @@ class Profile_Screen extends StatelessWidget {
               width: screenSize.width / 2,
               child: OutlinedButton(
                   onPressed: () {
-                    Fluttertoast.showToast(msg: 'Successfully logout');
-                    Get.offAll(() => Signinpage());
+                    controller.logOut();
+                    Get.snackbar("Successfully", "Log Out");
+
                   },
                   child: Text(
                     'Logout',
