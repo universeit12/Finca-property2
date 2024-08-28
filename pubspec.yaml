@@ -49,6 +49,10 @@ dependencies:
   floating_bottom_navigation_bar: ^1.5.2
   salomon_bottom_bar: ^3.3.2
   iconsax: ^0.0.8
+  get_storage: ^2.1.1
+
+  # For token store
+  flutter_secure_storage: ^9.2.2
 
 
 

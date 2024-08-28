@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
+import 'package:universe_it_project/presentation/modules/Auth/forget%20password/controller/forget_password_controller.dart';
+import 'package:universe_it_project/presentation/modules/Auth/signin/controller/signin%20_controller.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
 import '../../../../../widgets/custom_textfield.dart';
 
 class ForgetPass extends StatelessWidget {
   ForgetPass({super.key});
-  final TextEditingController emailcontroller = TextEditingController();
-  final formkey = GlobalKey<FormState>();
+
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ForgetPasswordController());
     return Scaffold(
       appBar: AppBar(
         elevation: 10,
@@ -18,7 +21,7 @@ class ForgetPass extends StatelessWidget {
         titleSpacing: 0.0,
       ),
       body: Form(
-        key: formkey,
+        key: controller.ForgotFormKey,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
           child: Column(
@@ -33,7 +36,12 @@ class ForgetPass extends StatelessWidget {
               ),
               const SizedBox(height: 20.0),
               Textfield1(
+
                 hinttext: "email",
+
+                controller: controller.emailController,
+                hinttext:"email",
+
                 suffixicon: Icons.email_outlined,
                 validation: (value) {
                   if (value == null || value.isEmpty) {
@@ -50,12 +58,11 @@ class ForgetPass extends StatelessWidget {
               CustomButton(
                 text: "Submit",
                 ontap: () {
-                  if (emailcontroller.text.isNotEmpty ||
-                      formkey.currentState!.validate()) {
-                    Fluttertoast.showToast(
-                      msg: "Send a Code",
-                    );
-                    emailcontroller.clear();
+                  if (controller.emailController.text.isNotEmpty ||
+                      controller.ForgotFormKey.currentState!.validate()) {
+                    controller.resetPassword();
+
+                    controller.emailController.clear();
                   }
                 },
               )
