@@ -30,49 +30,21 @@ class Profile_Screen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             //Profile image--->
-            Obx(() {
-              return imageController.imagePath.value.isNotEmpty
-                  ? Container(
-                      height: 100,
-                      width: 100,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        border: Border.all(
-                          color: Colors.blueAccent,
-                        ),
-                        shape: BoxShape.circle,
-                      ),
-                      child: Image.file(
-                        File(imageController.imagePath.value),
-                        fit: BoxFit.cover,
-                      ),
-                    )
-                  : Container(
-                      height: 120,
-                      width: 120,
-                      clipBehavior: Clip.antiAlias,
-                      alignment: Alignment.bottomRight,
-                      decoration: BoxDecoration(
-                          color: Colors.blue,
-                          border: Border.all(color: Colors.blueAccent),
-                          shape: BoxShape.circle,
-                          image: const DecorationImage(
-                              image: AssetImage("assets/images/p.png"),
-                              fit: BoxFit.cover)),
-                      child: IconButton(
-                          onPressed: () {
-                            imageController.pickImage();
-                          },
-                          icon: Icon(
-                            Iconsax.camera,
-                            color: Colors.red,
-                          )),
-                    );
-            }),
+            Container(
+              height: 120,
+              width: 120,
+              clipBehavior: Clip.antiAlias,
+              alignment: Alignment.bottomRight,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.blueAccent, width: 1),
+                  shape: BoxShape.circle,
+                  image: const DecorationImage(
+                      image: AssetImage("assets/images/p.png"),
+                      fit: BoxFit.cover)),
+            ),
             const SizedBox(height: 20.0),
             const Text(
-              "Mr. Abdul Hakim",
+              "Waliullah Ripon",
               style: TextStyle(
                 fontSize: 18.0,
               ),
@@ -112,7 +84,6 @@ class Profile_Screen extends StatelessWidget {
                   onPressed: () {
                     controller.logOut();
                     Get.snackbar("Successfully", "Log Out");
-
                   },
                   child: Text(
                     'Logout',

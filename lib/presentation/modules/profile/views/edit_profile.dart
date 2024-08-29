@@ -47,7 +47,7 @@ class EditProfile extends StatelessWidget {
                 Textfield1(
                   controller: controller.present_addressController,
                 ),
-                SizedBox(height: 30.0),
+                SizedBox(height: 100.0),
               ],
             ),
           ),
