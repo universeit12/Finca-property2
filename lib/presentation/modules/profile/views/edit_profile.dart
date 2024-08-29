@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:universe_it_project/presentation/modules/profile/controller/profile_controller.dart';
 import 'package:universe_it_project/widgets/back_app_bar.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
 import 'package:universe_it_project/widgets/custom_textfield.dart';
 import '../../add property/widgets/custom_text_icon.dart';
+import '../controller/profile_controller.dart';
 
 class EditProfile extends StatelessWidget {
   EditProfile({super.key});
-  final controller = Get.put(ProileController());
+  final controller = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,7 @@ class EditProfile extends StatelessWidget {
         height: 60,
         child: CustomButton(
           text: 'SUBMIT',
-          ontap: (){
+          ontap: () {
             Fluttertoast.showToast(msg: 'Profile Updated');
           },
         ),

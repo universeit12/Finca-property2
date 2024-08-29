@@ -40,7 +40,7 @@ class ForgetPass extends StatelessWidget {
                 hinttext: "email",
 
                 controller: controller.emailController,
-                hinttext:"email",
+                hintText:"email",
 
                 suffixicon: Icons.email_outlined,
                 validation: (value) {
