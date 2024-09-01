@@ -7,7 +7,7 @@ import 'package:universe_it_project/presentation/modules/profile/views/profile_s
 class BottomNavController extends GetxController {
   var selectedIndex = 0.obs;
 
-  final pages = [Home(), BlogItem(), FavoriteScreen(), Profile_Screen()];
+  final pages = [Home(), BlogItem(), FavoriteScreen(), Profile_Screen ()];
 
   // Method to change the selected index
   void changeIndex(int index) {

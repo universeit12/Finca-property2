@@ -10,11 +10,12 @@ import '../controller/search_dropdown_controller.dart';
 
 class SearchPage extends StatelessWidget {
   SearchPage({super.key});
+
   final _controller = Get.put(SearchDropdownController());
   final TextEditingController locationcontroller = TextEditingController();
   final locationController = SingleValueDropDownController();
-
   final locationformkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,24 +23,24 @@ class SearchPage extends StatelessWidget {
         title: const Text('Search'),
         backgroundColor: Colors.teal,
         titleSpacing: 0,
+        elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              //Property type
-              const CustomTextIcon(
-                text: "Search Keyword",
-              ),
+              // Search Keyword
+              const CustomTextIcon(text: "Search Keyword"),
               const ReusableTextField(
-                hintText: 'Search text',
-                maxLines: 2,
+                hintText: 'Enter your search keyword',
+                maxLines: 1,
               ),
-              //Property type
-              const CustomTextIcon(
-                text: "Property Caterogy",
-              ),
+              const SizedBox(height: 15.0),
+
+              // Property Category
+              const CustomTextIcon(text: "Property Category"),
               DropdownWidget(
                 dropDownList: const [
                   DropDownValueModel(
@@ -60,16 +61,16 @@ class SearchPage extends StatelessWidget {
                   DropDownValueModel(
                       name: 'Agriculture/Firm', value: "Agriculture/Firm"),
                 ],
-                hintText: "Select an item",
+                hintText: "Select a category",
                 enablesearch: false,
                 onchanged: (val) {
                   _controller.statusSelectedValue.value = val.value;
                 },
               ),
-              //Constructions status
-              const CustomTextIcon(
-                text: "Construction Status",
-              ),
+              const SizedBox(height: 15.0),
+
+              // Construction Status
+              const CustomTextIcon(text: "Construction Status"),
               DropdownWidget(
                 dropDownList: const [
                   DropDownValueModel(name: 'Any', value: "Any"),
@@ -77,20 +78,20 @@ class SearchPage extends StatelessWidget {
                   DropDownValueModel(
                       name: 'Under Construction', value: "Under Construction"),
                   DropDownValueModel(name: 'Used', value: "Used"),
-                  DropDownValueModel(name: 'Upcomming', value: "Upcomming"),
+                  DropDownValueModel(name: 'Upcoming', value: "Upcoming"),
                   DropDownValueModel(
                       name: 'Almost Ready', value: "Almost Ready"),
                 ],
-                hintText: "Select an item",
+                hintText: "Select a status",
                 enablesearch: false,
                 onchanged: (val) {
                   _controller.statusSelectedValue.value = val.value;
                 },
               ),
-              const CustomTextIcon(
-                text: "Location",
-              ),
+              const SizedBox(height: 15.0),
 
+              // Location
+              const CustomTextIcon(text: "Location"),
               Form(
                 key: locationformkey,
                 child: DropdownWidget(
@@ -106,29 +107,24 @@ class SearchPage extends StatelessWidget {
                     DropDownValueModel(name: 'Jashore', value: "Jashore"),
                     DropDownValueModel(name: 'Tangail', value: "Tangail"),
                   ],
-                  hintText: "Select an item",
+                  hintText: "Select a location",
                   onchanged: (location) {
                     _controller.locationSelectedValue.value = location.value;
                   },
                   controller: locationController,
                 ),
               ),
-              const SizedBox(
-                height: 25.0,
-              ),
+              const SizedBox(height: 30.0),
+
+              // Search Button
               CustomButton(
                 text: "Search Now",
                 ontap: () {
                   if (locationformkey.currentState!.validate()) {
                     Get.to(() => SearchResult());
-
-                    // Process data
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Processing Data')),
-                    );
                   }
                 },
-              )
+              ),
             ],
           ),
         ),

@@ -12,11 +12,12 @@ import '../widgets/textfield_custom.dart';
 
 class Addscreen2 extends StatelessWidget {
   final PageController pageController;
-
   Addscreen2({super.key, required this.pageController});
+
   final controller = Get.put(Addpage2Controller());
   final addcontroller = Get.put(AddPropertyController());
   final formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -28,18 +29,27 @@ class Addscreen2 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               IconButton(
-                  onPressed: () {
-                    pageController.previousPage(
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeInOut);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios)),
-              const CustomText(text: "Property additional information"),
-              const CustomTextIcon(text: "Total number of floor"),
+                onPressed: () {
+                  pageController.previousPage(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                  );
+                },
+                icon: const Icon(Icons.arrow_back_ios),
+              ),
+              const SizedBox(height: 10.0),
+              const CustomText(
+                text: "Property Additional Information",
+                fontsize: 20.0,
+                fontweight: FontWeight.bold,
+              ),
+              const Divider(),
+              const CustomTextIcon(text: "Total Number of Floors"),
+              const SizedBox(height: 5.0),
 
-              //Number of floor
+              // Number of Floors Dropdown
               DropdownWidget(
-                dropDownList: [
+                dropDownList: const [
                   DropDownValueModel(name: '1', value: "1"),
                   DropDownValueModel(name: '2', value: "2"),
                   DropDownValueModel(name: '3', value: "3"),
@@ -56,20 +66,21 @@ class Addscreen2 extends StatelessWidget {
                   addcontroller.floorNumber.value = value.value;
                 },
               ),
+              const SizedBox(height: 15.0),
 
-              //Title
+              // Title Text Field
               const CustomTextIcon(text: "Title"),
               ReusableTextField(
-                hintText:
-                    '212 sqft, 1 Bed Almost Ready Apartment/Flats for Sale at Karatia',
+                hintText: '212 sqft, 1 Bed Almost Ready Apartment/Flats for Sale at Karatia',
                 maxLines: 2,
                 controller: controller.titlecontroller,
                 onchanged: (value) {
                   addcontroller.title.value = value;
                 },
               ),
+              const SizedBox(height: 15.0),
 
-              //Description
+              // Description Text Field
               const CustomTextIcon(text: "Description"),
               ReusableTextField(
                 hintText: 'Enter Description',
@@ -79,28 +90,32 @@ class Addscreen2 extends StatelessWidget {
                   addcontroller.Description.value = value;
                 },
               ),
+              const SizedBox(height: 15.0),
 
-              //Mobile
+              // Phone Number Text Field
               const CustomTextIcon(text: "Phone Number"),
               ReusableTextField(
                 hintText: '+8801*********',
                 keyboardtype: TextInputType.phone,
-                suffixIcon: Icon(Icons.arrow_drop_down),
+                suffixIcon: const Icon(Icons.arrow_drop_down),
                 controller: controller.mobilecontroller,
                 onchanged: (value) {
                   addcontroller.mobile.value = value;
                 },
               ),
-              const SizedBox(height: 10.0),
+              const SizedBox(height: 20.0),
+
+              // Post Button
               CustomButton(
                 text: "Post",
                 ontap: () {
                   if (formkey.currentState!.validate()) {
-                    Fluttertoast.showToast(msg: addcontroller.title.toString());
-
                     Fluttertoast.showToast(
-                        msg: addcontroller.addressName.toString() +
-                            addcontroller.propertyName.toString());
+                      msg: "Property: ${addcontroller.title.value}\n"
+                          "Address: ${addcontroller.addressName.value}, ${addcontroller.propertyName.value}",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
+                    );
                   }
                 },
               ),

@@ -7,7 +7,7 @@ import 'package:universe_it_project/presentation/modules/profile/views/profile_s
 import '../presentation/modules/contact/views/contact_screen.dart';
 
 final List<Map<String, dynamic>> navItem = [
-  {'icon': Icons.person, 'title': 'Profile', 'screen': Profile_Screen()},
+  {'icon': Icons.person, 'title': 'Profile', 'screen': Profile_Screen ()},
   {
     'icon': Icons.add_home_outlined,
     'title': 'All Property',

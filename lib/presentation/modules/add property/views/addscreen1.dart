@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
 import 'package:get/get.dart';
 import 'package:dropdown_textfield/dropdown_textfield.dart';
 import '../../../../widgets/custom_button.dart';
@@ -33,13 +32,14 @@ class Addscreen1 extends StatelessWidget {
                 Row(
                   children: [
                     IconButton(
-                        onPressed: () {
-                          Get.back();
-                        },
-                        icon: const Icon(Icons.arrow_back_ios)),
+                      onPressed: () => Get.back(),
+                      icon: const Icon(Icons.arrow_back_ios),
+                    ),
                     const CustomText(
                       text: "Add Property",
-                    )
+                      fontsize: 20.0,
+                      fontweight: FontWeight.bold,
+                    ),
                   ],
                 ),
                 const Divider(),
@@ -51,29 +51,21 @@ class Addscreen1 extends StatelessWidget {
                     CustomText(text: "  Sell"),
                   ],
                 ),
+                const SizedBox(height: 15.0),
 
-                //PROPERTY TYPE
+                // PROPERTY TYPE
                 const CustomTextIcon(text: "Property type"),
                 DropdownWidget(
                   dropDownList: const [
-                    DropDownValueModel(
-                        name: 'Apartment/Flats', value: "Apartment/Flats"),
-                    DropDownValueModel(
-                        name: 'Independent House', value: "Independent House"),
-                    DropDownValueModel(
-                        name: 'Duplex/Home', value: "Duplex/Home"),
-                    DropDownValueModel(
-                        name: 'Shop/Restaurant', value: "Shop/Restaurant"),
-                    DropDownValueModel(
-                        name: 'Office Space', value: "Office Space"),
-                    DropDownValueModel(
-                        name: 'Industrial Space', value: "Industrial Space"),
-                    DropDownValueModel(
-                        name: 'Residential Plot', value: "Residential Plot"),
-                    DropDownValueModel(
-                        name: 'Commercial Plot', value: "Commercial Plot"),
-                    DropDownValueModel(
-                        name: 'Agriculture/Firm', value: "Agriculture/Firm"),
+                    DropDownValueModel(name: 'Apartment/Flats', value: "Apartment/Flats"),
+                    DropDownValueModel(name: 'Independent House', value: "Independent House"),
+                    DropDownValueModel(name: 'Duplex/Home', value: "Duplex/Home"),
+                    DropDownValueModel(name: 'Shop/Restaurant', value: "Shop/Restaurant"),
+                    DropDownValueModel(name: 'Office Space', value: "Office Space"),
+                    DropDownValueModel(name: 'Industrial Space', value: "Industrial Space"),
+                    DropDownValueModel(name: 'Residential Plot', value: "Residential Plot"),
+                    DropDownValueModel(name: 'Commercial Plot', value: "Commercial Plot"),
+                    DropDownValueModel(name: 'Agriculture/Firm', value: "Agriculture/Firm"),
                   ],
                   hintText: "Select an item",
                   enablesearch: false,
@@ -83,20 +75,18 @@ class Addscreen1 extends StatelessWidget {
                     controller.updatePropertyType(value.value);
                   },
                 ),
+                const SizedBox(height: 15.0),
 
-                //STATUS
+                // CONSTRUCTION STATUS
                 const CustomTextIcon(text: "Construction Status"),
                 DropdownWidget(
                   dropDownList: const [
                     DropDownValueModel(name: 'Any', value: "Any"),
                     DropDownValueModel(name: 'Ready', value: "Ready"),
-                    DropDownValueModel(
-                        name: 'Under Construction',
-                        value: "Under Construction"),
+                    DropDownValueModel(name: 'Under Construction', value: "Under Construction"),
                     DropDownValueModel(name: 'Used', value: "Used"),
                     DropDownValueModel(name: 'Upcoming', value: "Upcoming"),
-                    DropDownValueModel(
-                        name: 'Almost Ready', value: "Almost Ready"),
+                    DropDownValueModel(name: 'Almost Ready', value: "Almost Ready"),
                   ],
                   controller: controller.statusController,
                   hintText: "Select an item",
@@ -105,8 +95,9 @@ class Addscreen1 extends StatelessWidget {
                     addcontroller.status.value = value.value;
                   },
                 ),
+                const SizedBox(height: 15.0),
 
-                //ADDRESS
+                // ADDRESS
                 const CustomTextIcon(text: "Address"),
                 ReusableTextField(
                   hintText: 'Type Address',
@@ -116,9 +107,10 @@ class Addscreen1 extends StatelessWidget {
                     addcontroller.addressName.value = value;
                   },
                 ),
+                const SizedBox(height: 15.0),
 
-                //PROPERTY NAME
-                const CustomTextIcon(text: "Enter Property name"),
+                // PROPERTY NAME
+                const CustomTextIcon(text: "Enter Property Name"),
                 ReusableTextField(
                   hintText: 'Enter Property name',
                   maxLines: 2,
@@ -127,47 +119,52 @@ class Addscreen1 extends StatelessWidget {
                     addcontroller.propertyName.value = value;
                   },
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 15.0),
 
-                //PRICEING & SIZE
+                // PRICING & SIZE
                 const CustomText(text: "Properties Size & Pricing"),
+                const SizedBox(height: 5.0),
 
-                //SIZE
-                const CustomTextIcon(text: "Property size & sft"),
+                // SIZE
+                const CustomTextIcon(text: "Property size (sft)"),
                 ReusableTextField(
-                  hintText: "Property size & sft",
-                  keyboardtype: TextInputType.phone,
+                  hintText: "Property size in sft",
+                  keyboardtype: TextInputType.number,
                   controller: controller.sizesftController,
                   onchanged: (value) {
                     addcontroller.size.value = value;
                   },
                 ),
+                const SizedBox(height: 15.0),
 
-                //UTILITY COST
-                const CustomTextIcon(text: "Utility & Others cost"),
+                // UTILITY COST
+                const CustomTextIcon(text: "Utility & Other Costs"),
                 ReusableTextField(
-                  hintText: 'If any others cost',
-                  keyboardtype: TextInputType.phone,
+                  hintText: 'If any other costs',
+                  keyboardtype: TextInputType.number,
                   controller: controller.utilitytController,
                   onchanged: (value) {
                     addcontroller.utilityCost.value = value;
                   },
                 ),
+                const SizedBox(height: 15.0),
 
-                //TOTAL PRICE
-                const CustomTextIcon(text: "Price in total"),
+                // TOTAL PRICE
+                const CustomTextIcon(text: "Total Price"),
                 ReusableTextField(
-                  hintText: 'total price',
-                  keyboardtype: TextInputType.phone,
+                  hintText: 'Total price',
+                  keyboardtype: TextInputType.number,
                   controller: controller.priceController,
-                  onchanged: (Value) {
-                    addcontroller.totalPrice.value = Value;
+                  onchanged: (value) {
+                    addcontroller.totalPrice.value = value;
                   },
                 ),
+                const SizedBox(height: 15.0),
 
-                //BEDROOM
+                // BEDROOM
                 if (controller.propertyvalue.value) ...[
-                  const CustomText(text: "Property basic features"),
+                  const CustomText(text: "Property Basic Features"),
+                  const SizedBox(height: 5.0),
                   const CustomTextIcon(text: "Bedroom"),
                   DropdownWidget(
                     dropDownList: const [
@@ -183,11 +180,10 @@ class Addscreen1 extends StatelessWidget {
                     onchanged: (value) {
                       addcontroller.Bedroom.value = value.value;
                     },
-                  )
-                ],
+                  ),
+                  const SizedBox(height: 15.0),
 
-                //BATHROOM
-                if (controller.propertyvalue.value) ...[
+                  // BATHROOM
                   const CustomTextIcon(text: "Bathroom"),
                   DropdownWidget(
                     dropDownList: const [
@@ -203,11 +199,10 @@ class Addscreen1 extends StatelessWidget {
                       addcontroller.Bathroom.value = value.value;
                     },
                   ),
-                ],
+                  const SizedBox(height: 15.0),
 
-                //BELCONIS
-                if (controller.propertyvalue.value) ...[
-                  const CustomTextIcon(text: "Belconis"),
+                  // BALCONIES
+                  const CustomTextIcon(text: "Balconies"),
                   DropdownWidget(
                     dropDownList: const [
                       DropDownValueModel(name: '1', value: "1"),
@@ -222,9 +217,10 @@ class Addscreen1 extends StatelessWidget {
                       addcontroller.Belconis.value = value.value;
                     },
                   ),
+                  const SizedBox(height: 15.0),
                 ],
 
-                //GARAGES
+                // GARAGES
                 const CustomTextIcon(text: "Garages"),
                 DropdownWidget(
                   dropDownList: const [
@@ -243,7 +239,7 @@ class Addscreen1 extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
 
-                //NEXT BUTTON
+                // NEXT BUTTON
                 CustomButton(
                   text: "Next",
                   ontap: () {
@@ -253,11 +249,13 @@ class Addscreen1 extends StatelessWidget {
                         curve: Curves.easeInOut,
                       );
                       Fluttertoast.showToast(
-                          msg: addcontroller.addressName.toString() +
-                              addcontroller.propertyName.toString());
+                        msg: "${addcontroller.addressName.value} ${addcontroller.propertyName.value}",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                      );
                     }
                   },
-                )
+                ),
               ],
             ),
           ),

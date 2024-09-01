@@ -1,37 +1,81 @@
 import 'package:flutter/material.dart';
 
 class DashboardContainer extends StatelessWidget {
-  const DashboardContainer({super.key, this.text, this.number, this.color});
-  final text;
-  final number;
-  final color;
+  const DashboardContainer({
+    super.key,
+    required this.text,
+    required this.number,
+    required this.color,
+    this.icon,
+  });
+
+  final String text;
+  final String number;
+  final Color color;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
+
     return Container(
-        height: 100,
-        width: screenSize.width / 1,
-        alignment: Alignment.center,
-        margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-        decoration: BoxDecoration(
-            color: color ?? Colors.amber,
-            border: Border.all(width: 0.1),
-            borderRadius: BorderRadius.circular(8.0)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              text ?? '',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      height: 100,
+      width: screenSize.width - 30, // Adjusted width to fit within padding
+      margin: const EdgeInsets.symmetric(vertical: 8.0),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(15.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 8.0,
+            offset: Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          if (icon != null)
+            Container(
+              margin: const EdgeInsets.only(left: 15.0),
+              padding: const EdgeInsets.all(10.0),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                icon,
+                color: Colors.white,
+                size: 30.0,
+              ),
             ),
-            SizedBox(height: 10.0),
-            Text(
-              number ?? '',
-              style: TextStyle(fontSize: 18),
-            ),
-          ],
-        ));
+          const SizedBox(width: 20.0),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                text,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 8.0),
+              Text(
+                number,
+                style: const TextStyle(
+                  fontSize: 18,
+                  color: Colors.white70,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }

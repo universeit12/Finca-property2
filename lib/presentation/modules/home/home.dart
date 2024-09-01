@@ -20,40 +20,51 @@ class Home extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            //header section
+            // Header Section
             Container(
-                color: Colors.white,
-                child: HeaderView(
-                  onpressed: () {
-                    _scaffoldKey.currentState!.openDrawer();
-                  },
-                )),
-
-            //body section all property is here....
+              color: Colors.white,
+              child: HeaderView(
+                onpressed: () {
+                  _scaffoldKey.currentState!.openDrawer();
+                },
+              ),
+            ),
+            // Body Section
             Expanded(
               child: SingleChildScrollView(
                 child: Container(
-                    width: double.infinity,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:
-                          BorderRadius.only(topRight: Radius.circular(40.0)),
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(40.0),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: Column(
-                        children: [
-                          const AddHomeCard(),
-                          AllPropertyHomepageCard(),
-                          const FavouriteCard(),
-                          const BlogCard(),
-                          const PopulerCity(),
-                          const ReviewCard(),
-                        ],
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        spreadRadius: 2.0,
+                        blurRadius: 8.0,
+                        offset: Offset(0, -2),
                       ),
-                    )),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: Column(
+                      children: [
+                        const AddHomeCard(),
+                        AllPropertyHomepageCard(),
+                        const FavouriteCard(),
+                        const BlogCard(),
+                        const PopulerCity(),
+                        const ReviewCard(),
+                        const SizedBox(height: 20),
+                      ],
+                    ),
+                  ),
+                ),
               ),
-            )
+            ),
           ],
         ),
       ),

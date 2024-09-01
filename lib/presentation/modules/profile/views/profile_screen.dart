@@ -1,17 +1,11 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:universe_it_project/presentation/modules/Auth/signin/controller/signin%20_controller.dart';
-import 'package:universe_it_project/presentation/modules/Auth/signin/view/signinpage.dart';
 import 'package:universe_it_project/presentation/modules/profile/controller/image_controller.dart';
-import 'package:universe_it_project/presentation/modules/profile/controller/profile_controller.dart';
 import 'package:universe_it_project/presentation/modules/profile/views/dashboard_screen.dart';
 import 'package:universe_it_project/presentation/modules/profile/views/edit_profile.dart';
-import 'package:universe_it_project/presentation/modules/profile/views/profile_property_list.dart';
 import 'package:universe_it_project/presentation/modules/profile/widgets/profile_listtile.dart';
-
+import '../../Auth/signin/controller/signin _controller.dart';
 import '../../my_properties/views/property_list_screen.dart';
 
 class Profile_Screen extends StatelessWidget {
@@ -22,78 +16,103 @@ class Profile_Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(SignInController());
     final screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text('Profile'),
+        centerTitle: true,
+        backgroundColor: Colors.blueAccent,
+        elevation: 0.0,
+      ),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            //Profile image--->
-            Container(
-              height: 120,
-              width: 120,
-              clipBehavior: Clip.antiAlias,
-              alignment: Alignment.bottomRight,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.blueAccent, width: 1),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // Profile image--->
+              Container(
+                height: 120,
+                width: 120,
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.blueAccent, width: 2),
                   shape: BoxShape.circle,
                   image: const DecorationImage(
-                      image: AssetImage("assets/images/p.png"),
-                      fit: BoxFit.cover)),
-            ),
-            const SizedBox(height: 20.0),
-            const Text(
-              "Waliullah Ripon",
-              style: TextStyle(
-                fontSize: 18.0,
+                    image: AssetImage("assets/images/p.png"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            ProfileListtile(
-              icon: Icons.person,
-              title: "Edit Profile",
-              arrowicon: Iconsax.edit,
-              ontap: () {
-                Get.to(() => EditProfile());
-              },
-            ),
-            ProfileListtile(
-              icon: Icons.dashboard,
-              title: "Dashboard",
-              arrowicon: Iconsax.arrow_right,
-              ontap: () {
-                Get.to(() => DeshboardScreen());
-              },
-            ),
-            ProfileListtile(
-              icon: Iconsax.home4,
-              title: "Property List",
-              arrowicon: Iconsax.arrow_right,
-              ontap: () {
-                Get.to(() => PropertyListScreen());
-              },
-            ),
-            SizedBox(height: 20.0),
-            SizedBox(
-              height: 45.0,
-              width: screenSize.width / 2,
-              child: OutlinedButton(
+              const SizedBox(height: 20.0),
+              const Text(
+                "Waliullah Ripon",
+                style: TextStyle(
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              const SizedBox(height: 5.0),
+              Text(
+                "waliullah.ripon@example.com",
+                style: TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.grey[600],
+                ),
+              ),
+              const SizedBox(height: 40.0),
+              ProfileListtile(
+                icon: Icons.person,
+                title: "Edit Profile",
+                arrowicon: Iconsax.edit,
+                ontap: () {
+                  Get.to(() => EditProfile());
+                },
+              ),
+              ProfileListtile(
+                icon: Icons.dashboard,
+                title: "Dashboard",
+                arrowicon: Iconsax.arrow_right,
+                ontap: () {
+                  Get.to(() => DeshboardScreen());
+                },
+              ),
+              ProfileListtile(
+                icon: Iconsax.home4,
+                title: "Property List",
+                arrowicon: Iconsax.arrow_right,
+                ontap: () {
+                  Get.to(() => PropertyListScreen());
+                },
+              ),
+              const SizedBox(height: 30.0),
+              SizedBox(
+                height: 50.0,
+                width: screenSize.width / 2,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.redAccent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
                   onPressed: () {
                     controller.logOut();
-                    Get.snackbar("Successfully", "Log Out");
+                    Get.snackbar("Successfully", "Logged Out");
                   },
-                  child: Text(
+                  child: const Text(
                     'Logout',
                     style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold),
-                  )),
-            )
-          ],
+                      color: Colors.white,
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

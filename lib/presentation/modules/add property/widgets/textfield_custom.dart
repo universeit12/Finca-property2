@@ -34,6 +34,7 @@ class ReusableTextField extends StatelessWidget {
       onChanged: onchanged,
       keyboardType: keyboardtype,
       decoration: InputDecoration(
+        hintStyle: TextStyle(color: Colors.black26, fontSize: 12.0),
         hintText: hintText,
         border: const OutlineInputBorder(),
         suffixIcon: suffixIcon,

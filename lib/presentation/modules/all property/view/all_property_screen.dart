@@ -16,142 +16,187 @@ class AllPropertyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: AppColor.white,
+        title: Text('All Properties'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+      ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 15.0, right: 10.0),
+        padding: const EdgeInsets.all(10.0),
         child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                //Search Location
-                Row(
-                  children: [
-                    IconButton(
-                        onPressed: () {
-                          Get.back();
-                        },
-                        icon: const Icon(Icons.arrow_back_ios_new_outlined)),
-                    Flexible(child: CustomTextfield3(
+          child: Column(
+            children: [
+              // Search Location
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomTextfield3(
                       onchanged: (value) {
                         controller.runFilter(value);
                       },
-                    )),
-                  ],
-                ),
-                const SizedBox(
-                  height: 15.0,
-                ),
-
-                //all properties
-                Obx(
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      // Optionally, add an advanced search or filter icon here
+                    },
+                    icon: const Icon(Icons.search, color: AppColor.baseColor),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 15.0),
+              // All properties list
+              Expanded(
+                child: Obx(
                   () => ListView.builder(
-                    shrinkWrap: true,
                     itemCount: controller.foundItem.length,
                     itemBuilder: (context, index) {
                       final item = controller.foundItem[index];
-                      // ignore: unused_local_variable
                       final isFavorite = favoriteController.favoriteItems
                           .any((fav) => fav['Id'] == item['Id']);
 
-                      //Navigate the Details screen
+                      // Navigate to Details screen
                       return InkWell(
                         onTap: () {
                           Get.to(() => AllPropertyDetails(
-                                data: controller.foundItem[index],
+                                data: item,
                               ));
                         },
                         child: Container(
-                          key: ValueKey(controller.foundItem[index]["Id"]),
-                          height: 120,
-                          clipBehavior: Clip.antiAlias,
-                          margin: const EdgeInsets.only(left: 10.0, top: 10.0),
+                          key: ValueKey(item["Id"]),
+                          height: 140,
+                          margin: const EdgeInsets.only(bottom: 10.0),
                           decoration: BoxDecoration(
                             color: AppColor.white,
-                            borderRadius: BorderRadius.circular(6.0),
-                            boxShadow: const [
+                            borderRadius: BorderRadius.circular(10.0),
+                            boxShadow: [
                               BoxShadow(
-                                color: Colors.black12,
+                                color: Colors.black.withOpacity(0.05),
                                 spreadRadius: 1.0,
-                                blurRadius: 8.0,
-                              )
+                                blurRadius: 10.0,
+                                offset: Offset(0, 5),
+                              ),
                             ],
                           ),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              //Property image
+                              // Property image
                               Stack(
                                 children: [
-                                  Image.asset(
-                                    controller.foundItem[index]["img"],
-                                    width: w / 3.5,
-                                    fit: BoxFit.cover,
-                                    height: 140,
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.horizontal(
+                                        left: Radius.circular(10.0)),
+                                    child: Image.asset(
+                                      item["img"],
+                                      width: w / 3,
+                                      fit: BoxFit.cover,
+                                      height: double.infinity,
+                                    ),
                                   ),
-                                  Obx(() {
-                                    bool isFavorite = favoriteController
-                                        .isFavorite(item['id']);
-                                    return IconButton(
-                                      onPressed: () {
-                                        favoriteController.toggleFavorite(item);
-                                      },
-                                      icon: Icon(
-                                        isFavorite
-                                            ? Icons.favorite
-                                            : Icons.favorite_border,
-                                        color: Colors.red,
-                                        size: 35.0,
+                                  Positioned(
+                                    top: 10,
+                                    right: 10,
+                                    child: Obx(() {
+                                      bool isFavorite = favoriteController
+                                          .isFavorite(item['id']);
+                                      return GestureDetector(
+                                        onTap: () {
+                                          favoriteController
+                                              .toggleFavorite(item);
+                                        },
+                                        child: Icon(
+                                          isFavorite
+                                              ? Icons.favorite
+                                              : Icons.favorite_border,
+                                          color: Colors.red,
+                                          size: 30.0,
+                                        ),
+                                      );
+                                    }),
+                                  ),
+                                  Positioned(
+                                    bottom: 10,
+                                    left: 0,
+                                    child: Container(
+                                      padding: EdgeInsets.all(5.0),
+                                      decoration: BoxDecoration(
+                                        color: Colors.blueAccent,
+                                        borderRadius: BorderRadius.only(
+                                          topRight: Radius.circular(10),
+                                          bottomLeft: Radius.circular(10.0),
+                                        ),
                                       ),
-                                    );
-                                  }),
+                                      child: Text(
+                                        "Duplex Housing",
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
-
-                              //Property Info
+                              // Property Info
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8),
+                                  padding: const EdgeInsets.all(10.0),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       CustomText(
                                         text:
                                             "16000 sqrt let at Gulsan -116000 sqrt let at Gulsan-1",
                                         color: Colors.teal,
                                         maxline: 2,
-                                        fontsize: 14.0,
+                                        fontsize: 16.0,
+                                        fontweight: FontWeight.bold,
                                       ),
                                       CustomText(
                                         text: "Gulsan 45, Dhaka",
-                                        color: Colors.black,
+                                        color: Colors.black87,
                                         fontsize: 14.0,
                                       ),
-                                      CustomText(
-                                        text: "Aug. 7, 2024",
-                                        color: Colors.black38,
-                                        fontsize: 1.0,
-                                      ),
-                                      SizedBox(height: 5.0),
-                                      const CustomText(
-                                        text: "Tk- 545454",
-                                        color: Colors.blue,
-                                        fontsize: 16.0,
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Flexible(
+                                            child: CustomText(
+                                              text: "Aug. 7, 2024",
+                                              color: Colors.black38,
+                                              fontsize: 14.0,
+                                            ),
+                                          ),
+                                          Flexible(
+                                            child: CustomText(
+                                              text: "Tk- 545454",
+                                              color: AppColor.baseColor,
+                                              fontsize: 16.0,
+                                              fontweight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
                       );
                     },
                   ),
-                )
-              ],
-            ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

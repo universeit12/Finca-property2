@@ -4,7 +4,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:universe_it_project/presentation/modules/all%20property/contoller/favorte_controller.dart';
 import 'package:universe_it_project/presentation/modules/all%20property/utils/property_data.dart';
 import 'package:universe_it_project/presentation/modules/all%20property/view/all_property_details.dart';
-import 'package:universe_it_project/presentation/modules/all%20property/view/all_property_screen.dart';
+import 'package:universe_it_project/presentation/modules/all%20property/widgets/see_all_line.dart';
 import 'package:universe_it_project/widgets/custom_card.dart';
 import '../../../../widgets/custom_text.dart';
 
@@ -17,27 +17,11 @@ class AllPropertyHomepageCard extends StatelessWidget {
     return CustomCard(
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 7.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const CustomText(
-                  text: "All Property",
-                ),
-                InkWell(
-                  onTap: () {
-                    Get.to(AllPropertyScreen());
-                  },
-                  child: const CustomText(
-                    text: "See all..",
-                    color: Colors.teal,
-                  ),
-                ),
-              ],
-            ),
-          ),
+          ///All Property See all...
+          SeeAllLine(),
           const SizedBox(height: 15.0),
+
+          ///Property Card...
           SizedBox(
             height: 220,
             child: ListView.builder(
@@ -67,6 +51,7 @@ class AllPropertyHomepageCard extends StatelessWidget {
                       children: [
                         Stack(
                           children: [
+                            ///Images...
                             Container(
                               height: 100.0,
                               width: 220.0,
@@ -79,6 +64,8 @@ class AllPropertyHomepageCard extends StatelessWidget {
                                 ),
                               ),
                             ),
+
+                            ///Favorite Icon...
                             Positioned(
                               right: 0,
                               child: Obx(() {
@@ -96,6 +83,23 @@ class AllPropertyHomepageCard extends StatelessWidget {
                                 );
                               }),
                             ),
+
+                            ///Property Type ...
+                            Positioned(
+                                left: 0,
+                                bottom: 10,
+                                child: Container(
+                                  padding: EdgeInsets.all(5.0),
+                                  decoration: BoxDecoration(
+                                      color: Colors.blueAccent,
+                                      borderRadius: BorderRadius.only(
+                                          topRight: Radius.circular(10),
+                                          bottomLeft: Radius.circular(10.0))),
+                                  child: Text(
+                                    "Duplex Housing",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                )),
                           ],
                         ),
                         Padding(
@@ -104,25 +108,31 @@ class AllPropertyHomepageCard extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const SizedBox(height: 5.0),
+
+                              ///Title...
                               CustomText(
                                 text: propertyData[index]["title"],
                                 color: Colors.teal,
                                 maxline: 2,
                                 fontsize: 14.0,
                               ),
+
+                              ///Location...
                               CustomText(
                                 text: "Gulsan 45, Dhaka",
                                 color: Colors.black,
                                 fontsize: 14.0,
                               ),
+
+                              ///Date
                               CustomText(
                                 text: "Aug. 7, 2024",
-                                color: Colors.black38,
-                                fontsize: 1.0,
+                                color: Colors.black54,
+                                fontsize: 13.0,
                               ),
                               SizedBox(height: 5.0),
                               const CustomText(
-                                text: "Tk- 545454",
+                                text: "Tk- 105000",
                                 color: Colors.blue,
                                 fontsize: 16.0,
                               ),

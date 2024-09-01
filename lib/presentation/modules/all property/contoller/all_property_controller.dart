@@ -7,6 +7,7 @@ class AllPropertyController extends GetxController {
   var imageList = [
     'assets/images/flat4.jpg',
     'assets/images/flat.jpg',
+    'assets/images/flat4.jpg',
   ].obs;
 
   ///Make a Caller Function
