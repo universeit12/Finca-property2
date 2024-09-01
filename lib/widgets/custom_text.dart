@@ -8,7 +8,7 @@ class CustomText extends StatelessWidget {
   final color;
   final textAlign;
 
-  const CustomText(
+   const CustomText(
       {super.key,
       this.text,
       this.fontsize,
@@ -26,7 +26,9 @@ class CustomText extends StatelessWidget {
       style: TextStyle(
           color: color ?? Colors.black,
           fontSize: fontsize ?? 17.0,
-          fontWeight: fontweight ?? FontWeight.w500),
+          fontWeight: fontweight ?? FontWeight.w500,
+
+      ),
     );
   }
 }

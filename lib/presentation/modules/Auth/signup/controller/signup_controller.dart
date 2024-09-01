@@ -1,18 +1,28 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:universe_it_project/api/api.dart';
-import 'package:http/http.dart' as http;
-import 'package:universe_it_project/presentation/modules/Auth/signin/view/signinpage.dart';
+import 'package:universe_it_project/backend/services/ApiServices.dart';
+
 
 class SignupController extends GetxController {
+
+  // Customer Variables
   final mobileController = TextEditingController();
   final emailController = TextEditingController();
   final nameController = TextEditingController();
   final passController = TextEditingController();
   final confirmPassController = TextEditingController();
+
+  // Customer Variables
+  final companyMobileController = TextEditingController();
+  final companyMobile2Controller = TextEditingController();
+  final companyEmailController = TextEditingController();
+  final companyClientNameController = TextEditingController();
+  final companyNameController = TextEditingController();
+  final companyDesignationController = TextEditingController();
+  final companyOfficeAddressController = TextEditingController();
+  final companyPassController = TextEditingController();
+  final companyConfirmPassController = TextEditingController();
 
   var selectedOption = 'User'.obs;
 
@@ -20,30 +30,58 @@ class SignupController extends GetxController {
     selectedOption.value = option;
   }
 
-  void customerRegisterApi(BuildContext context) async {
-    try {
-      var url = "${API.fincaURL}/${API.routeURL}/user/create";
-      var data = {
+
+  Future<void> customerRegister() async {
+    try{
+      var user = {
         "password": passController.text,
         "full_name": nameController.text,
         "phone": mobileController.text,
         "email": emailController.text,
         "is_customer": true,
-        "is_seller": false
-      };
-      var body = json.encode(data);
-      var urlParse = Uri.parse(url);
-      var response = await http.post(urlParse, body: body, headers: {
-        "Content-Type": "application/json",
-        'x-API-Key': "${API.APIKey}"
-      });
+        "is_seller": false,
 
-      Get.to(() => Signinpage());
-      Fluttertoast.showToast(
-        msg: "Sign up Done",
-      );
-    } catch (e) {
-      Get.snackbar("Error", "Some thing went wrong");
+
+      };
+      var response = await ApiServices().post("/user/create", user).catchError((err){debugPrint("Unsuccessful");});
+      if(response == null)return;
+      debugPrint("Successful");
+      Get.snackbar("Successful", "Submitted Successfully");
+
+    }catch(e){
+      Get.snackbar("Error", "Something went wrong");
+
     }
+
   }
+  Future<void> CompanyRegister() async {
+    try{
+      var user = {
+        "password": companyPassController.text,
+        "full_name": companyClientNameController.text,
+        "phone": companyMobileController.text,
+        "email": companyEmailController.text,
+        "is_customer": false,
+        "is_seller": true,
+        "profile": {
+          "company_name": companyNameController.text,
+          "designation": companyDesignationController.text,
+          "phone2": companyMobile2Controller.text,
+          "office_address": companyOfficeAddressController.text
+        }
+
+
+      };
+      var response = await ApiServices().post("/user/create", user).catchError((err){debugPrint("Unsuccessful");});
+      if(response == null)return;
+      debugPrint("Successful");
+      Get.snackbar("Successful", "Submitted Successfully");
+    }catch (e){
+      Get.snackbar("Error", "Something went wrong");
+
+    }
+
+  }
+
+
 }

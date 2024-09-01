@@ -5,19 +5,19 @@ class CustomButton extends StatelessWidget {
       {super.key,
       this.text,
       this.background,
-      this.ontap,
+
       this.fontcolor,
-      this.width});
+      this.width, this.onTap});
   final String? text;
   final background;
-  final ontap;
+  final void Function()? onTap;
   final fontcolor;
   final width;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: ontap,
+      onTap: onTap,
       child: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(vertical: 12.0),

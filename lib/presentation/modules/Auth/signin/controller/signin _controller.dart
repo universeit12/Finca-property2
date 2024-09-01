@@ -1,22 +1,53 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+
+
 import 'package:get/get.dart';
-import '../../../../../api/api.dart';
-import 'package:http/http.dart' as http;
+import 'package:get_storage/get_storage.dart';
+import 'package:universe_it_project/presentation/modules/home/home.dart';
+
+import '../../../../../backend/services/ApiServices.dart';
+import '../../../../bottom nav/views/bottom_screen.dart';
 import '../../../profile/views/profile_screen.dart';
 import '../view/signinpage.dart';
 
+
 class SignInController extends GetxController {
   // Variables
-  final TextEditingController mobileController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final mobileController = TextEditingController();
+  final  passwordController = TextEditingController();
+  final storage = GetStorage();
 
-  final tokenStorage = FlutterSecureStorage();
+
+
+  // Customer and Company Login
+
+  customerOrCompanyLogin() async {
+    try{
+      var user = {
+        "password": passwordController.text,
+        "phone": mobileController.text,
+      };
+      var response = await ApiServices().post3("/user/login", user).catchError((err){debugPrint("Unsuccessful");});
+
+      var data = jsonDecode(response);
+      storage.write("token", data["token"]);
+      storage.write("id", data["user_pk"]);
+      if(response == null)return;
+      debugPrint("Successful");
+      debugPrint(data["token"]);
+      Get.off(() =>BottomNavScreen());
+      Get.snackbar("Successful", data["status"]);
+
+    }catch(e){
+      Get.snackbar("Error", "Something went wrong");
+
+    }
+
+  }
 
   // Login Function
-
+/*
   loginApi(context) async {
     try {
       var url = "${API.fincaURL}/${API.routeURL}/user/login";
@@ -50,14 +81,16 @@ class SignInController extends GetxController {
       Get.snackbar("Error", "Some thing went wrong");
     }
   }
-
+*/
   // log out api
   void logOut() async {
-    Get.snackbar("Token", tokenStorage.toString());
 
-    await tokenStorage.delete(key: "token");
-    Get.offAll(() => Signinpage());
 
-    Get.snackbar("Token", tokenStorage.toString());
+    storage.remove("token");
+    storage.remove("id");
+    Get.offAll(() => Home());
+
+    Get.snackbar("Logout", "Logout Successfully");
   }
+
 }

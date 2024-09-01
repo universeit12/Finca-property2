@@ -28,7 +28,7 @@ class ForgetPass extends StatelessWidget {
             children: [
               const CustomText(
                 text:
-                    "Please enter a valid email in field an press 'SEND' button. An automated email shall be genarated to be spacified email address with intructions of resetting password.",
+                "Please enter a valid email in field an press 'SEND' button. An automated email shall be genarated to be spacified email address with intructions of resetting password.",
                 fontsize: 18.0,
                 maxline: 10,
                 fontweight: FontWeight.w500,
@@ -36,12 +36,8 @@ class ForgetPass extends StatelessWidget {
               ),
               const SizedBox(height: 20.0),
               Textfield1(
-
-                hinttext: "email",
-
                 controller: controller.emailController,
-                hintText:"email",
-
+                hinttext:"email",
                 suffixicon: Icons.email_outlined,
                 validation: (value) {
                   if (value == null || value.isEmpty) {
@@ -57,7 +53,7 @@ class ForgetPass extends StatelessWidget {
               const Spacer(),
               CustomButton(
                 text: "Submit",
-                ontap: () {
+                onTap: () {
                   if (controller.emailController.text.isNotEmpty ||
                       controller.ForgotFormKey.currentState!.validate()) {
                     controller.resetPassword();

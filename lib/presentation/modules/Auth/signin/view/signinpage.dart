@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+
 import 'package:get/get.dart';
 import 'package:universe_it_project/presentation/modules/Auth/signin/controller/signin%20_controller.dart';
-import 'package:universe_it_project/presentation/modules/home/home.dart';
+
 import 'package:universe_it_project/utils/app_string.dart';
 import 'package:universe_it_project/widgets/custom_button.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
@@ -13,7 +13,7 @@ class Signinpage extends StatelessWidget {
     super.key,
   });
 
-  final emailformkey = GlobalKey<FormState>();
+
   final formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -52,6 +52,7 @@ class Signinpage extends StatelessWidget {
                   ),
                   const SizedBox(height: 20.0),
                   Textfield1(
+
                     inputype: TextInputType.number,
                     controller: controller.mobileController,
 
@@ -97,12 +98,9 @@ class Signinpage extends StatelessWidget {
                   const SizedBox(height: 20.0),
                   CustomButton(
                     text: "LOG IN",
-                    ontap: () {
+                    onTap: () {
                       if (formkey.currentState!.validate()) {
-                        controller.loginApi(context);
-
-
-
+                        controller.customerOrCompanyLogin();
                       }
                     },
                   ),
@@ -111,7 +109,7 @@ class Signinpage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const CustomText(
-                        text: "Dont't have an account?   ",
+                        text: "Don't have an account?   ",
                         color: Colors.black,
                         fontsize: 16.0,
                       ),

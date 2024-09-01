@@ -5,8 +5,14 @@ import '../../../../widgets/custom_text.dart';
 import '../../all property/utils/property_data.dart';
 import 'faviorite_screen.dart';
 
-class FavouriteCard extends StatelessWidget {
+class FavouriteCard extends StatefulWidget {
   const FavouriteCard({super.key});
+
+  @override
+  State<FavouriteCard> createState() => _FavouriteCardState();
+}
+
+class _FavouriteCardState extends State<FavouriteCard> {
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +51,7 @@ class FavouriteCard extends StatelessWidget {
             ),
             const Divider(),
             const SizedBox(height: 10.0),
-            SizedBox(
+            /*SizedBox(
               height: 250,
               child: ListView.builder(
                 itemCount: propertyData.length > 2 ? 2 : propertyData.length,
@@ -114,7 +120,7 @@ class FavouriteCard extends StatelessWidget {
                   );
                 },
               ),
-            ),
+            ),*/
           ],
         ),
       ),

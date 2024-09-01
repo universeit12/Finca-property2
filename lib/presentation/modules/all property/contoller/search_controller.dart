@@ -23,3 +23,5 @@ class AllSearchController extends GetxController {
     }
   }
 }
+
+

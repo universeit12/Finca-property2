@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../../../utils/app_color.dart';
 import '../../../../widgets/custom_text.dart';
+import '../model/blog_model.dart';
 
 class BlogsDetails extends StatelessWidget {
-  final Map<String, dynamic> data;
-  BlogsDetails({super.key, required this.data});
+  final BlogModel blog;
+  BlogsDetails({super.key,required this.blog});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class BlogsDetails extends StatelessWidget {
           ),
         ),
         title: Text(
-          data["title"],
+          "Blog Details",
           style: const TextStyle(
             color: Colors.white,
             fontSize: 18,
@@ -36,8 +37,8 @@ class BlogsDetails extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(
-              data["img"],
+            Image.network(
+              blog.blogImg.toString(),
               height: 250.0,
               width: double.infinity,
               fit: BoxFit.cover,
@@ -54,7 +55,7 @@ class BlogsDetails extends StatelessWidget {
                   ),
                   Expanded(
                     child: CustomText(
-                      text: data["title"],
+                      text: blog.title.toString(),
                       fontsize: 20.0,
                       fontweight: FontWeight.bold,
                       maxline: 3,
@@ -77,7 +78,7 @@ class BlogsDetails extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 child: Text(
-                  data["dis"],
+                  blog.details.toString(),
                   style: TextStyle(color: Colors.black),
                 )),
           ],

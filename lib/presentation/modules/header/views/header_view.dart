@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:universe_it_project/presentation/modules/search/view/filter_search.dart';
 import 'package:universe_it_project/presentation/modules/search/view/search_page.dart';
 import 'package:universe_it_project/utils/app_config.dart';
 import 'package:universe_it_project/widgets/custom_text.dart';
@@ -43,7 +44,7 @@ class HeaderView extends StatelessWidget {
           ),
           CustomSearchBar(
             ontap: () {
-              Get.to(() => SearchPage());
+              Get.to(() => FilterScreen());
             },
           ),
         ],

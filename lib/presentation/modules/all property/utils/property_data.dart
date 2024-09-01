@@ -17,7 +17,7 @@ final List<Map<String, dynamic>> propertyData = [
     'transaction_now': "new",
     'garages': "No Parking",
     'dis':
-        "A property description is a thorough report that details the characteristics, amenities, and conditions of a property.",
+    "A property description is a thorough report that details the characteristics, amenities, and conditions of a property.",
   },
   {
     "id": "2",
@@ -37,6 +37,7 @@ final List<Map<String, dynamic>> propertyData = [
     'transaction_now': "new",
     'garages': "No Parking",
     'dis':
-        "A property description is a thorough report that details the characteristics, amenities, and conditions of a property.",
+    "A property description is a thorough report that details the characteristics, amenities, and conditions of a property.",
   },
 ];
+

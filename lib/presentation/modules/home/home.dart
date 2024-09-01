@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:universe_it_project/presentation/image_upload/image_upload_screen.dart';
 import 'package:universe_it_project/presentation/modules/add%20property/views/add_home_card.dart';
-import 'package:universe_it_project/presentation/modules/all%20property/view/all_property_homePage_card.dart';
+
 import 'package:universe_it_project/presentation/modules/blogs/views/blog_card.dart';
 import 'package:universe_it_project/presentation/modules/client%20review/views/review_card.dart';
 import 'package:universe_it_project/presentation/modules/favourite/view/favourite_card.dart';
 import 'package:universe_it_project/presentation/modules/header/views/header_view.dart';
 import 'package:universe_it_project/presentation/modules/populer%20citys/views/populer_city_card.dart';
 import 'package:universe_it_project/widgets/custom_drawer.dart';
+
+import '../all property/view/commercial_property/commercial_property_card.dart';
+import '../all property/view/land_plot_property/land_or_property_card.dart';
+import '../all property/view/residential_property/residential_property_card.dart';
 
 class Home extends StatelessWidget {
   Home({super.key});
@@ -52,9 +57,14 @@ class Home extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 20),
                     child: Column(
                       children: [
+                        TextButton(onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ImageUpload(),));
+                        }, child: Text("Image Upload Screen")),
                         const AddHomeCard(),
-                        AllPropertyHomepageCard(),
-                        const FavouriteCard(),
+                        ResidentialPropertyCard(),
+                        CommercialPropertyCard(),
+                        LandOrPlotPropertyCard(),
+                       // const FavouriteCard(),
                         const BlogCard(),
                         const PopulerCity(),
                         const ReviewCard(),

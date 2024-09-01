@@ -1,132 +1,155 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:universe_it_project/utils/app_color.dart';
 import 'package:universe_it_project/utils/app_config.dart';
 import 'package:universe_it_project/utils/nav_item.dart';
+
+import '../backend/services/ApiServices.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final storage = GetStorage();
+    String? token = storage.read("token");
+
     final w = MediaQuery.of(context).size.width;
-    return Drawer(
-      width: w / 1.5,
-      child: ListView(
-        padding: const EdgeInsets.all(0),
-        children: <Widget>[
-          Container(
-            color: AppColor.baseColor,
-            padding: const EdgeInsets.symmetric(vertical: 40.0),
-            child: Column(
-              children: [
-                Image.asset(
-                  AppConfig.appLogo,
-                  width: 80,
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Get.toNamed('/signin_screen');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4.0),
+    return SafeArea(
+      child: Drawer(
+        width: w / 1.5,
+        child: ListView(
+          padding: const EdgeInsets.all(0),
+          children: <Widget>[
+            Container(
+              color: AppColor.baseColor,
+              padding: const EdgeInsets.symmetric(vertical: 40.0),
+              child: //token == "Null" && token=="" ?
+              Column(
+                      children: [
+                        Image.asset(
+                          AppConfig.appLogo,
+                          width: 80,
+                        ),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Get.toNamed('/signin_screen');
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(4.0),
+                            ),
+                          ),
+                          child: Text(
+                            "Sign In/Sign Up",
+                            style: TextStyle(color: AppColor.baseColor),
+                          ),
+                        ),
+                      ],
+                    )
+                 /* : Center(
+                    child: Column(
+                      children: [
+                        Image.asset(
+                            AppConfig.appLogo,
+                            width: 80,
+                          ),
+                        SizedBox(height: 20,),
+                        Text("WELCOME TO FINCA PROPERTIES",style: TextStyle(color: Colors.white.withOpacity(0.5),fontStyle: FontStyle.italic),)
+                      ],
                     ),
-                  ),
-                  child: Text(
-                    "Sign In/Sign Up",
-                    style: TextStyle(color: AppColor.baseColor),
-                  ),
-                ),
-              ],
+                  ),*/
             ),
-          ),
-          const SizedBox(height: 20.0),
-          ListTile(
-            title: const Text(
-              "Home",
-              style: TextStyle(color: Colors.teal, fontWeight: FontWeight.bold),
-            ),
-            leading: const Icon(Icons.home_outlined, color: Colors.teal),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          const Divider(height: 1.0, color: Colors.black12),
-          for (int i = 0; i < navItem.length; i++)
+            const SizedBox(height: 20.0),
             ListTile(
-              title: Text(
-                navItem[i]["title"],
-                style: const TextStyle(fontWeight: FontWeight.bold),
+              title: const Text(
+                "Home",
+                style:
+                    TextStyle(color: Colors.teal, fontWeight: FontWeight.bold),
               ),
-              leading: Icon(navItem[i]["icon"]),
+              leading: const Icon(Icons.home_outlined, color: Colors.teal),
               onTap: () {
-                Get.to(navItem[i]["screen"]);
+                Navigator.pop(context);
               },
             ),
-          const Divider(height: 1.0, color: Colors.black12),
-          const SizedBox(height: 20.0),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                RichText(
-                  textAlign: TextAlign.center,
-                  text: const TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'All rights reserved by ',
-                        style: TextStyle(
-                          color: Colors.black54,
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                      TextSpan(
-                        text: '© Finca Properties',
-                        style: TextStyle(
-                          color: Colors.teal,
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
+            const Divider(height: 1.0, color: Colors.black12),
+            for (int i = 0; i < navItem.length; i++)
+              ListTile(
+                title: Text(
+                  navItem[i]["title"],
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 8.0),
-                RichText(
-                  textAlign: TextAlign.center,
-                  text: const TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'Design & Developed by ',
-                        style: TextStyle(
-                          color: Colors.black54,
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w400,
+                leading: Icon(navItem[i]["icon"]),
+                onTap: () {
+                  Get.to(navItem[i]["screen"]);
+                },
+              ),
+            const Divider(height: 1.0, color: Colors.black12),
+            const SizedBox(height: 20.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  RichText(
+                    textAlign: TextAlign.center,
+                    text: const TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'All rights reserved by ',
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
-                      ),
-                      TextSpan(
-                        text: '© Universe Soft Tech',
-                        style: TextStyle(
-                          color: Colors.teal,
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.bold,
+                        TextSpan(
+                          text: '© Finca Properties',
+                          style: TextStyle(
+                            color: Colors.teal,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 8.0),
+                  RichText(
+                    textAlign: TextAlign.center,
+                    text: const TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Design & Developed by ',
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        TextSpan(
+                          text: '© Universe Soft Tech',
+                          style: TextStyle(
+                            color: Colors.teal,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 20.0),
-        ],
+            const SizedBox(height: 20.0),
+          ],
+        ),
       ),
     );
   }

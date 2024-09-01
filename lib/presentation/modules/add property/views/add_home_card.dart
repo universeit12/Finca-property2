@@ -38,7 +38,7 @@ class AddHomeCard extends StatelessWidget {
                   ),
                   const Expanded(
                     child: CustomText(
-                      text: "Loking to sell or out your property?",
+                      text: "Looking to sell or out your property?",
                       fontweight: FontWeight.bold,
                       maxline: 2,
                     ),
@@ -50,7 +50,7 @@ class AddHomeCard extends StatelessWidget {
               ),
               CustomButton(
                 text: "Add Property",
-                ontap: () {
+                onTap: () {
                   Get.toNamed('/add_property');
                 },
               )

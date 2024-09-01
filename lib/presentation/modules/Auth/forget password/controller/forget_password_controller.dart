@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 class ForgetPasswordController extends GetxController{
 
-   // Variables
+  // Variables
   final TextEditingController emailController = TextEditingController();
   final ForgotFormKey = GlobalKey<FormState>();
 

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:universe_it_project/presentation/modules/Privacy/views/privacy_screen.dart';
-import 'package:universe_it_project/presentation/modules/all%20property/view/all_property_screen.dart';
+import 'package:universe_it_project/presentation/modules/all%20property/view/residential_property/featured_residentials_property_all_screen.dart';
 import 'package:universe_it_project/presentation/modules/blogs/views/blog_item.dart';
+import 'package:universe_it_project/presentation/modules/booking%20now/views/booking_screen2.dart';
 import 'package:universe_it_project/presentation/modules/favourite/view/faviorite_screen.dart';
 import 'package:universe_it_project/presentation/modules/profile/views/profile_screen.dart';
 import '../presentation/modules/contact/views/contact_screen.dart';
@@ -14,9 +15,9 @@ final List<Map<String, dynamic>> navItem = [
     'screen': AllPropertyScreen()
   },
   {
-    'icon': Icons.favorite_border,
-    'title': 'Favorite',
-    'screen': const FavoriteScreen()
+    'icon': Icons.calendar_month,
+    'title': 'Property Booking',
+    'screen':  BookingScreen2()
   },
   {'icon': Icons.library_books, 'title': 'Blogs', 'screen': const BlogItem()},
   {

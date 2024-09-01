@@ -15,7 +15,7 @@ class PropertySemmary extends StatelessWidget {
         SizedBox(width: 5.0),
         Text(
           text ?? ' ',
-          style: TextStyle(fontSize: 16.0),
+          style: TextStyle(fontSize: 16.0,color: Colors.black.withOpacity(0.75)),
         )
       ],
     );

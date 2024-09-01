@@ -1,7 +1,11 @@
 import 'package:get/get.dart';
 
-class AddPropertyController extends GetxController {
-  //Add first page field-->>
+import 'addController3.dart';
+
+
+class AddController extends GetxController {
+  final controller = Get.put(AddController3());
+
   var type = ''.obs;
   var status = ''.obs;
   var addressName = ''.obs;
@@ -13,26 +17,12 @@ class AddPropertyController extends GetxController {
   var Bathroom = ''.obs;
   var Belconis = ''.obs;
   var garages = ''.obs;
-  //Add second page field-->>
   var floorNumber = ''.obs;
   var title = ''.obs;
   var Description = ''.obs;
   var mobile = ''.obs;
-
-  printAllData() {
-    print(type);
-    print(status);
-    print(addressName);
-    print(propertyName);
-    print(size);
-    print(utilityCost);
-    print(totalPrice);
-    print(Bedroom);
-    print(Bathroom);
-    print(Belconis);
-    print(garages);
-    print(title);
-    print(Description);
-    print(mobile);
+  var priceIs = ''.obs;
+  void setSelectedOption(String value) {
+    priceIs.value = value;
   }
 }

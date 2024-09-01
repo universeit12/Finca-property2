@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import '../../../../widgets/custom_text.dart';
-import '../view/all_property_screen.dart';
+
 
 class SeeAllLine extends StatelessWidget {
-  const SeeAllLine({super.key});
+  const SeeAllLine({super.key, required this.propertyTitle, required this.onTap});
+
+  final String propertyTitle;
+  final  void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +16,15 @@ class SeeAllLine extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const CustomText(
-            text: "All Property",
+           CustomText(
+            text: propertyTitle,
           ),
           InkWell(
-            onTap: () {
-              Get.to(AllPropertyScreen());
-            },
+            onTap:
+              onTap
+            ,
             child: const CustomText(
-              text: "See all..",
+              text: "See All",
               color: Colors.teal,
             ),
           ),

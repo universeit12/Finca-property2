@@ -7,7 +7,7 @@ class ImageController extends GetxController {
 
   final ImagePicker _picker = ImagePicker();
 
-  Future<void> pickImage() async {
+  Future<void>pickImage() async {
     if (isImagePickerActive.value) {
       return;
     }
@@ -23,4 +23,6 @@ class ImageController extends GetxController {
       isImagePickerActive.value = false; // Reset the flag once done
     }
   }
+
+
 }

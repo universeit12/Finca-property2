@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../utils/app_color.dart';
@@ -22,7 +23,7 @@ class SearchResult extends StatelessWidget {
             child: Column(
               children: [
                 Obx(
-                  () => ListView.builder(
+                      () => ListView.builder(
                     shrinkWrap: true,
                     itemCount: searchcontroller.foundItem.length,
                     itemBuilder: (context, index) {
@@ -30,7 +31,7 @@ class SearchResult extends StatelessWidget {
                         onTap: () {},
                         child: Container(
                           key:
-                              ValueKey(searchcontroller.foundItem[index]["Id"]),
+                          ValueKey(searchcontroller.foundItem[index]["Id"]),
                           height: 120,
                           clipBehavior: Clip.antiAlias,
                           margin: const EdgeInsets.only(left: 10.0, top: 10.0),
@@ -59,32 +60,32 @@ class SearchResult extends StatelessWidget {
                                   padding: const EdgeInsets.all(8),
                                   child: Column(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
+                                    MainAxisAlignment.spaceAround,
                                     children: [
                                       CustomText(
                                         text: searchcontroller.foundItem[index]
-                                            ["title"],
+                                        ["title"],
                                         color: Colors.black,
                                         maxline: 2,
                                         fontsize: 14.0,
                                       ),
                                       CustomText(
                                         text: searchcontroller.foundItem[index]
-                                            ["property_name"],
+                                        ["property_name"],
                                         color: Colors.black38,
                                         fontsize: 12.0,
                                       ),
                                       CustomText(
                                         text: searchcontroller.foundItem[index]
-                                            ["location"],
+                                        ["location"],
                                         color: Colors.black38,
                                         fontsize: 12.0,
                                       ),
                                       Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceBetween,
                                         children: [
                                           CustomText(
                                             text: searchcontroller

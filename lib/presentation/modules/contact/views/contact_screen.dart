@@ -87,14 +87,17 @@ class ContactScreen extends StatelessWidget {
               const SizedBox(height: 30.0),
               CustomButton(
                 text: "Send Message",
-                ontap: () {
+                onTap: () {
+                  debugPrint("Tapped");
+                  //controller.contactUsPost();
                   if (controller.name.value.isNotEmpty &&
                       controller.email.value.isNotEmpty &&
                       controller.subject.value.isNotEmpty &&
                       controller.phone.value.isNotEmpty &&
                       controller.message.value.isNotEmpty) {
-                    Fluttertoast.showToast(msg: "Message sent successfully!");
+                    //Fluttertoast.showToast(msg: "Message sent successfully!");
                     // Add your submission logic here
+                    controller.contactUsPost();
                   } else {
                     Fluttertoast.showToast(
                         msg: "Please fill out all fields.",
@@ -107,6 +110,7 @@ class ContactScreen extends StatelessWidget {
                 child: TextButton(
                   onPressed: () {
                     // Add your callback logic here
+                    //controller.contactUsPost();
                   },
                   child: const Text(
                     "Need immediate assistance? Contact us directly",

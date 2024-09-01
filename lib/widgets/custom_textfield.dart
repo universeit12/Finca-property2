@@ -33,6 +33,8 @@ class Textfield1 extends StatelessWidget {
       ),
       margin: const EdgeInsets.only(bottom: 5.0),
       child: TextFormField(
+
+        controller: controller,
         maxLines: maxline,
         onChanged: onchanged,
         validator: validation,
@@ -42,9 +44,13 @@ class Textfield1 extends StatelessWidget {
         decoration: InputDecoration(
           labelText: hinttext,
           hintText: hintText,
+
           suffixIcon: suffixicon != null ? Icon(suffixicon) : null,
           prefixIconColor: Colors.white,
           hintStyle: const TextStyle(color: Colors.blueGrey, fontSize: 14),
+          labelStyle: TextStyle(
+            color: Colors.blueGrey,fontSize: 13, // Change the label text size here
+          ),
           filled: false,
           fillColor: Colors.white,
           //enable-->
