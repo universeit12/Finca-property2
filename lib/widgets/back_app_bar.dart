@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:universe_it_project/utils/app_color.dart';
-
+var a=10;
 class Backappbar extends StatelessWidget implements PreferredSizeWidget {
 
   final  title;
